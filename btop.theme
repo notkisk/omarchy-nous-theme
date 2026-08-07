@@ -1,0 +1,54 @@
+#################################
+# Field Notes — btop Color Theme
+#################################
+
+# The monitor is intentionally the dark 'instrument panel' counterpart to the
+# paper desktop: navy ground, periwinkle signals, restrained status colors.
+theme[main_bg]         = "#0B1A37"
+theme[title]           = "#AAB8F5"
+theme[hi_fg]           = "#6E8FE8"
+
+theme[selected_bg]     = "#1554C0"
+theme[selected_fg]     = "#F7F5EF"
+theme[inactive_fg]     = "#8FA0BD"
+
+theme[cpu_box]         = "#526887"
+theme[mem_box]         = "#526887"
+theme[net_box]         = "#526887"
+theme[proc_box]        = "#526887"
+theme[div_line]        = "#526887"
+
+theme[graph_text]      = "#DDE4EE"
+theme[proc_misc]       = "#AAB8D1"
+
+theme[temp_start]      = "#2E7D6F"
+theme[temp_mid]        = "#A86619"
+theme[temp_end]        = "#A44148"
+
+theme[cpu_start]       = "#50627F"
+theme[cpu_mid]         = "#4D63D9"
+theme[cpu_end]         = "#AAB8F5"
+
+theme[free_start]      = "#0B1A37"
+theme[free_mid]        = "#1554C0"
+theme[free_end]        = "#6E8FE8"
+theme[cached_start]    = "#0B1A37"
+theme[cached_mid]      = "#4B94A9"
+theme[cached_end]      = "#AAB8F5"
+theme[available_start] = "#0B1A37"
+theme[available_mid]   = "#2E7D6F"
+theme[available_end]   = "#438D80"
+theme[used_start]      = "#0B1A37"
+theme[used_mid]        = "#A86619"
+theme[used_end]        = "#BF7E29"
+
+theme[download_start]  = "#0B1A37"
+theme[download_mid]    = "#1554C0"
+theme[download_end]    = "#AAB8F5"
+theme[upload_start]    = "#0B1A37"
+theme[upload_mid]      = "#277A95"
+theme[upload_end]      = "#4B94A9"
+
+theme[process_start]   = "#233A61"
+theme[process_mid]     = "#4D63D9"
+theme[process_end]     = "#AAB8F5"
