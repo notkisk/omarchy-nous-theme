@@ -4,151 +4,144 @@
     "type": "file",
     "source": "~/.config/omarchy/current/theme/fastfetch-logo.txt",
     "color": { "1": "#3D73E8", "2": "#AAB8F5" },
-    "padding": { "top": 1, "right": 4, "left": 1 }
+    "padding": { "top": 0, "right": 3, "left": 0 }
   },
-  "display": { "separator": "  " },
+  "display": {
+    "separator": "  ",
+    "color": "#EAF0FF"
+  },
   "modules": [
     "break",
+    "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;61;115;232m┌──────────────────── NOUS RESEARCH ────────────────────┐"
+      "format": "\u001b[38;2;61;115;232m  ╔══════════════════════════════════╗"
     },
     {
       "type": "custom",
-      "format": "\u001b[38;2;143;160;189m│  field notes terminal  ·  research node  ·  omarchy     │"
+      "format": "\u001b[38;2;61;115;232m  ║  \u001b[38;2;234;240;255mN O U S   R E S E A R C H\u001b[38;2;61;115;232m        ║"
     },
     {
       "type": "custom",
-      "format": "\u001b[38;2;61;115;232m└────────────────────────────────────────────────────────┘"
+      "format": "\u001b[38;2;61;115;232m  ║  \u001b[38;2;170;184;245mfield notes  ·  research node\u001b[38;2;61;115;232m    ║"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;61;115;232m  ╚══════════════════════════════════╝"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m┌────────────────────── Hardware ────────────────────────┐"
+      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;61;115;232m hardware \u001b[38;2;56;81;125m──────────────────────────"
     },
     {
       "type": "host",
-      "key": "  host",
+      "key": "  \uf6be  node",
       "keyColor": "#3D73E8"
     },
     {
       "type": "cpu",
-      "key": "  cpu",
+      "key": "  \uf4bc  cpu",
+      "keyColor": "#3D73E8",
       "showPeCoreCount": true,
-      "keyColor": "#3D73E8"
+      "format": "{name} · {coresPhysical}c/{coresLogical}t"
     },
     {
       "type": "gpu",
-      "key": "  gpu",
-      "detectionMethod": "pci",
-      "keyColor": "#3D73E8"
+      "key": "  \uf9b9  gpu",
+      "keyColor": "#3D73E8",
+      "detectionMethod": "pci"
     },
     {
       "type": "display",
-      "key": "  display",
-      "keyColor": "#3D73E8"
-    },
-    {
-      "type": "disk",
-      "key": "  disk",
+      "key": "  \uf878  display",
       "keyColor": "#3D73E8"
     },
     {
       "type": "memory",
-      "key": "  memory",
+      "key": "  \uf85a  memory",
       "keyColor": "#3D73E8"
     },
     {
-      "type": "swap",
-      "key": "  swap",
-      "keyColor": "#3D73E8"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
+      "type": "disk",
+      "key": "  \uf7c9  disk",
+      "keyColor": "#3D73E8",
+      "folders": "/"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m┌────────────────────── Software ────────────────────────┐"
+      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;170;184;245m software \u001b[38;2;56;81;125m──────────────────────────"
     },
     {
       "type": "command",
-      "key": "  os",
+      "key": "  \uf17c  omarchy",
       "keyColor": "#AAB8F5",
-      "text": "version=$(omarchy-version); echo \"Omarchy $version\""
-    },
-    {
-      "type": "command",
-      "key": "  branch",
-      "keyColor": "#AAB8F5",
-      "text": "branch=$(omarchy-version-branch); echo \"$branch\""
+      "text": "omarchy-version"
     },
     {
       "type": "kernel",
-      "key": "  kernel",
+      "key": "  \uf831  kernel",
       "keyColor": "#AAB8F5"
     },
     {
       "type": "wm",
-      "key": "  wm",
+      "key": "  \uf009  wm",
       "keyColor": "#AAB8F5"
     },
     {
       "type": "terminal",
-      "key": "  terminal",
+      "key": "  \uf120  term",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "terminalfont",
+      "key": "  \uf031  font",
       "keyColor": "#AAB8F5"
     },
     {
       "type": "packages",
-      "key": "  packages",
+      "key": "  \uf8d6  pkgs",
       "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "wmtheme",
-      "key": "  theme",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "command",
-      "key": "  palette",
-      "keyColor": "#AAB8F5",
-      "text": "echo -e \"\\e[38;2;8;21;46m●\\e[38;2;61;115;232m●\\e[38;2;170;184;245m●\\e[38;2;56;81;125m●\\e[38;2;143;160;189m●\\e[38;2;79;155;140m●\\e[38;2;199;90;106m●\""
-    },
-    {
-      "type": "terminalfont",
-      "key": "  font",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m┌──────────────── Uptime / Updates ──────────────────────┐"
-    },
-    {
-      "type": "command",
-      "key": "  os age",
-      "keyColor": "#4F9B8C",
-      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days"
+      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;79;155;140m session \u001b[38;2;56;81;125m───────────────────────────"
     },
     {
       "type": "uptime",
-      "key": "  uptime",
+      "key": "  \uf017  uptime",
       "keyColor": "#4F9B8C"
     },
     {
       "type": "command",
-      "key": "  updated",
+      "key": "  \uf073  install",
       "keyColor": "#4F9B8C",
-      "text": "updated=$(omarchy-version-pkgs); echo \"$updated\""
+      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago"
     },
     {
+      "type": "command",
+      "key": "  \uf021  updated",
+      "keyColor": "#4F9B8C",
+      "text": "omarchy-version-pkgs"
+    },
+    "break",
+    {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
+      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;143;160;189m palette \u001b[38;2;56;81;125m───────────────────────────"
+    },
+    {
+      "type": "command",
+      "key": "  \uf53f  ink",
+      "keyColor": "#8FA0BD",
+      "text": "echo -e \"\\e[38;2;8;21;46m⬤ mid   \\e[38;2;61;115;232m⬤ sig   \\e[38;2;170;184;245m⬤ peri  \\e[38;2;143;160;189m⬤ slate\""
+    },
+    {
+      "type": "command",
+      "key": "  \uf53f  status",
+      "keyColor": "#8FA0BD",
+      "text": "echo -e \"\\e[38;2;79;155;140m⬤ ok    \\e[38;2;199;90;106m⬤ err   \\e[38;2;194;138;57m⬤ warn  \\e[38;2;56;81;125m⬤ rule\""
     },
     "break"
   ]
