@@ -4,23 +4,152 @@
     "type": "file",
     "source": "~/.config/omarchy/current/theme/fastfetch-logo.txt",
     "color": { "1": "#3D73E8", "2": "#AAB8F5" },
-    "padding": { "top": 1, "right": 5, "left": 2 }
+    "padding": { "top": 1, "right": 4, "left": 1 }
   },
   "display": { "separator": "  " },
   "modules": [
     "break",
-    { "type": "custom", "format": "\u001b[38;2;170;184;245m┌── SYSTEM / RESEARCH NODE ──────────────────┐" },
-    { "type": "host", "key": "  host", "keyColor": "blue" },
-    { "type": "os", "key": "  os", "keyColor": "blue" },
-    { "type": "kernel", "key": "  kernel", "keyColor": "blue" },
-    { "type": "terminal", "key": "  terminal", "keyColor": "blue" },
-    { "type": "packages", "key": "  packages", "keyColor": "blue" },
-    { "type": "wmtheme", "key": "  theme", "keyColor": "blue" },
-    { "type": "custom", "format": "\u001b[38;2;170;184;245m└─────────────────────────────────────────────┘" },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;61;115;232m┌──────────────────── NOUS RESEARCH ────────────────────┐"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;143;160;189m│  field notes terminal  ·  research node  ·  omarchy     │"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;61;115;232m└────────────────────────────────────────────────────────┘"
+    },
     "break",
-    { "type": "cpu", "key": "  cpu", "keyColor": "cyan" },
-    { "type": "memory", "key": "  memory", "keyColor": "cyan" },
-    { "type": "disk", "key": "  disk", "keyColor": "cyan" },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m┌────────────────────── Hardware ────────────────────────┐"
+    },
+    {
+      "type": "host",
+      "key": "  host",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "cpu",
+      "key": "  cpu",
+      "showPeCoreCount": true,
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "gpu",
+      "key": "  gpu",
+      "detectionMethod": "pci",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "display",
+      "key": "  display",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "disk",
+      "key": "  disk",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "memory",
+      "key": "  memory",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "swap",
+      "key": "  swap",
+      "keyColor": "#3D73E8"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m┌────────────────────── Software ────────────────────────┐"
+    },
+    {
+      "type": "command",
+      "key": "  os",
+      "keyColor": "#AAB8F5",
+      "text": "version=$(omarchy-version); echo \"Omarchy $version\""
+    },
+    {
+      "type": "command",
+      "key": "  branch",
+      "keyColor": "#AAB8F5",
+      "text": "branch=$(omarchy-version-branch); echo \"$branch\""
+    },
+    {
+      "type": "kernel",
+      "key": "  kernel",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "wm",
+      "key": "  wm",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "terminal",
+      "key": "  terminal",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "packages",
+      "key": "  packages",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "wmtheme",
+      "key": "  theme",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "command",
+      "key": "  palette",
+      "keyColor": "#AAB8F5",
+      "text": "echo -e \"\\e[38;2;8;21;46m●\\e[38;2;61;115;232m●\\e[38;2;170;184;245m●\\e[38;2;56;81;125m●\\e[38;2;143;160;189m●\\e[38;2;79;155;140m●\\e[38;2;199;90;106m●\""
+    },
+    {
+      "type": "terminalfont",
+      "key": "  font",
+      "keyColor": "#AAB8F5"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m┌──────────────── Uptime / Updates ──────────────────────┐"
+    },
+    {
+      "type": "command",
+      "key": "  os age",
+      "keyColor": "#4F9B8C",
+      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days"
+    },
+    {
+      "type": "uptime",
+      "key": "  uptime",
+      "keyColor": "#4F9B8C"
+    },
+    {
+      "type": "command",
+      "key": "  updated",
+      "keyColor": "#4F9B8C",
+      "text": "updated=$(omarchy-version-pkgs); echo \"$updated\""
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;56;81;125m└────────────────────────────────────────────────────────┘"
+    },
     "break"
   ]
 }

@@ -1,0 +1,19 @@
+#!/bin/bash
+# Apply Field Notes terminal extras when this theme is active.
+THEME_DIR="$HOME/.config/omarchy/current/theme"
+
+if [[ "$1" != "nous" ]]; then
+  exit 0
+fi
+
+if [[ -f "$THEME_DIR/fastfetch.jsonc" ]]; then
+  cp "$THEME_DIR/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+fi
+
+if [[ -f "$THEME_DIR/starship.toml" ]]; then
+  cp "$THEME_DIR/starship.toml" "$HOME/.config/starship.toml"
+fi
+
+if [[ -f "$THEME_DIR/fastfetch-logo.txt" ]]; then
+  cp "$THEME_DIR/fastfetch-logo.txt" "$HOME/.config/omarchy/branding/about.txt"
+fi

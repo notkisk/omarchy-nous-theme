@@ -9,42 +9,84 @@
 @define-color urgent #C75E6A;
 @define-color success #4F9B8C;
 
-/* These override the stock bar's warm alert colors with the theme palette. */
+/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
+window#waybar > box {
+  background-color: @background;
+  border-bottom-color: alpha(@border, 0.65);
+}
+
+label {
+  color: @foreground;
+}
+
+#workspaces button {
+  color: @foreground;
+}
+
 #workspaces button.active {
-  color: @background !important;
-  background-color: @accent !important;
+  color: @background;
+  background-color: @accent;
 }
 
 #workspaces button.empty.active {
-  color: @background !important;
-  background-color: @accent_soft !important;
+  color: @background;
+  background-color: @accent_soft;
+}
+
+#memory,
+#mpris,
+#custom-clock,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#idle_inhibitor,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-update,
+#custom-voxtype,
+#cpu {
+  color: @foreground;
 }
 
 #custom-idle-indicator.active,
 #custom-notification-silencing-indicator.active,
 #custom-voxtype.recording,
 #custom-screenrecording-indicator.active {
-  color: @urgent !important;
+  color: @urgent;
 }
 
 #mpris {
-  color: @accent_soft !important;
-  animation: none !important;
+  color: @accent_soft;
+  animation: none;
 }
 
 #battery.warning {
-  color: #C28A39 !important;
+  color: #C28A39;
 }
 
 #battery.critical:not(.charging),
 #pulseaudio.critical,
 #memory.critical,
 #cpu.critical {
-  color: @urgent !important;
+  color: @urgent;
 }
 
 #pulseaudio.warning,
 #memory.warning,
 #cpu.warning {
-  color: #DFAC5B !important;
+  color: #DFAC5B;
+}
+
+tooltip {
+  background: @background;
+  border-color: alpha(@border, 0.85);
+}
+
+tooltip label {
+  color: @muted;
 }
