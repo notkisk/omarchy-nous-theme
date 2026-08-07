@@ -4,7 +4,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      flavour = "latte",
+      flavour = "mocha",
       integrations = {
         blink_cmp = true,
         gitsigns = true,
@@ -17,7 +17,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-latte",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
