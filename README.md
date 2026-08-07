@@ -31,7 +31,7 @@ The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar
 ## Installation
 
 ```bash
-omarchy theme install <repository-url>
+omarchy theme install https://github.com/notkisk/nous-theme.git
 ```
 
 For a repository named `nous-theme`, Omarchy installs this package as `nous`; select that installed theme from Omarchy’s theme picker. The wallpaper is included under `backgrounds/` and can be selected through the normal Omarchy background controls.
