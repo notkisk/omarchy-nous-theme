@@ -1,0 +1,36 @@
+# Field Notes prompt profile. Copy this to ~/.config/starship.toml.
+add_newline = true
+
+format = """
+$username$directory$git_branch$fill$time
+$character"""
+
+[fill]
+symbol = " "
+
+[username]
+show_always = true
+style_user = "bg:#10244A fg:#AAB8F5"
+style_root = "bg:#10244A fg:#E57984"
+format = "[](fg:#10244A)[ $user ]($style)"
+
+[directory]
+style = "bg:#172B4D fg:#EAF0FF"
+format = "[](fg:#172B4D bg:#10244A)[ $path ]($style)"
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+style = "bg:#10244A fg:#6E98F5"
+symbol = " "
+format = "[](fg:#10244A bg:#172B4D)[ $symbol$branch ]($style)[](fg:#10244A)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#8FA0BD"
+format = "[$time]($style)"
+
+[character]
+success_symbol = "[❯](bold #3D73E8)"
+error_symbol = "[❯](bold #E57984)"

@@ -26,7 +26,7 @@ The midnight-and-ink base keeps every app on the same low-glare field; signal bl
 
 ## Included targets
 
-The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar, Mako, Walker, SwayOSD, Hyprland, Hyprlock, Chromium, BTOP, VS Code, Neovim, and icon-theme settings. The file names and flat package layout follow Omarchy’s theme installer conventions.
+The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar, Mako, Walker, SwayOSD, Hyprland, Hyprlock, Chromium, BTOP, VS Code, Neovim, and icon-theme settings. It also includes an original Field Notes Fastfetch profile and ASCII badge, plus a matching Starship prompt profile. The file names and flat package layout follow Omarchy’s theme installer conventions.
 
 ## Installation
 
@@ -35,6 +35,10 @@ omarchy theme install https://github.com/notkisk/nous-theme.git
 ```
 
 For a repository named `nous-theme`, Omarchy installs this package as `nous`; select that installed theme from Omarchy’s theme picker. The wallpaper is included under `backgrounds/` and can be selected through the normal Omarchy background controls.
+
+### Terminal extras
+
+Kitty receives a short electric-blue cursor trail for deliberate cursor jumps. To use the optional Fastfetch profile and Starship prompt in another Omarchy install, copy the included files to `~/.config/fastfetch/config.jsonc` and `~/.config/starship.toml`; the Fastfetch profile reads its ASCII badge from the active theme directory.
 
 ## Design notes
 

@@ -8,3 +8,43 @@
 @define-color accent_soft #AAB8F5;
 @define-color urgent #C75E6A;
 @define-color success #4F9B8C;
+
+/* These override the stock bar's warm alert colors with the theme palette. */
+#workspaces button.active {
+  color: @background !important;
+  background-color: @accent !important;
+}
+
+#workspaces button.empty.active {
+  color: @background !important;
+  background-color: @accent_soft !important;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active,
+#custom-voxtype.recording,
+#custom-screenrecording-indicator.active {
+  color: @urgent !important;
+}
+
+#mpris {
+  color: @accent_soft !important;
+  animation: none !important;
+}
+
+#battery.warning {
+  color: #C28A39 !important;
+}
+
+#battery.critical:not(.charging),
+#pulseaudio.critical,
+#memory.critical,
+#cpu.critical {
+  color: @urgent !important;
+}
+
+#pulseaudio.warning,
+#memory.warning,
+#cpu.warning {
+  color: #DFAC5B !important;
+}
