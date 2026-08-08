@@ -1,72 +1,135 @@
-/* Field Notes: midnight surface, thin periwinkle rules, one decisive blue. */
-@define-color foreground #EAF0FF;
-@define-color background #08152E;
-@define-color surface #10244A;
-@define-color muted #8FA0BD;
-@define-color border #38517D;
-@define-color accent #3D73E8;
-@define-color accent_soft #AAB8F5;
-@define-color urgent #C75E6A;
-@define-color success #4F9B8C;
+/* Nous Research — Field Notes waybar.
+ * Midnight navy bar, 1px cobalt rule, one signal-blue pill for the clock.
+ * All geometry sharp: no radius, no gradients, no glow.
+ */
 
-/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
-window#waybar > box {
-  background-color: @background;
-  border-bottom-color: alpha(@border, 0.65);
+@define-color fg       #EAF0FF;
+@define-color bg       #060E1F;
+@define-color surface  #0C1A32;
+@define-color border   #1E3560;
+@define-color accent   #2B5CE6;
+@define-color soft     #AAB8F5;
+@define-color muted    #526987;
+@define-color urgent   #C75E6A;
+@define-color ok       #4F9B8C;
+@define-color warn     #C28A39;
+
+* {
+  font-family: "JetBrains Mono NF", "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
 }
 
-label {
-  color: @foreground;
+window#waybar {
+  background-color: @bg;
+  border-bottom: 1px solid @border;
+  color: @fg;
+}
+
+window#waybar > box {
+  padding: 0 8px;
+}
+
+/* ── Workspaces ──────────────────────────────────────────────── */
+#workspaces {
+  margin-right: 8px;
 }
 
 #workspaces button {
-  color: @foreground;
+  color: @muted;
+  background: transparent;
+  padding: 0 6px;
+  min-width: 20px;
+  border-bottom: 2px solid transparent;
+  transition: all 150ms ease;
+}
+
+#workspaces button:hover {
+  color: @soft;
+  background: alpha(@surface, 0.6);
 }
 
 #workspaces button.active {
-  color: @background;
-  background-color: @accent;
+  color: @fg;
+  border-bottom: 2px solid @accent;
+  background: transparent;
 }
 
-#workspaces button.empty.active {
-  color: @background;
-  background-color: @accent_soft;
+#workspaces button.urgent {
+  color: @urgent;
+  border-bottom: 2px solid @urgent;
 }
 
-#memory,
-#mpris,
+#workspaces button.empty {
+  color: alpha(@muted, 0.4);
+}
+
+/* ── Separator ───────────────────────────────────────────────── */
+#workspaces button + button {
+  border-left: 1px solid alpha(@border, 0.5);
+}
+
+/* ── Clock — the one accent pill ─────────────────────────────── */
 #custom-clock,
+#clock {
+  background-color: @accent;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 2px 12px;
+  margin: 4px 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── Status modules — right side ─────────────────────────────── */
 #battery,
-#backlight,
 #network,
 #bluetooth,
 #pulseaudio,
+#backlight,
+#memory,
+#cpu,
+#temperature,
 #power-profiles-daemon,
 #idle_inhibitor,
+#mpris,
+#custom-update,
+#custom-updatespacman,
 #custom-idle-indicator,
 #custom-notification-silencing-indicator,
-#custom-updatespacman,
 #custom-screenrecording-indicator,
-#custom-update,
-#custom-voxtype,
-#cpu {
-  color: @foreground;
+#custom-voxtype {
+  color: @muted;
+  padding: 0 8px;
+  font-size: 11px;
 }
 
-#custom-idle-indicator.active,
-#custom-notification-silencing-indicator.active,
-#custom-voxtype.recording,
-#custom-screenrecording-indicator.active {
-  color: @urgent;
+#battery,
+#network,
+#pulseaudio,
+#memory,
+#cpu {
+  color: @soft;
 }
 
 #mpris {
-  color: @accent_soft;
-  animation: none;
+  color: @soft;
+  font-style: italic;
+  max-width: 200px;
 }
 
-#battery.warning {
-  color: #C28A39;
+/* ── State overrides ─────────────────────────────────────────── */
+#battery.charging {
+  color: @ok;
+}
+
+#battery.warning:not(.charging) {
+  color: @warn;
 }
 
 #battery.critical:not(.charging),
@@ -76,17 +139,25 @@ label {
   color: @urgent;
 }
 
-#pulseaudio.warning,
-#memory.warning,
-#cpu.warning {
-  color: #DFAC5B;
+#pulseaudio.muted {
+  color: @muted;
 }
 
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active,
+#custom-voxtype.recording,
+#custom-screenrecording-indicator.active {
+  color: @urgent;
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────── */
 tooltip {
-  background: @background;
-  border-color: alpha(@border, 0.85);
+  background: @surface;
+  border: 1px solid @border;
+  padding: 6px 10px;
+  color: @soft;
 }
 
 tooltip label {
-  color: @muted;
+  color: @soft;
 }

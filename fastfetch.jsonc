@@ -3,74 +3,73 @@
   "logo": {
     "type": "file",
     "source": "~/.config/omarchy/current/theme/fastfetch-logo.txt",
-    "color": { "1": "#AAB8F5", "2": "#3D73E8" },
+    "color": { "1": "#AAB8F5", "2": "#2B5CE6" },
     "padding": { "top": 0, "right": 3, "left": 0 }
   },
   "display": {
     "separator": "  ",
-    "color": "#EAF0FF"
+    "color": "#FFFFFF"
   },
   "modules": [
     "break",
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;43;92;230m  ╔══════════════════════════════════╗"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;43;92;230m  ║  \u001b[1;38;2;255;255;255mN O U S   R E S E A R C H\u001b[0;38;2;43;92;230m        ║"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;43;92;230m  ║  \u001b[38;2;170;184;245mQUIET INTELLIGENCE. OPEN FUTURE.\u001b[38;2;43;92;230m ║"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;43;92;230m  ╚══════════════════════════════════╝"
+    },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;61;115;232m  ╔══════════════════════════════════╗"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;61;115;232m  ║  \u001b[38;2;234;240;255mN O U S   R E S E A R C H\u001b[38;2;61;115;232m        ║"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;61;115;232m  ║  \u001b[38;2;170;184;245mfield notes  ·  research node\u001b[38;2;61;115;232m    ║"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;61;115;232m  ╚══════════════════════════════════╝"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;61;115;232m hardware \u001b[38;2;56;81;125m──────────────────────────"
+      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;43;92;230mhardware \u001b[38;2;30;53;96m──────────────────────────"
     },
     {
       "type": "host",
       "key": "  \uf6be  node",
-      "keyColor": "#3D73E8"
+      "keyColor": "#2B5CE6"
     },
     {
       "type": "cpu",
       "key": "  \uf4bc  cpu",
-      "keyColor": "#3D73E8",
+      "keyColor": "#2B5CE6",
       "showPeCoreCount": true
     },
     {
       "type": "gpu",
       "key": "  \uf9b9  gpu",
-      "keyColor": "#3D73E8",
+      "keyColor": "#2B5CE6",
       "detectionMethod": "pci"
     },
     {
       "type": "display",
       "key": "  \uf878  display",
-      "keyColor": "#3D73E8"
+      "keyColor": "#2B5CE6"
     },
     {
       "type": "memory",
       "key": "  \uf85a  memory",
-      "keyColor": "#3D73E8"
+      "keyColor": "#2B5CE6"
     },
     {
       "type": "disk",
       "key": "  \uf7c9  disk",
-      "keyColor": "#3D73E8",
+      "keyColor": "#2B5CE6",
       "folders": "/"
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;170;184;245m software \u001b[38;2;56;81;125m──────────────────────────"
+      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;170;184;245msoftware \u001b[38;2;30;53;96m──────────────────────────"
     },
     {
       "type": "command",
@@ -106,7 +105,7 @@
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;79;155;140m session \u001b[38;2;56;81;125m───────────────────────────"
+      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;79;155;140msession \u001b[38;2;30;53;96m───────────────────────────"
     },
     {
       "type": "uptime",
@@ -128,19 +127,19 @@
     "break",
     {
       "type": "custom",
-      "format": "\u001b[38;2;56;81;125m  ── \u001b[38;2;143;160;189m palette \u001b[38;2;56;81;125m───────────────────────────"
+      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;82;105;135mpalette \u001b[38;2;30;53;96m───────────────────────────"
     },
     {
       "type": "command",
       "key": "  \uf53f  ink",
-      "keyColor": "#8FA0BD",
-      "text": "echo -e \"\\e[38;2;8;21;46m⬤ mid   \\e[38;2;61;115;232m⬤ sig   \\e[38;2;170;184;245m⬤ peri  \\e[38;2;143;160;189m⬤ slate\""
+      "keyColor": "#526987",
+      "text": "echo -e \"\\e[38;2;6;14;31m⬤ bg    \\e[38;2;43;92;230m⬤ blue  \\e[38;2;170;184;245m⬤ soft  \\e[38;2;82;105;135m⬤ muted\""
     },
     {
       "type": "command",
       "key": "  \uf53f  status",
-      "keyColor": "#8FA0BD",
-      "text": "echo -e \"\\e[38;2;79;155;140m⬤ ok    \\e[38;2;199;90;106m⬤ err   \\e[38;2;194;138;57m⬤ warn  \\e[38;2;56;81;125m⬤ rule\""
+      "keyColor": "#526987",
+      "text": "echo -e \"\\e[38;2;79;155;140m⬤ ok    \\e[38;2;199;90;106m⬤ err   \\e[38;2;194;138;57m⬤ warn  \\e[38;2;255;255;255m⬤ fg\""
     },
     "break"
   ]

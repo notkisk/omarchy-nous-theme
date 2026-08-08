@@ -1,8 +1,9 @@
-# Field Notes prompt profile. Copy this to ~/.config/starship.toml.
+# Nous Research — Field Notes prompt.
+# High contrast: white text on deep navy segments, cobalt accent.
 add_newline = true
 
 format = """
-$username$directory$git_branch$fill$time
+$username$directory$git_branch$git_status$fill$cmd_duration$time
 $character"""
 
 [fill]
@@ -10,27 +11,47 @@ symbol = " "
 
 [username]
 show_always = true
-style_user = "bg:#10244A fg:#AAB8F5"
-style_root = "bg:#10244A fg:#E57984"
-format = "[](fg:#10244A)[ $user ]($style)"
+style_user = "bg:#060E1F fg:#AAB8F5"
+style_root = "bg:#060E1F fg:#E57984"
+format = "[](fg:#060E1F)[ $user ]($style)"
 
 [directory]
-style = "bg:#172B4D fg:#EAF0FF"
-format = "[](fg:#172B4D bg:#10244A)[ $path ]($style)"
-truncation_length = 3
+style = "bg:#0C1A32 fg:#FFFFFF"
+format = "[](fg:#0C1A32 bg:#060E1F)[ $path ]($style)"
+truncation_length = 4
 truncate_to_repo = false
+truncation_symbol = "…/"
 
 [git_branch]
-style = "bg:#10244A fg:#6E98F5"
-symbol = " "
-format = "[](fg:#10244A bg:#172B4D)[ $symbol$branch ]($style)[](fg:#10244A)"
+style = "bg:#1E3560 fg:#AAB8F5"
+symbol = " "
+format = "[](fg:#1E3560 bg:#0C1A32)[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:#060E1F fg:#6E98F5"
+format = "[](fg:#060E1F bg:#1E3560)[ $all_status$ahead_behind ]($style)[](fg:#060E1F)"
+conflicted = "!"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+modified = "~"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[cmd_duration]
+style = "fg:#526987"
+format = "[$duration]($style) "
+min_time = 2000
 
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "fg:#8FA0BD"
-format = "[$time]($style)"
+style = "fg:#2B5CE6"
+format = "[✦ $time]($style)"
 
 [character]
-success_symbol = "[❯](bold #3D73E8)"
-error_symbol = "[❯](bold #E57984)"
+success_symbol = "[❯](bold #2B5CE6)"
+error_symbol = "[❯](bold #C75E6A)"
+vimcmd_symbol = "[❮](bold #AAB8F5)"

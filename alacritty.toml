@@ -1,31 +1,32 @@
+# Nous Research / Omarchy — Field Notes terminal.
 [colors.primary]
-background = '#08152E'
-foreground = '#EAF0FF'
+background = "#060E1F"
+foreground = "#FFFFFF"
 
 [colors.cursor]
-text = '#08152E'
-cursor = '#AAB8F5'
+text   = "#060E1F"
+cursor = "#2B5CE6"
 
 [colors.selection]
-text = '#FFFFFF'
-background = '#2458C6'
+text       = "#FFFFFF"
+background = "#1E3560"
 
 [colors.normal]
-black = '#172B4D'
-red = '#C75E6A'
-green = '#4F9B8C'
-yellow = '#C28A39'
-blue = '#3D73E8'
-magenta = '#8E7CD6'
-cyan = '#4C9CB2'
-white = '#D8E2F2'
+black   = "#0C1A32"
+red     = "#C75E6A"
+green   = "#4F9B8C"
+yellow  = "#C28A39"
+blue    = "#2B5CE6"
+magenta = "#8E7CD6"
+cyan    = "#4C9CB2"
+white   = "#EAF0FF"
 
 [colors.bright]
-black = '#526987'
-red = '#E57984'
-green = '#66B5A5'
-yellow = '#DFAC5B'
-blue = '#6E98F5'
-magenta = '#AC9AE8'
-cyan = '#76C5D9'
-white = '#FFFFFF'
+black   = "#1E3560"
+red     = "#E57984"
+green   = "#66B5A5"
+yellow  = "#DFAC5B"
+blue    = "#4A7AFF"
+magenta = "#AC9AE8"
+cyan    = "#76C5D9"
+white   = "#FFFFFF"
