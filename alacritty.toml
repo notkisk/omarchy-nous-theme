@@ -1,32 +1,32 @@
-# Nous Research / Omarchy — Field Notes terminal.
+# Nous Research / Omarchy — electric blue terminal.
 [colors.primary]
-background = "#060E1F"
+background = "#0000F2"
 foreground = "#FFFFFF"
 
 [colors.cursor]
-text   = "#060E1F"
-cursor = "#2B5CE6"
+text   = "#0000F2"
+cursor = "#FFFFFF"
 
 [colors.selection]
-text       = "#FFFFFF"
-background = "#1E3560"
+text       = "#0000F2"
+background = "#FFFFFF"
 
 [colors.normal]
-black   = "#0C1A32"
-red     = "#C75E6A"
-green   = "#4F9B8C"
-yellow  = "#C28A39"
-blue    = "#2B5CE6"
-magenta = "#8E7CD6"
-cyan    = "#4C9CB2"
-white   = "#EAF0FF"
+black   = "#0000C8"
+red     = "#FF4455"
+green   = "#44DDAA"
+yellow  = "#FFCC44"
+blue    = "#4444FF"
+magenta = "#AA88FF"
+cyan    = "#44AAFF"
+white   = "#CCDDFF"
 
 [colors.bright]
-black   = "#1E3560"
-red     = "#E57984"
-green   = "#66B5A5"
-yellow  = "#DFAC5B"
-blue    = "#4A7AFF"
-magenta = "#AC9AE8"
-cyan    = "#76C5D9"
+black   = "#2222CC"
+red     = "#FF6677"
+green   = "#66FFCC"
+yellow  = "#FFDD66"
+blue    = "#6666FF"
+magenta = "#CC99FF"
+cyan    = "#66CCFF"
 white   = "#FFFFFF"

@@ -1,6 +1,5 @@
--- Nous Research — Neovim color scheme.
--- High contrast cobalt: deep navy background, pure white text,
--- vivid signal blue accents. Matches the Nous Research terminal aesthetic.
+-- Nous Research — Neovim. Electric blue background, white text.
+-- Pure #0000F2 ground, white fg, lighter blues for syntax.
 return {
   {
     "folke/tokyonight.nvim",
@@ -13,156 +12,149 @@ return {
       styles = {
         comments = { italic = false },
         keywords = { italic = false },
-        functions = {},
-        variables = {},
-        sidebars = "dark",
-        floats = "dark",
       },
-      -- Override palette to match Field Notes exactly
       on_colors = function(colors)
-        colors.bg         = "#060E1F"
-        colors.bg_dark    = "#040A16"
-        colors.bg_float   = "#060E1F"
-        colors.bg_popup   = "#0C1A32"
-        colors.bg_sidebar = "#0C1A32"
-        colors.bg_statusline = "#060E1F"
-        colors.bg_highlight  = "#0C1A32"
-        colors.bg_visual     = "#1E3560"
+        colors.bg            = "#0000F2"
+        colors.bg_dark       = "#0000CC"
+        colors.bg_float      = "#0000F2"
+        colors.bg_popup      = "#0000CC"
+        colors.bg_sidebar    = "#0000CC"
+        colors.bg_statusline = "#0000CC"
+        colors.bg_highlight  = "#2222CC"
+        colors.bg_visual     = "#2222CC"
 
-        colors.fg       = "#FFFFFF"
-        colors.fg_dark  = "#EAF0FF"
-        colors.fg_gutter = "#526987"
-        colors.comment  = "#526987"
+        colors.fg        = "#FFFFFF"
+        colors.fg_dark   = "#CCDDFF"
+        colors.fg_gutter = "#8888FF"
+        colors.comment   = "#6666FF"
 
-        colors.blue   = "#2B5CE6"
-        colors.blue1  = "#4A7AFF"
-        colors.blue2  = "#6E98F5"
-        colors.blue5  = "#AAB8F5"
-        colors.blue6  = "#AAB8F5"
-        colors.blue7  = "#1E3560"
+        colors.blue   = "#FFFFFF"
+        colors.blue1  = "#CCDDFF"
+        colors.blue2  = "#AABBFF"
+        colors.blue5  = "#8888FF"
+        colors.blue6  = "#6666FF"
+        colors.blue7  = "#2222CC"
 
-        colors.cyan   = "#4C9CB2"
-        colors.teal   = "#4F9B8C"
-        colors.green  = "#4F9B8C"
-        colors.green1 = "#66B5A5"
-        colors.green2 = "#4F9B8C"
+        colors.cyan    = "#66CCFF"
+        colors.teal    = "#44DDAA"
+        colors.green   = "#44DDAA"
+        colors.green1  = "#66FFCC"
+        colors.green2  = "#44DDAA"
 
-        colors.red    = "#C75E6A"
-        colors.red1   = "#E57984"
+        colors.red     = "#FF4455"
+        colors.red1    = "#FF6677"
 
-        colors.yellow  = "#C28A39"
-        colors.orange  = "#DFAC5B"
+        colors.yellow  = "#FFCC44"
+        colors.orange  = "#FFDD66"
 
-        colors.magenta  = "#8E7CD6"
-        colors.purple   = "#8E7CD6"
+        colors.magenta = "#CC99FF"
+        colors.purple  = "#AA88FF"
 
-        colors.border         = "#1E3560"
-        colors.border_highlight = "#2B5CE6"
-
-        -- Selection and search
-        colors.selection = "#1E3560"
+        colors.border           = "#2222CC"
+        colors.border_highlight = "#FFFFFF"
       end,
-      on_highlights = function(hl, colors)
-        -- Make text elements pure white / very bright for maximum contrast
-        hl.Normal          = { fg = "#FFFFFF", bg = "#060E1F" }
-        hl.NormalFloat     = { fg = "#EAF0FF", bg = "#0C1A32" }
-        hl.NormalNC        = { fg = "#EAF0FF", bg = "#060E1F" }
+      on_highlights = function(hl, c)
+        hl.Normal         = { fg = "#FFFFFF", bg = "#0000F2" }
+        hl.NormalFloat    = { fg = "#CCDDFF", bg = "#0000CC" }
+        hl.NormalNC       = { fg = "#CCDDFF", bg = "#0000F2" }
 
-        -- Keywords, types, functions — cobalt blue family
-        hl.Keyword         = { fg = "#4A7AFF", bold = false }
-        hl.Statement       = { fg = "#4A7AFF" }
-        hl.Conditional     = { fg = "#4A7AFF" }
-        hl.Repeat          = { fg = "#4A7AFF" }
-        hl.Function        = { fg = "#FFFFFF", bold = true }
-        hl["@function"]    = { fg = "#FFFFFF", bold = true }
-        hl["@function.call"] = { fg = "#FFFFFF" }
-        hl.Type            = { fg = "#6E98F5" }
-        hl["@type"]        = { fg = "#6E98F5" }
-        hl["@type.builtin"] = { fg = "#6E98F5" }
+        -- Keywords — bright white, bold
+        hl.Keyword        = { fg = "#FFFFFF", bold = true }
+        hl.Statement      = { fg = "#FFFFFF", bold = true }
+        hl.Conditional    = { fg = "#FFFFFF", bold = true }
+        hl.Repeat         = { fg = "#FFFFFF", bold = true }
 
-        -- Strings — periwinkle
-        hl.String          = { fg = "#AAB8F5" }
-        hl["@string"]      = { fg = "#AAB8F5" }
+        -- Functions — white
+        hl.Function              = { fg = "#FFFFFF" }
+        hl["@function"]          = { fg = "#FFFFFF" }
+        hl["@function.call"]     = { fg = "#FFFFFF" }
+        hl["@function.builtin"]  = { fg = "#CCDDFF" }
 
-        -- Numbers, booleans — cyan
-        hl.Number          = { fg = "#76C5D9" }
-        hl.Boolean         = { fg = "#76C5D9" }
-        hl["@number"]      = { fg = "#76C5D9" }
-        hl["@boolean"]     = { fg = "#76C5D9" }
+        -- Types — light blue
+        hl.Type           = { fg = "#CCDDFF" }
+        hl["@type"]       = { fg = "#CCDDFF" }
+        hl["@type.builtin"] = { fg = "#AABBFF" }
 
-        -- Constants — bright blue
-        hl.Constant        = { fg = "#6E98F5" }
-        hl["@constant"]    = { fg = "#6E98F5" }
+        -- Strings — lighter blue
+        hl.String         = { fg = "#AABBFF" }
+        hl["@string"]     = { fg = "#AABBFF" }
+
+        -- Numbers, booleans
+        hl.Number         = { fg = "#66CCFF" }
+        hl.Boolean        = { fg = "#66CCFF" }
+        hl["@number"]     = { fg = "#66CCFF" }
+        hl["@boolean"]    = { fg = "#66CCFF" }
+
+        -- Constants
+        hl.Constant       = { fg = "#CCDDFF" }
+        hl["@constant"]   = { fg = "#CCDDFF" }
 
         -- Variables
-        hl.Identifier      = { fg = "#EAF0FF" }
-        hl["@variable"]    = { fg = "#EAF0FF" }
-        hl["@parameter"]   = { fg = "#EAF0FF" }
-        hl["@property"]    = { fg = "#AAB8F5" }
-        hl["@field"]       = { fg = "#AAB8F5" }
+        hl.Identifier       = { fg = "#FFFFFF" }
+        hl["@variable"]     = { fg = "#FFFFFF" }
+        hl["@parameter"]    = { fg = "#FFFFFF" }
+        hl["@property"]     = { fg = "#AABBFF" }
+        hl["@field"]        = { fg = "#AABBFF" }
 
-        -- Comments — muted, clearly secondary
-        hl.Comment         = { fg = "#526987", italic = false }
-        hl["@comment"]     = { fg = "#526987" }
+        -- Comments — muted blue
+        hl.Comment        = { fg = "#6666FF" }
+        hl["@comment"]    = { fg = "#6666FF" }
 
-        -- Operators, punctuation
-        hl.Operator        = { fg = "#FFFFFF" }
-        hl["@operator"]    = { fg = "#FFFFFF" }
-        hl["@punctuation"] = { fg = "#8FA0BD" }
+        -- Operators
+        hl.Operator       = { fg = "#FFFFFF" }
+        hl["@operator"]   = { fg = "#FFFFFF" }
+        hl["@punctuation"] = { fg = "#AABBFF" }
 
         -- Line numbers
-        hl.LineNr          = { fg = "#1E3560" }
-        hl.CursorLineNr    = { fg = "#2B5CE6", bold = true }
-        hl.CursorLine      = { bg = "#0C1A32" }
+        hl.LineNr         = { fg = "#2222CC" }
+        hl.CursorLineNr   = { fg = "#FFFFFF", bold = true }
+        hl.CursorLine     = { bg = "#2222CC" }
 
         -- Visual selection
-        hl.Visual          = { bg = "#1E3560" }
+        hl.Visual         = { bg = "#2222CC" }
 
         -- Search
-        hl.Search          = { fg = "#FFFFFF", bg = "#2B5CE6" }
-        hl.IncSearch       = { fg = "#060E1F", bg = "#AAB8F5", bold = true }
+        hl.Search         = { fg = "#0000F2", bg = "#FFFFFF" }
+        hl.IncSearch      = { fg = "#0000F2", bg = "#FFCC44", bold = true }
 
         -- Status line
-        hl.StatusLine      = { fg = "#AAB8F5", bg = "#060E1F" }
-        hl.StatusLineNC    = { fg = "#526987", bg = "#060E1F" }
+        hl.StatusLine     = { fg = "#CCDDFF", bg = "#0000CC" }
+        hl.StatusLineNC   = { fg = "#6666FF",  bg = "#0000CC" }
 
-        -- Pmenu (autocomplete)
-        hl.Pmenu           = { fg = "#EAF0FF", bg = "#0C1A32" }
-        hl.PmenuSel        = { fg = "#FFFFFF", bg = "#2B5CE6" }
-        hl.PmenuSbar       = { bg = "#0C1A32" }
-        hl.PmenuThumb      = { bg = "#1E3560" }
+        -- Pmenu
+        hl.Pmenu          = { fg = "#FFFFFF",  bg = "#0000CC" }
+        hl.PmenuSel       = { fg = "#0000F2",  bg = "#FFFFFF" }
+        hl.PmenuSbar      = { bg = "#0000CC" }
+        hl.PmenuThumb     = { bg = "#2222CC" }
 
-        -- Borders and splits
-        hl.WinSeparator    = { fg = "#1E3560" }
-        hl.FloatBorder     = { fg = "#2B5CE6", bg = "#0C1A32" }
-        hl.NormalFloat     = { bg = "#0C1A32" }
+        -- Borders
+        hl.WinSeparator   = { fg = "#2222CC" }
+        hl.FloatBorder    = { fg = "#FFFFFF",  bg = "#0000CC" }
 
         -- Telescope
-        hl.TelescopeBorder         = { fg = "#1E3560", bg = "#060E1F" }
-        hl.TelescopeNormal         = { fg = "#EAF0FF", bg = "#060E1F" }
-        hl.TelescopeSelection      = { fg = "#FFFFFF", bg = "#1E3560" }
-        hl.TelescopeSelectionCaret = { fg = "#2B5CE6" }
-        hl.TelescopeMatching       = { fg = "#2B5CE6", bold = true }
-        hl.TelescopePromptBorder   = { fg = "#2B5CE6" }
-        hl.TelescopePromptTitle    = { fg = "#FFFFFF", bold = true }
+        hl.TelescopeBorder         = { fg = "#2222CC",  bg = "#0000F2" }
+        hl.TelescopeNormal         = { fg = "#FFFFFF",  bg = "#0000F2" }
+        hl.TelescopeSelection      = { fg = "#0000F2",  bg = "#FFFFFF" }
+        hl.TelescopeSelectionCaret = { fg = "#0000F2" }
+        hl.TelescopeMatching       = { fg = "#FFCC44",  bold = true }
+        hl.TelescopePromptBorder   = { fg = "#FFFFFF" }
+        hl.TelescopePromptTitle    = { fg = "#FFFFFF",  bold = true }
 
         -- Git signs
-        hl.GitSignsAdd    = { fg = "#4F9B8C" }
-        hl.GitSignsChange = { fg = "#2B5CE6" }
-        hl.GitSignsDelete = { fg = "#C75E6A" }
+        hl.GitSignsAdd    = { fg = "#44DDAA" }
+        hl.GitSignsChange = { fg = "#AABBFF" }
+        hl.GitSignsDelete = { fg = "#FF4455" }
 
         -- Diagnostics
-        hl.DiagnosticError = { fg = "#C75E6A" }
-        hl.DiagnosticWarn  = { fg = "#C28A39" }
-        hl.DiagnosticInfo  = { fg = "#2B5CE6" }
-        hl.DiagnosticHint  = { fg = "#AAB8F5" }
+        hl.DiagnosticError = { fg = "#FF4455" }
+        hl.DiagnosticWarn  = { fg = "#FFCC44" }
+        hl.DiagnosticInfo  = { fg = "#AABBFF" }
+        hl.DiagnosticHint  = { fg = "#8888FF" }
       end,
     },
   },
   {
     "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight-night",
-    },
+    opts = { colorscheme = "tokyonight-night" },
   },
 }
