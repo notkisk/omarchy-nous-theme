@@ -43,8 +43,7 @@
       "type": "cpu",
       "key": "  \uf4bc  cpu",
       "keyColor": "#3D73E8",
-      "showPeCoreCount": true,
-      "format": "{name} · {coresPhysical}c/{coresLogical}t"
+      "showPeCoreCount": true
     },
     {
       "type": "gpu",
