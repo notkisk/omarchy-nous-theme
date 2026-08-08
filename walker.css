@@ -1,94 +1,13 @@
-/* Nous Research — Walker launcher.
- * Deep navy background, white text, cobalt accent. Zero radius.
+/* Nous Research — Walker launcher colors.
+ * Walker reads these specific variable names from style.css.
+ * Do not rename them — @base, @text, @selected-text, @border, @background, @selected.
  */
 
-@define-color fg      #FFFFFF;
-@define-color bg      #060E1F;
-@define-color surface #0C1A32;
-@define-color border  #1E3560;
-@define-color accent  #2B5CE6;
-@define-color soft    #AAB8F5;
-@define-color muted   #526987;
-
-#window {
-  background-color: @bg;
-  border: 1px solid @border;
-  border-radius: 0;
-}
-
-#box {
-  padding: 8px;
-}
-
-#search {
-  background-color: @surface;
-  color: @fg;
-  border: 1px solid @border;
-  border-radius: 0;
-  padding: 8px 12px;
-  font-family: "JetBrains Mono NF", monospace;
-  font-size: 13px;
-  caret-color: @accent;
-}
-
-#search:focus {
-  border-color: @accent;
-  outline: none;
-  box-shadow: none;
-}
-
-#placeholder {
-  color: @muted;
-}
-
-#list {
-  margin-top: 4px;
-}
-
-#item {
-  border-radius: 0;
-  padding: 6px 12px;
-  color: @soft;
-  font-family: "JetBrains Mono NF", monospace;
-  font-size: 12px;
-}
-
-#item:selected,
-#item:focus {
-  background-color: @accent;
-  color: #FFFFFF;
-}
-
-#item:hover {
-  background-color: alpha(@accent, 0.15);
-  color: @fg;
-}
-
-#icon {
-  margin-right: 8px;
-}
-
-#text {
-  color: inherit;
-}
-
-#sub {
-  color: alpha(@muted, 0.8);
-  font-size: 11px;
-}
-
-#item:selected #sub,
-#item:focus #sub {
-  color: alpha(#FFFFFF, 0.7);
-}
-
-scrollbar {
-  background: transparent;
-  border: none;
-}
-
-scrollbar slider {
-  background-color: @border;
-  border-radius: 0;
-  min-width: 3px;
-}
+@define-color selected-text #FFFFFF;
+@define-color text          #FFFFFF;
+@define-color base          #060E1F;
+@define-color border        #2B5CE6;
+@define-color foreground    #FFFFFF;
+@define-color background    #060E1F;
+@define-color selected      #1E3560;
+@define-color muted         #526987;
