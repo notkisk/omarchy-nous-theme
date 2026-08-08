@@ -1,10 +1,13 @@
-/* Nous Research — Walker launcher. Electric blue, white text. */
+/* Nous Research — Walker launcher colors.
+ * Walker reads these specific variable names from style.css.
+ * Do not rename them — @base, @text, @selected-text, @border, @background, @selected.
+ */
 
-@define-color selected-text #0000F2;
+@define-color selected-text #FFFFFF;
 @define-color text          #FFFFFF;
-@define-color base          #0000F2;
-@define-color border        #FFFFFF;
+@define-color base          #060E1F;
+@define-color border        #2B5CE6;
 @define-color foreground    #FFFFFF;
-@define-color background    #0000F2;
-@define-color selected      #FFFFFF;
-@define-color muted         #8888FF;
+@define-color background    #060E1F;
+@define-color selected      #1E3560;
+@define-color muted         #526987;

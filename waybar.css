@@ -1,18 +1,21 @@
-/* Nous Research — electric blue bar. #0000F2 ground, white text, white rule. */
+/* Nous Research — Field Notes waybar.
+ * Deep navy surface, 1px cobalt rule, one signal-blue pill for the clock.
+ */
 
 @define-color foreground  #FFFFFF;
-@define-color background  #0000F2;
-@define-color surface     #0000CC;
-@define-color muted       #8888FF;
-@define-color border      #FFFFFF;
-@define-color accent      #FFFFFF;
-@define-color accent_soft #CCDDFF;
-@define-color urgent      #FF4455;
-@define-color success     #44DDAA;
+@define-color background  #060E1F;
+@define-color surface     #0C1A32;
+@define-color muted       #526987;
+@define-color border      #1E3560;
+@define-color accent      #2B5CE6;
+@define-color accent_soft #AAB8F5;
+@define-color urgent      #C75E6A;
+@define-color success     #4F9B8C;
 
+/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
 window#waybar > box {
   background-color: @background;
-  border-bottom-color: alpha(@border, 0.35);
+  border-bottom-color: alpha(@border, 0.85);
 }
 
 label {
@@ -20,7 +23,7 @@ label {
 }
 
 #workspaces button {
-  color: alpha(@foreground, 0.6);
+  color: @foreground;
 }
 
 #workspaces button.active {
@@ -66,7 +69,7 @@ label {
 }
 
 #battery.warning {
-  color: #FFCC44;
+  color: #C28A39;
 }
 
 #battery.critical:not(.charging),
@@ -79,12 +82,12 @@ label {
 #pulseaudio.warning,
 #memory.warning,
 #cpu.warning {
-  color: #FFDD66;
+  color: #DFAC5B;
 }
 
 tooltip {
-  background: @surface;
-  border-color: alpha(@border, 0.5);
+  background: @background;
+  border-color: alpha(@border, 0.85);
 }
 
 tooltip label {
