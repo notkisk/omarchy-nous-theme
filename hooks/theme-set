@@ -1,19 +1,37 @@
 #!/bin/bash
-# Apply Field Notes terminal extras when this theme is active.
+# Apply Field Notes extras when this theme is active.
 THEME_DIR="$HOME/.config/omarchy/current/theme"
 
 if [[ "$1" != "nous" ]]; then
   exit 0
 fi
 
+# Fastfetch profile
 if [[ -f "$THEME_DIR/fastfetch.jsonc" ]]; then
+  mkdir -p "$HOME/.config/fastfetch"
   cp "$THEME_DIR/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
 fi
 
+# Starship prompt
 if [[ -f "$THEME_DIR/starship.toml" ]]; then
   cp "$THEME_DIR/starship.toml" "$HOME/.config/starship.toml"
 fi
 
+# Fastfetch branding logo
 if [[ -f "$THEME_DIR/fastfetch-logo.txt" ]]; then
+  mkdir -p "$HOME/.config/omarchy/branding"
   cp "$THEME_DIR/fastfetch-logo.txt" "$HOME/.config/omarchy/branding/about.txt"
+fi
+
+# GTK3 + GTK4 file browser / app theming
+if [[ -f "$THEME_DIR/gtk.css" ]]; then
+  mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
+  cp "$THEME_DIR/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
+  cp "$THEME_DIR/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+fi
+
+# Aether theme override (for Aether-managed desktop theming)
+if [[ -f "$THEME_DIR/aether.override.css" ]]; then
+  mkdir -p "$HOME/.config/aether"
+  cp "$THEME_DIR/aether.override.css" "$HOME/.config/aether/theme.override.css"
 fi

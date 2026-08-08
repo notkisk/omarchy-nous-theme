@@ -1,0 +1,249 @@
+/* Field Notes — GTK theme for Nautilus and GTK4 apps.
+ * Midnight surfaces, pale ink text, signal-blue accents.
+ */
+
+/* ── Palette ─────────────────────────────────────────────────── */
+@define-color background     #08152E;
+@define-color foreground     #EAF0FF;
+
+@define-color black          #08152E;
+@define-color red            #C75E6A;
+@define-color green          #4F9B8C;
+@define-color yellow         #C28A39;
+@define-color blue           #3D73E8;
+@define-color magenta        #8E7CD6;
+@define-color cyan           #4C9CB2;
+@define-color white          #EAF0FF;
+
+@define-color bright_black   #38517D;
+@define-color bright_red     #E57984;
+@define-color bright_green   #66B5A5;
+@define-color bright_yellow  #DFAC5B;
+@define-color bright_blue    #6E98F5;
+@define-color bright_magenta #AAB8F5;
+@define-color bright_cyan    #76C5D9;
+@define-color bright_white   #FFFFFF;
+
+/* ── Libadwaita / GTK4 semantic tokens ──────────────────────── */
+@define-color accent_bg_color        @blue;
+@define-color accent_fg_color        @foreground;
+@define-color accent_color           @bright_blue;
+
+@define-color window_bg_color        @background;
+@define-color window_fg_color        @foreground;
+
+@define-color view_bg_color          #0D1E3A;
+@define-color view_fg_color          @foreground;
+
+@define-color sidebar_bg_color       #0A1830;
+@define-color sidebar_fg_color       @foreground;
+@define-color sidebar_backdrop_color #0A1830;
+@define-color sidebar_shade_color    #06101E;
+@define-color sidebar_border_color   @bright_black;
+
+@define-color headerbar_bg_color         #0A1830;
+@define-color headerbar_fg_color         @foreground;
+@define-color headerbar_backdrop_color   #08152E;
+@define-color headerbar_shade_color      #06101E;
+@define-color headerbar_border_color     @bright_black;
+
+@define-color card_bg_color          #0D1E3A;
+@define-color card_fg_color          @foreground;
+@define-color card_shade_color       #06101E;
+
+@define-color thumbnail_bg_color     #0D1E3A;
+@define-color thumbnail_fg_color     @foreground;
+
+@define-color popover_bg_color       #10244A;
+@define-color popover_fg_color       @foreground;
+
+@define-color dialog_bg_color        #0D1E3A;
+@define-color dialog_fg_color        @foreground;
+
+@define-color shade_color            #06101E;
+@define-color scrollbar_outline_color @background;
+
+@define-color destructive_bg_color   @red;
+@define-color destructive_fg_color   @foreground;
+
+@define-color success_bg_color       @green;
+@define-color success_fg_color       @foreground;
+
+@define-color warning_bg_color       @yellow;
+@define-color warning_fg_color       @background;
+
+@define-color error_bg_color         @red;
+@define-color error_fg_color         @foreground;
+
+@define-color borders                alpha(@bright_black, 0.6);
+
+/* ── Legacy GTK3 tokens (Nautilus uses some of these) ────────── */
+@define-color theme_fg_color                  @foreground;
+@define-color theme_text_color                @foreground;
+@define-color theme_bg_color                  @background;
+@define-color theme_base_color                #0D1E3A;
+@define-color theme_selected_bg_color         @blue;
+@define-color theme_selected_fg_color         @foreground;
+@define-color insensitive_bg_color            alpha(@background, 0.5);
+@define-color insensitive_fg_color            alpha(@foreground, 0.4);
+@define-color insensitive_base_color          @background;
+@define-color theme_unfocused_fg_color        @foreground;
+@define-color theme_unfocused_text_color      @foreground;
+@define-color theme_unfocused_bg_color        @background;
+@define-color theme_unfocused_base_color      #0D1E3A;
+@define-color theme_unfocused_selected_bg_color @blue;
+@define-color theme_unfocused_selected_fg_color @foreground;
+@define-color unfocused_insensitive_color     alpha(@foreground, 0.3);
+@define-color unfocused_borders               alpha(@bright_black, 0.3);
+@define-color warning_color                   @yellow;
+@define-color error_color                     @red;
+@define-color success_color                   @green;
+@define-color destructive_color               @red;
+@define-color content_view_bg                 #0D1E3A;
+@define-color text_view_bg                    #0D1E3A;
+
+/* ── Selection ───────────────────────────────────────────────── */
+@define-color selection_bg_color     @blue;
+@define-color selection_fg_color     @foreground;
+
+/* ── Links ───────────────────────────────────────────────────── */
+@define-color link_color             @bright_blue;
+@define-color link_visited_color     @bright_magenta;
+
+/* ── Scrollbars ──────────────────────────────────────────────── */
+@define-color scrollbar_slider_color        alpha(@foreground, 0.25);
+@define-color scrollbar_slider_hover_color  alpha(@foreground, 0.45);
+@define-color scrollbar_slider_active_color @blue;
+
+/* ── Placeholder / dim ───────────────────────────────────────── */
+@define-color placeholder_text_color alpha(@foreground, 0.45);
+@define-color dim_label_color        alpha(@foreground, 0.5);
+
+/* ── Sharp corners — no rounded chrome ───────────────────────── */
+* {
+    border-radius: 0;
+}
+
+/* ── Nautilus file grid: selected tile ───────────────────────── */
+.nautilus-grid-item:selected,
+.nautilus-list-row:selected {
+    background-color: alpha(@blue, 0.25);
+    color: @foreground;
+    border: 1px solid @blue;
+}
+
+/* ── Sidebar active row ──────────────────────────────────────── */
+.nautilus-sidebar row:selected,
+.sidebar row:selected {
+    background-color: alpha(@blue, 0.20);
+    color: @bright_blue;
+}
+
+/* ── Pathbar / breadcrumbs ───────────────────────────────────── */
+.path-bar button,
+.path-bar button label {
+    color: @bright_magenta;
+}
+
+.path-bar button:hover {
+    background-color: alpha(@blue, 0.15);
+}
+
+/* ── Search entry ────────────────────────────────────────────── */
+entry {
+    background-color: #0D1E3A;
+    color: @foreground;
+    border-color: @bright_black;
+    caret-color: @blue;
+}
+
+entry:focus {
+    border-color: @blue;
+    box-shadow: 0 0 0 1px @blue;
+}
+
+/* ── Header / toolbar ────────────────────────────────────────── */
+headerbar {
+    background-color: #0A1830;
+    color: @foreground;
+    border-bottom: 1px solid @bright_black;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+button {
+    background-color: #10244A;
+    color: @foreground;
+    border-color: @bright_black;
+}
+
+button:hover {
+    background-color: alpha(@blue, 0.20);
+    border-color: @blue;
+}
+
+button.suggested-action {
+    background-color: @blue;
+    color: @foreground;
+}
+
+button.suggested-action:hover {
+    background-color: @bright_blue;
+}
+
+button.destructive-action {
+    background-color: @red;
+    color: @foreground;
+}
+
+/* ── Menus / popovers ────────────────────────────────────────── */
+popover contents,
+menu,
+.menu {
+    background-color: #10244A;
+    color: @foreground;
+    border: 1px solid @bright_black;
+}
+
+menuitem:hover,
+popover row:hover {
+    background-color: alpha(@blue, 0.20);
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────── */
+tooltip {
+    background-color: #10244A;
+    color: @foreground;
+    border: 1px solid @bright_black;
+}
+
+/* ── Dialogs ─────────────────────────────────────────────────── */
+messagedialog,
+alertdialog.background {
+    background-color: #0D1E3A;
+    color: @foreground;
+}
+
+messagedialog label,
+alertdialog label {
+    color: @foreground;
+}
+
+messagedialog button,
+alertdialog button {
+    background-color: #10244A;
+    color: @foreground;
+    border: 1px solid @bright_black;
+}
+
+messagedialog button:hover,
+alertdialog button:hover {
+    background-color: alpha(@blue, 0.20);
+    border-color: @blue;
+}
+
+/* ── Toast notifications ─────────────────────────────────────── */
+toast {
+    background-color: #10244A;
+    color: @foreground;
+    border: 1px solid @bright_black;
+}
