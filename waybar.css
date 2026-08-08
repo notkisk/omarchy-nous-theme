@@ -1,146 +1,59 @@
 /* Nous Research — Field Notes waybar.
- * Midnight navy bar, 1px cobalt rule, one signal-blue pill for the clock.
- * All geometry sharp: no radius, no gradients, no glow.
+ * Deep navy surface, 1px cobalt rule, one signal-blue pill for the clock.
  */
 
-@define-color fg       #EAF0FF;
-@define-color bg       #060E1F;
-@define-color surface  #0C1A32;
-@define-color border   #1E3560;
-@define-color accent   #2B5CE6;
-@define-color soft     #AAB8F5;
-@define-color muted    #526987;
-@define-color urgent   #C75E6A;
-@define-color ok       #4F9B8C;
-@define-color warn     #C28A39;
+@define-color foreground  #FFFFFF;
+@define-color background  #060E1F;
+@define-color surface     #0C1A32;
+@define-color muted       #526987;
+@define-color border      #1E3560;
+@define-color accent      #2B5CE6;
+@define-color accent_soft #AAB8F5;
+@define-color urgent      #C75E6A;
+@define-color success     #4F9B8C;
 
-* {
-  font-family: "JetBrains Mono NF", "JetBrains Mono", monospace;
-  font-size: 11px;
-  font-weight: 400;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
-  min-height: 0;
-}
-
-window#waybar {
-  background-color: @bg;
-  border-bottom: 1px solid @border;
-  color: @fg;
-}
-
+/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
 window#waybar > box {
-  padding: 0 8px;
+  background-color: @background;
+  border-bottom-color: alpha(@border, 0.85);
 }
 
-/* ── Workspaces ──────────────────────────────────────────────── */
-#workspaces {
-  margin-right: 8px;
+label {
+  color: @foreground;
 }
 
 #workspaces button {
-  color: @muted;
-  background: transparent;
-  padding: 0 6px;
-  min-width: 20px;
-  border-bottom: 2px solid transparent;
-  transition: all 150ms ease;
-}
-
-#workspaces button:hover {
-  color: @soft;
-  background: alpha(@surface, 0.6);
+  color: @foreground;
 }
 
 #workspaces button.active {
-  color: @fg;
-  border-bottom: 2px solid @accent;
-  background: transparent;
-}
-
-#workspaces button.urgent {
-  color: @urgent;
-  border-bottom: 2px solid @urgent;
-}
-
-#workspaces button.empty {
-  color: alpha(@muted, 0.4);
-}
-
-/* ── Separator ───────────────────────────────────────────────── */
-#workspaces button + button {
-  border-left: 1px solid alpha(@border, 0.5);
-}
-
-/* ── Clock — the one accent pill ─────────────────────────────── */
-#custom-clock,
-#clock {
+  color: @background;
   background-color: @accent;
-  color: #FFFFFF;
-  font-weight: 600;
-  font-size: 11px;
-  padding: 2px 12px;
-  margin: 4px 0;
-  letter-spacing: 0.04em;
 }
 
-/* ── Status modules — right side ─────────────────────────────── */
+#workspaces button.empty.active {
+  color: @background;
+  background-color: @accent_soft;
+}
+
+#memory,
+#mpris,
+#custom-clock,
 #battery,
+#backlight,
 #network,
 #bluetooth,
 #pulseaudio,
-#backlight,
-#memory,
-#cpu,
-#temperature,
 #power-profiles-daemon,
 #idle_inhibitor,
-#mpris,
-#custom-update,
-#custom-updatespacman,
 #custom-idle-indicator,
 #custom-notification-silencing-indicator,
+#custom-updatespacman,
 #custom-screenrecording-indicator,
-#custom-voxtype {
-  color: @muted;
-  padding: 0 8px;
-  font-size: 11px;
-}
-
-#battery,
-#network,
-#pulseaudio,
-#memory,
+#custom-update,
+#custom-voxtype,
 #cpu {
-  color: @soft;
-}
-
-#mpris {
-  color: @soft;
-  font-style: italic;
-  max-width: 200px;
-}
-
-/* ── State overrides ─────────────────────────────────────────── */
-#battery.charging {
-  color: @ok;
-}
-
-#battery.warning:not(.charging) {
-  color: @warn;
-}
-
-#battery.critical:not(.charging),
-#pulseaudio.critical,
-#memory.critical,
-#cpu.critical {
-  color: @urgent;
-}
-
-#pulseaudio.muted {
-  color: @muted;
+  color: @foreground;
 }
 
 #custom-idle-indicator.active,
@@ -150,14 +63,33 @@ window#waybar > box {
   color: @urgent;
 }
 
-/* ── Tooltip ─────────────────────────────────────────────────── */
+#mpris {
+  color: @accent_soft;
+  animation: none;
+}
+
+#battery.warning {
+  color: #C28A39;
+}
+
+#battery.critical:not(.charging),
+#pulseaudio.critical,
+#memory.critical,
+#cpu.critical {
+  color: @urgent;
+}
+
+#pulseaudio.warning,
+#memory.warning,
+#cpu.warning {
+  color: #DFAC5B;
+}
+
 tooltip {
-  background: @surface;
-  border: 1px solid @border;
-  padding: 6px 10px;
-  color: @soft;
+  background: @background;
+  border-color: alpha(@border, 0.85);
 }
 
 tooltip label {
-  color: @soft;
+  color: @muted;
 }
