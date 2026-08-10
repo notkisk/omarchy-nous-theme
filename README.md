@@ -6,12 +6,13 @@ The desktop stays open and pale blue, while Kitty, btop, Fastfetch, and Neovim u
 
 ## Install
 
-From this workspace:
+Install directly with Omarchy:
 
 ```bash
-cp -r nous-research-theme ~/.config/omarchy/themes/nous-research
-omarchy theme set nous-research
+omarchy-theme-install https://github.com/notkisk/nous-theme.git
 ```
+
+Then select the installed Nous Research theme if Omarchy does not activate it automatically.
 
 The included `install.sh` also installs the scoped global theme hook required for Fastfetch, Waybar's full layout, GTK, Starship, btop refresh, and Kitty's final caret override. This matters because Omarchy does not execute hooks stored inside a theme directory.
 
