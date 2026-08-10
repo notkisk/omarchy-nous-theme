@@ -30,6 +30,9 @@ label {
   color: @background;
   background-color: @accent;
 }
+#workspaces button.active label {
+  color: @foreground;
+}
 
 #workspaces button.empty.active {
   color: @background;
@@ -54,6 +57,12 @@ label {
 #custom-voxtype,
 #cpu {
   color: @foreground;
+}
+
+#clock label,
+#custom-clock label {
+  color: @foreground;
+  opacity: 1;
 }
 
 #custom-idle-indicator.active,
