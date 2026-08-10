@@ -1,5 +1,5 @@
-# Nous Research — Field Notes prompt.
-# High contrast: white text on deep navy segments, cobalt accent.
+# Nous Research — prompt.
+# Void-black base, near-white text, electric cobalt accents.
 add_newline = true
 
 format = """
@@ -11,25 +11,25 @@ symbol = " "
 
 [username]
 show_always = true
-style_user = "bg:#060E1F fg:#AAB8F5"
-style_root = "bg:#060E1F fg:#E57984"
-format = "[](fg:#060E1F)[ $user ]($style)"
+style_user = "bg:#010109 fg:#C2C2FC"
+style_root = "bg:#010109 fg:#E57984"
+format = "[](fg:#010109)[ $user ]($style)"
 
 [directory]
-style = "bg:#0C1A32 fg:#FFFFFF"
-format = "[](fg:#0C1A32 bg:#060E1F)[ $path ]($style)"
+style = "bg:#010288 fg:#F6F7FF"
+format = "[](fg:#010288 bg:#010109)[ $path ]($style)"
 truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = "…/"
 
 [git_branch]
-style = "bg:#1E3560 fg:#AAB8F5"
+style = "bg:#010288 fg:#C2C2FC"
 symbol = " "
-format = "[](fg:#1E3560 bg:#0C1A32)[ $symbol$branch ]($style)"
+format = "[](fg:#010288 bg:#010109)[ $symbol$branch ]($style)"
 
 [git_status]
-style = "bg:#060E1F fg:#6E98F5"
-format = "[](fg:#060E1F bg:#1E3560)[ $all_status$ahead_behind ]($style)[](fg:#060E1F)"
+style = "bg:#010109 fg:#6F70FA"
+format = "[](fg:#010109 bg:#010288)[ $all_status$ahead_behind ]($style)[](fg:#010109)"
 conflicted = "!"
 ahead = "⇡${count}"
 behind = "⇣${count}"
@@ -41,17 +41,17 @@ renamed = "»"
 deleted = "✘"
 
 [cmd_duration]
-style = "fg:#526987"
+style = "fg:#6F70FA"
 format = "[$duration]($style) "
 min_time = 2000
 
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "fg:#2B5CE6"
+style = "fg:#0305F6"
 format = "[✦ $time]($style)"
 
 [character]
-success_symbol = "[❯](bold #2B5CE6)"
+success_symbol = "[❯](bold #0305F6)"
 error_symbol = "[❯](bold #C75E6A)"
-vimcmd_symbol = "[❮](bold #AAB8F5)"
+vimcmd_symbol = "[❮](bold #C2C2FC)"

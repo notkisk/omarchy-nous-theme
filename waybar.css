@@ -1,21 +1,20 @@
-/* Nous Research — Field Notes waybar.
- * Deep navy surface, 1px cobalt rule, one signal-blue pill for the clock.
+/* Nous Research — waybar.
+ * Void-black surface, 1px electric cobalt rule, cobalt pill for the clock.
  */
 
-@define-color foreground  #FFFFFF;
-@define-color background  #060E1F;
-@define-color surface     #0C1A32;
-@define-color muted       #526987;
-@define-color border      #1E3560;
-@define-color accent      #2B5CE6;
-@define-color accent_soft #AAB8F5;
+@define-color foreground  #F6F7FF;
+@define-color background  #010109;
+@define-color surface     #010288;
+@define-color muted       #6F70FA;
+@define-color border      #010288;
+@define-color accent      #0305F6;
+@define-color accent_soft #C2C2FC;
 @define-color urgent      #C75E6A;
 @define-color success     #4F9B8C;
 
-/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
 window#waybar > box {
   background-color: @background;
-  border-bottom-color: alpha(@border, 0.85);
+  border-bottom-color: alpha(@accent, 0.70);
 }
 
 label {
@@ -23,11 +22,11 @@ label {
 }
 
 #workspaces button {
-  color: @foreground;
+  color: @accent_soft;
 }
 
 #workspaces button.active {
-  color: @background;
+  color: @foreground;
   background-color: @accent;
 }
 #workspaces button.active label {
@@ -35,8 +34,8 @@ label {
 }
 
 #workspaces button.empty.active {
-  color: @background;
-  background-color: @accent_soft;
+  color: @foreground;
+  background-color: @surface;
 }
 
 #memory,
@@ -96,7 +95,7 @@ label {
 
 tooltip {
   background: @background;
-  border-color: alpha(@border, 0.85);
+  border-color: alpha(@accent, 0.70);
 }
 
 tooltip label {

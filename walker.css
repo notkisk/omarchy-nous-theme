@@ -3,11 +3,11 @@
  * Do not rename them — @base, @text, @selected-text, @border, @background, @selected.
  */
 
-@define-color selected-text #FFFFFF;
-@define-color text          #FFFFFF;
-@define-color base          #060E1F;
-@define-color border        #2B5CE6;
-@define-color foreground    #FFFFFF;
-@define-color background    #060E1F;
-@define-color selected      #1E3560;
-@define-color muted         #526987;
+@define-color selected-text #F6F7FF;
+@define-color text          #F6F7FF;
+@define-color base          #010109;
+@define-color border        #0305F6;
+@define-color foreground    #F6F7FF;
+@define-color background    #010109;
+@define-color selected      #010288;
+@define-color muted         #6F70FA;

@@ -1,32 +1,32 @@
-# Field Notes for Omarchy
+# Nous Research Theme for Omarchy
 
-Field Notes is an independent Omarchy theme for quiet research sessions: midnight-blue surfaces, precise pale type, and electric-blue instrument accents. It takes its visual cues from archival scientific publishing, early terminal interfaces, and monochrome field photography—not from any company artwork, logo, or typeface.
+An independent Omarchy theme built around the Nous Research aesthetic: void-black surfaces, electric cobalt accents, and near-white type. The visual language draws from manga halftone illustration, minimalist HUD instrumentation, and technical grid layouts — clean, contrasty, and deliberate.
 
 ## Preview
 
-![Field Notes lake wallpaper: a blue dithered cabin, forest, and reflective sphere](backgrounds/field-notes-lake.png)
+![Nous Research wallpaper](backgrounds/nous-research.png)
 
-The included wallpaper is an original three-ink night study: a deliberately sparse wireframe mountain, lake, and sphere with hard-edged halftone marks. Its navy ground is the exact base used by terminals, bars, launchers, notifications, and Chromium, so it sits behind windows as one environment rather than a separate illustration.
+The wallpaper carries the full cobalt palette into every surface. Windows, bars, terminals, and notifications all share the same void ground, so the desktop reads as one coherent environment rather than layered apps.
 
 ## Palette
 
 | Role | Color | Use |
 | --- | --- | --- |
-| Midnight | `#08152E` | Main surfaces, terminal background, and wallpaper base |
-| Pale ink | `#EAF0FF` | Primary text and high-contrast labels |
-| Signal blue | `#3D73E8` | Focus, selection, and active controls |
-| Periwinkle | `#AAB8F5` | Secondary emphasis and monitoring data |
-| Rule | `#38517D` | Borders and quiet separators |
-| Slate | `#8FA0BD` | Secondary labels and inactive UI |
+| Void | `#010109` | Main surfaces, terminal background, wallpaper base |
+| Near-white | `#F6F7FF` | Primary text and high-contrast labels |
+| Electric cobalt | `#0305F6` | Focus, selection, active controls, borders |
+| Cobalt mid | `#6F70FA` | Secondary emphasis, muted elements, comments |
+| Deep cobalt | `#010288` | Cards, selection backgrounds, surface highlights |
+| Lavender | `#C2C2FC` | Secondary labels, strings, inactive UI |
 | Verdigris | `#4F9B8C` | Success and healthy states |
 | Amber | `#C28A39` | Warnings only |
 | Oxide | `#C75E6A` | Errors only |
 
-The midnight-and-ink base keeps every app on the same low-glare field; signal blue is reserved for decisions and focus. BTOP and the lock screen use the same values directly, making dense monitoring and private entry feel like purposeful instrumentation rather than a second theme.
+The void-and-white base keeps everything on a single low-glare field. Electric cobalt is reserved for focus and decisions — never decorative. The result matches the contrasty, high-precision feel of the Nous Research visual identity.
 
 ## Included targets
 
-The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar, Mako, Walker, SwayOSD, Hyprland, Hyprlock, Chromium, BTOP, VS Code, Neovim, and icon-theme settings. It also includes an original Field Notes Fastfetch profile and ASCII badge, plus a matching Starship prompt profile. The file names and flat package layout follow Omarchy’s theme installer conventions.
+The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar, Mako, Walker, SwayOSD, Hyprland, Hyprlock, Chromium, BTOP, VS Code, Neovim, and icon-theme settings. It also includes an original Fastfetch profile and ASCII badge, plus a matching Starship prompt profile. The file names and flat package layout follow Omarchy's theme installer conventions.
 
 ## Installation
 
@@ -34,15 +34,16 @@ The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar
 omarchy theme install https://github.com/notkisk/nous-theme.git
 ```
 
-For a repository named `nous-theme`, Omarchy installs this package as `nous`; select that installed theme from Omarchy’s theme picker. The wallpaper is included under `backgrounds/` and can be selected through the normal Omarchy background controls.
+For a repository named `nous-theme`, Omarchy installs this package as `nous`; select that installed theme from Omarchy's theme picker. The wallpaper is included under `backgrounds/` and can be selected through the normal Omarchy background controls.
 
 ### Terminal extras
 
-Kitty receives a short electric-blue cursor trail for deliberate cursor jumps. To use the optional Fastfetch profile and Starship prompt in another Omarchy install, copy the included files to `~/.config/fastfetch/config.jsonc` and `~/.config/starship.toml`; the Fastfetch profile reads its ASCII badge from the active theme directory.
+Kitty receives a short electric-cobalt cursor trail for deliberate cursor jumps. To use the optional Fastfetch profile and Starship prompt in another Omarchy install, copy the included files to `~/.config/fastfetch/config.jsonc` and `~/.config/starship.toml`; the Fastfetch profile reads its ASCII badge from the active theme directory.
 
 ## Design notes
 
-- Thin periwinkle separators on navy surfaces keep the desktop structured without feeling busy.
-- Compact monospace settings suit terminal, documentation, and lab-notebook work.
-- Halftone landscape imagery introduces a contemplative “research in nature” note without relying on branded visual assets.
-- There are no gradients, bloom effects, glass surfaces, or neon treatments.
+- Electric cobalt on void black delivers maximum contrast without any bloom or neon treatment.
+- Thin cobalt separators and 1px borders keep the desktop structured without visual noise.
+- Lavender secondaries (`#C2C2FC`) provide hierarchy without introducing a new hue.
+- No gradients, glass surfaces, or rounded corners — every element is precise and flat.
+- The halftone manga aesthetic referenced in the wallpaper and Fastfetch badge reinforces the research-lab character of the environment.

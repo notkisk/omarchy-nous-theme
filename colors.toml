@@ -1,25 +1,27 @@
-# Nous Research — Field Notes. Maximum contrast, pure cobalt.
-accent = "#2B5CE6"
-cursor = "#AAB8F5"
-foreground = "#FFFFFF"
-background = "#060E1F"
-selection_foreground = "#FFFFFF"
-selection_background = "#1E3560"
+# Nous Research — Electric cobalt on deep void.
+# bg=#010109  accent=#0305F6  accent_mid=#6F70FA
+# surface=#010288  fg=#F6F7FF  fg_soft=#C2C2FC
+accent = "#0305F6"
+cursor = "#6F70FA"
+foreground = "#F6F7FF"
+background = "#010109"
+selection_foreground = "#F6F7FF"
+selection_background = "#010288"
 
-# ANSI palette — deep navy base, vivid cobalt signal, restrained status.
-color0  = "#0C1A32"
+# ANSI palette — void base, electric cobalt signal.
+color0  = "#010109"
 color1  = "#C75E6A"
 color2  = "#4F9B8C"
 color3  = "#C28A39"
-color4  = "#2B5CE6"
-color5  = "#8E7CD6"
+color4  = "#0305F6"
+color5  = "#6F70FA"
 color6  = "#4C9CB2"
-color7  = "#EAF0FF"
-color8  = "#1E3560"
+color7  = "#F6F7FF"
+color8  = "#010288"
 color9  = "#E57984"
 color10 = "#66B5A5"
 color11 = "#DFAC5B"
-color12 = "#4A7AFF"
-color13 = "#AC9AE8"
+color12 = "#3032D4"
+color13 = "#C2C2FC"
 color14 = "#76C5D9"
 color15 = "#FFFFFF"

@@ -1,6 +1,6 @@
 -- Nous Research — Neovim color scheme.
--- High contrast cobalt: deep navy background, pure white text,
--- vivid signal blue accents. Matches the Nous Research terminal aesthetic.
+-- Void black background, near-white text, electric cobalt accents.
+-- Matches the Nous Research manga/HUD aesthetic.
 return {
   {
     "folke/tokyonight.nvim",
@@ -18,28 +18,28 @@ return {
         sidebars = "dark",
         floats = "dark",
       },
-      -- Override palette to match Field Notes exactly
+      -- Override palette to match Nous Research exactly
       on_colors = function(colors)
-        colors.bg         = "#060E1F"
-        colors.bg_dark    = "#040A16"
-        colors.bg_float   = "#060E1F"
-        colors.bg_popup   = "#0C1A32"
-        colors.bg_sidebar = "#0C1A32"
-        colors.bg_statusline = "#060E1F"
-        colors.bg_highlight  = "#0C1A32"
-        colors.bg_visual     = "#1E3560"
+        colors.bg         = "#010109"
+        colors.bg_dark    = "#010109"
+        colors.bg_float   = "#010109"
+        colors.bg_popup   = "#010288"
+        colors.bg_sidebar = "#010288"
+        colors.bg_statusline = "#010109"
+        colors.bg_highlight  = "#010288"
+        colors.bg_visual     = "#010288"
 
-        colors.fg       = "#FFFFFF"
-        colors.fg_dark  = "#EAF0FF"
-        colors.fg_gutter = "#526987"
-        colors.comment  = "#526987"
+        colors.fg       = "#F6F7FF"
+        colors.fg_dark  = "#C2C2FC"
+        colors.fg_gutter = "#6F70FA"
+        colors.comment  = "#6F70FA"
 
-        colors.blue   = "#2B5CE6"
-        colors.blue1  = "#4A7AFF"
-        colors.blue2  = "#6E98F5"
-        colors.blue5  = "#AAB8F5"
-        colors.blue6  = "#AAB8F5"
-        colors.blue7  = "#1E3560"
+        colors.blue   = "#0305F6"
+        colors.blue1  = "#3032D4"
+        colors.blue2  = "#6F70FA"
+        colors.blue5  = "#C2C2FC"
+        colors.blue6  = "#C2C2FC"
+        colors.blue7  = "#010288"
 
         colors.cyan   = "#4C9CB2"
         colors.teal   = "#4F9B8C"
@@ -53,109 +53,106 @@ return {
         colors.yellow  = "#C28A39"
         colors.orange  = "#DFAC5B"
 
-        colors.magenta  = "#8E7CD6"
-        colors.purple   = "#8E7CD6"
+        colors.magenta  = "#6F70FA"
+        colors.purple   = "#C2C2FC"
 
-        colors.border         = "#1E3560"
-        colors.border_highlight = "#2B5CE6"
+        colors.border         = "#010288"
+        colors.border_highlight = "#0305F6"
 
-        -- Selection and search
-        colors.selection = "#1E3560"
+        colors.selection = "#010288"
       end,
       on_highlights = function(hl, colors)
-        -- Make text elements pure white / very bright for maximum contrast
-        hl.Normal          = { fg = "#FFFFFF", bg = "#060E1F" }
-        hl.NormalFloat     = { fg = "#EAF0FF", bg = "#0C1A32" }
-        hl.NormalNC        = { fg = "#EAF0FF", bg = "#060E1F" }
+        hl.Normal          = { fg = "#F6F7FF", bg = "#010109" }
+        hl.NormalFloat     = { fg = "#F6F7FF", bg = "#010288" }
+        hl.NormalNC        = { fg = "#C2C2FC", bg = "#010109" }
 
-        -- Keywords, types, functions — cobalt blue family
-        hl.Keyword         = { fg = "#4A7AFF", bold = false }
-        hl.Statement       = { fg = "#4A7AFF" }
-        hl.Conditional     = { fg = "#4A7AFF" }
-        hl.Repeat          = { fg = "#4A7AFF" }
-        hl.Function        = { fg = "#FFFFFF", bold = true }
-        hl["@function"]    = { fg = "#FFFFFF", bold = true }
-        hl["@function.call"] = { fg = "#FFFFFF" }
-        hl.Type            = { fg = "#6E98F5" }
-        hl["@type"]        = { fg = "#6E98F5" }
-        hl["@type.builtin"] = { fg = "#6E98F5" }
+        -- Keywords, types — cobalt blue family
+        hl.Keyword         = { fg = "#6F70FA", bold = false }
+        hl.Statement       = { fg = "#6F70FA" }
+        hl.Conditional     = { fg = "#6F70FA" }
+        hl.Repeat          = { fg = "#6F70FA" }
+        hl.Function        = { fg = "#F6F7FF", bold = true }
+        hl["@function"]    = { fg = "#F6F7FF", bold = true }
+        hl["@function.call"] = { fg = "#F6F7FF" }
+        hl.Type            = { fg = "#C2C2FC" }
+        hl["@type"]        = { fg = "#C2C2FC" }
+        hl["@type.builtin"] = { fg = "#C2C2FC" }
 
-        -- Strings — periwinkle
-        hl.String          = { fg = "#AAB8F5" }
-        hl["@string"]      = { fg = "#AAB8F5" }
+        -- Strings — soft lavender
+        hl.String          = { fg = "#C2C2FC" }
+        hl["@string"]      = { fg = "#C2C2FC" }
 
-        -- Numbers, booleans — cyan
-        hl.Number          = { fg = "#76C5D9" }
-        hl.Boolean         = { fg = "#76C5D9" }
-        hl["@number"]      = { fg = "#76C5D9" }
-        hl["@boolean"]     = { fg = "#76C5D9" }
+        -- Numbers, booleans
+        hl.Number          = { fg = "#6F70FA" }
+        hl.Boolean         = { fg = "#6F70FA" }
+        hl["@number"]      = { fg = "#6F70FA" }
+        hl["@boolean"]     = { fg = "#6F70FA" }
 
-        -- Constants — bright blue
-        hl.Constant        = { fg = "#6E98F5" }
-        hl["@constant"]    = { fg = "#6E98F5" }
+        -- Constants — bright cobalt
+        hl.Constant        = { fg = "#C2C2FC" }
+        hl["@constant"]    = { fg = "#C2C2FC" }
 
         -- Variables
-        hl.Identifier      = { fg = "#EAF0FF" }
-        hl["@variable"]    = { fg = "#EAF0FF" }
-        hl["@parameter"]   = { fg = "#EAF0FF" }
-        hl["@property"]    = { fg = "#AAB8F5" }
-        hl["@field"]       = { fg = "#AAB8F5" }
+        hl.Identifier      = { fg = "#F6F7FF" }
+        hl["@variable"]    = { fg = "#F6F7FF" }
+        hl["@parameter"]   = { fg = "#F6F7FF" }
+        hl["@property"]    = { fg = "#C2C2FC" }
+        hl["@field"]       = { fg = "#C2C2FC" }
 
-        -- Comments — muted, clearly secondary
-        hl.Comment         = { fg = "#526987", italic = false }
-        hl["@comment"]     = { fg = "#526987" }
+        -- Comments — muted cobalt
+        hl.Comment         = { fg = "#6F70FA", italic = false }
+        hl["@comment"]     = { fg = "#6F70FA" }
 
         -- Operators, punctuation
-        hl.Operator        = { fg = "#FFFFFF" }
-        hl["@operator"]    = { fg = "#FFFFFF" }
-        hl["@punctuation"] = { fg = "#8FA0BD" }
+        hl.Operator        = { fg = "#F6F7FF" }
+        hl["@operator"]    = { fg = "#F6F7FF" }
+        hl["@punctuation"] = { fg = "#C2C2FC" }
 
         -- Line numbers
-        hl.LineNr          = { fg = "#1E3560" }
-        hl.CursorLineNr    = { fg = "#2B5CE6", bold = true }
-        hl.CursorLine      = { bg = "#0C1A32" }
+        hl.LineNr          = { fg = "#010288" }
+        hl.CursorLineNr    = { fg = "#0305F6", bold = true }
+        hl.CursorLine      = { bg = "#010288" }
 
         -- Visual selection
-        hl.Visual          = { bg = "#1E3560" }
+        hl.Visual          = { bg = "#010288" }
 
         -- Search
-        hl.Search          = { fg = "#FFFFFF", bg = "#2B5CE6" }
-        hl.IncSearch       = { fg = "#060E1F", bg = "#AAB8F5", bold = true }
+        hl.Search          = { fg = "#F6F7FF", bg = "#0305F6" }
+        hl.IncSearch       = { fg = "#010109", bg = "#C2C2FC", bold = true }
 
         -- Status line
-        hl.StatusLine      = { fg = "#AAB8F5", bg = "#060E1F" }
-        hl.StatusLineNC    = { fg = "#526987", bg = "#060E1F" }
+        hl.StatusLine      = { fg = "#C2C2FC", bg = "#010109" }
+        hl.StatusLineNC    = { fg = "#6F70FA", bg = "#010109" }
 
         -- Pmenu (autocomplete)
-        hl.Pmenu           = { fg = "#EAF0FF", bg = "#0C1A32" }
-        hl.PmenuSel        = { fg = "#FFFFFF", bg = "#2B5CE6" }
-        hl.PmenuSbar       = { bg = "#0C1A32" }
-        hl.PmenuThumb      = { bg = "#1E3560" }
+        hl.Pmenu           = { fg = "#F6F7FF", bg = "#010288" }
+        hl.PmenuSel        = { fg = "#F6F7FF", bg = "#0305F6" }
+        hl.PmenuSbar       = { bg = "#010288" }
+        hl.PmenuThumb      = { bg = "#0305F6" }
 
         -- Borders and splits
-        hl.WinSeparator    = { fg = "#1E3560" }
-        hl.FloatBorder     = { fg = "#2B5CE6", bg = "#0C1A32" }
-        hl.NormalFloat     = { bg = "#0C1A32" }
+        hl.WinSeparator    = { fg = "#010288" }
+        hl.FloatBorder     = { fg = "#0305F6", bg = "#010288" }
 
         -- Telescope
-        hl.TelescopeBorder         = { fg = "#1E3560", bg = "#060E1F" }
-        hl.TelescopeNormal         = { fg = "#EAF0FF", bg = "#060E1F" }
-        hl.TelescopeSelection      = { fg = "#FFFFFF", bg = "#1E3560" }
-        hl.TelescopeSelectionCaret = { fg = "#2B5CE6" }
-        hl.TelescopeMatching       = { fg = "#2B5CE6", bold = true }
-        hl.TelescopePromptBorder   = { fg = "#2B5CE6" }
-        hl.TelescopePromptTitle    = { fg = "#FFFFFF", bold = true }
+        hl.TelescopeBorder         = { fg = "#010288", bg = "#010109" }
+        hl.TelescopeNormal         = { fg = "#F6F7FF", bg = "#010109" }
+        hl.TelescopeSelection      = { fg = "#F6F7FF", bg = "#010288" }
+        hl.TelescopeSelectionCaret = { fg = "#0305F6" }
+        hl.TelescopeMatching       = { fg = "#0305F6", bold = true }
+        hl.TelescopePromptBorder   = { fg = "#0305F6" }
+        hl.TelescopePromptTitle    = { fg = "#F6F7FF", bold = true }
 
         -- Git signs
         hl.GitSignsAdd    = { fg = "#4F9B8C" }
-        hl.GitSignsChange = { fg = "#2B5CE6" }
+        hl.GitSignsChange = { fg = "#0305F6" }
         hl.GitSignsDelete = { fg = "#C75E6A" }
 
         -- Diagnostics
         hl.DiagnosticError = { fg = "#C75E6A" }
         hl.DiagnosticWarn  = { fg = "#C28A39" }
-        hl.DiagnosticInfo  = { fg = "#2B5CE6" }
-        hl.DiagnosticHint  = { fg = "#AAB8F5" }
+        hl.DiagnosticInfo  = { fg = "#0305F6" }
+        hl.DiagnosticHint  = { fg = "#C2C2FC" }
       end,
     },
   },

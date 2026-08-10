@@ -1,27 +1,27 @@
-/* Field Notes — Aether theme override.
- * Midnight surfaces, pale ink text, signal-blue focus accents.
+/* Nous Research — Aether theme override.
+ * Void-black surfaces, near-white text, electric cobalt focus accents.
  * Automatically applied to ~/.config/aether/theme.override.css
  */
 
 /* ── Palette ─────────────────────────────────────────────────── */
-@define-color background     #08152E;
-@define-color foreground     #EAF0FF;
+@define-color background     #010109;
+@define-color foreground     #F6F7FF;
 
-@define-color black          #08152E;
+@define-color black          #010109;
 @define-color red            #C75E6A;
 @define-color green          #4F9B8C;
 @define-color yellow         #C28A39;
-@define-color blue           #3D73E8;
-@define-color magenta        #8E7CD6;
+@define-color blue           #0305F6;
+@define-color magenta        #6F70FA;
 @define-color cyan           #4C9CB2;
-@define-color white          #EAF0FF;
+@define-color white          #F6F7FF;
 
-@define-color bright_black   #38517D;
+@define-color bright_black   #010288;
 @define-color bright_red     #E57984;
 @define-color bright_green   #66B5A5;
 @define-color bright_yellow  #DFAC5B;
-@define-color bright_blue    #6E98F5;
-@define-color bright_magenta #AAB8F5;
+@define-color bright_blue    #3032D4;
+@define-color bright_magenta #C2C2FC;
 @define-color bright_cyan    #76C5D9;
 @define-color bright_white   #FFFFFF;
 
@@ -52,31 +52,31 @@
 @define-color view_bg_color     @background;
 @define-color view_fg_color     @foreground;
 
-@define-color sidebar_bg_color          #0A1830;
+@define-color sidebar_bg_color          #010109;
 @define-color sidebar_fg_color          @foreground;
-@define-color sidebar_backdrop_color    #0A1830;
-@define-color sidebar_shade_color       #06101E;
+@define-color sidebar_backdrop_color    #010109;
+@define-color sidebar_shade_color       #010109;
 
-@define-color headerbar_bg_color        #0A1830;
+@define-color headerbar_bg_color        #010109;
 @define-color headerbar_fg_color        @foreground;
 @define-color headerbar_backdrop_color  @background;
-@define-color headerbar_shade_color     #06101E;
+@define-color headerbar_shade_color     #010109;
 @define-color headerbar_border_color    @bright_black;
 
-@define-color card_bg_color     #0D1E3A;
+@define-color card_bg_color     #010288;
 @define-color card_fg_color     @foreground;
-@define-color card_shade_color  #06101E;
+@define-color card_shade_color  #010109;
 
-@define-color thumbnail_bg_color  #0D1E3A;
+@define-color thumbnail_bg_color  #010288;
 @define-color thumbnail_fg_color  @foreground;
 
-@define-color shade_color              #06101E;
+@define-color shade_color              #010109;
 @define-color scrollbar_outline_color  @background;
 
-@define-color popover_bg_color  #10244A;
+@define-color popover_bg_color  #010288;
 @define-color popover_fg_color  @foreground;
 
-@define-color dialog_bg_color   #0D1E3A;
+@define-color dialog_bg_color   #010288;
 @define-color dialog_fg_color   @foreground;
 
 @define-color destructive_bg_color  @red;
@@ -91,23 +91,23 @@
 @define-color error_bg_color    @red;
 @define-color error_fg_color    @foreground;
 
-@define-color borders  alpha(@bright_black, 0.6);
+@define-color borders  alpha(@bright_black, 0.8);
 
 /* ── Extra semantic variables ────────────────────────────────── */
 @define-color window_backdrop_color    @background;
 @define-color view_backdrop_color      @background;
-@define-color menu_bg_color            #10244A;
+@define-color menu_bg_color            #010288;
 @define-color menu_fg_color            @foreground;
-@define-color entry_bg_color           #0D1E3A;
+@define-color entry_bg_color           #010288;
 @define-color entry_fg_color           @foreground;
-@define-color button_bg_color          #10244A;
+@define-color button_bg_color          #010288;
 @define-color button_fg_color          @foreground;
-@define-color tooltip_bg_color         #10244A;
+@define-color tooltip_bg_color         #010288;
 @define-color tooltip_fg_color         @foreground;
-@define-color tooltip_border_color     alpha(@bright_black, 0.6);
-@define-color osd_bg_color             #10244A;
+@define-color tooltip_border_color     alpha(@blue, 0.50);
+@define-color osd_bg_color             #010288;
 @define-color osd_fg_color             @foreground;
-@define-color osd_border_color         alpha(@bright_black, 0.6);
+@define-color osd_border_color         alpha(@blue, 0.50);
 @define-color filechooser_bg_color     @background;
 @define-color filechooser_fg_color     @foreground;
 @define-color nautilus_window_bg_color @background;
@@ -116,19 +116,19 @@
 @define-color portal_fg_color          @foreground;
 @define-color filedialog_bg_color      @background;
 @define-color filedialog_fg_color      @foreground;
-@define-color dropdown_bg_color        #10244A;
+@define-color dropdown_bg_color        #010288;
 @define-color dropdown_fg_color        @foreground;
 @define-color dropdown_hover_bg_color  alpha(@blue, 0.25);
 @define-color dropdown_selected_bg_color @blue;
 @define-color dropdown_selected_fg_color @foreground;
 @define-color pathbar_bg_color         @background;
 @define-color pathbar_fg_color         @foreground;
-@define-color toolbar_bg_color         #0A1830;
+@define-color toolbar_bg_color         #010109;
 @define-color toolbar_fg_color         @foreground;
 @define-color notebook_bg_color        @background;
 @define-color notebook_fg_color        @foreground;
-@define-color scrollbar_slider_color        alpha(@foreground, 0.25);
-@define-color scrollbar_slider_hover_color  alpha(@foreground, 0.45);
+@define-color scrollbar_slider_color        alpha(@foreground, 0.20);
+@define-color scrollbar_slider_hover_color  alpha(@foreground, 0.40);
 @define-color scrollbar_slider_active_color @blue;
 @define-color treeview_bg_color        @background;
 @define-color treeview_fg_color        @foreground;
@@ -136,10 +136,10 @@
 @define-color link_visited_color       @bright_magenta;
 @define-color selection_bg_color       @blue;
 @define-color selection_fg_color       @foreground;
-@define-color content_view_bg          #0D1E3A;
+@define-color content_view_bg          #010288;
 @define-color content_view_fg          @foreground;
-@define-color placeholder_text_color   alpha(@foreground, 0.45);
-@define-color dim_label_color          alpha(@foreground, 0.5);
+@define-color placeholder_text_color   alpha(@foreground, 0.40);
+@define-color dim_label_color          alpha(@foreground, 0.45);
 
 /* ── Sharp corners ───────────────────────────────────────────── */
 * {

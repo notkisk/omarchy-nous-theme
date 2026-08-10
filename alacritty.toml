@@ -1,32 +1,32 @@
-# Nous Research / Omarchy — Field Notes terminal.
+# Nous Research / Omarchy — electric cobalt terminal.
 [colors.primary]
-background = "#060E1F"
-foreground = "#FFFFFF"
+background = "#010109"
+foreground = "#F6F7FF"
 
 [colors.cursor]
-text   = "#060E1F"
-cursor = "#2B5CE6"
+text   = "#010109"
+cursor = "#0305F6"
 
 [colors.selection]
-text       = "#FFFFFF"
-background = "#1E3560"
+text       = "#F6F7FF"
+background = "#010288"
 
 [colors.normal]
-black   = "#0C1A32"
+black   = "#010109"
 red     = "#C75E6A"
 green   = "#4F9B8C"
 yellow  = "#C28A39"
-blue    = "#2B5CE6"
-magenta = "#8E7CD6"
+blue    = "#0305F6"
+magenta = "#6F70FA"
 cyan    = "#4C9CB2"
-white   = "#EAF0FF"
+white   = "#F6F7FF"
 
 [colors.bright]
-black   = "#1E3560"
+black   = "#010288"
 red     = "#E57984"
 green   = "#66B5A5"
 yellow  = "#DFAC5B"
-blue    = "#4A7AFF"
-magenta = "#AC9AE8"
+blue    = "#3032D4"
+magenta = "#C2C2FC"
 cyan    = "#76C5D9"
 white   = "#FFFFFF"
