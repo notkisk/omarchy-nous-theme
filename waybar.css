@@ -1,95 +1,12 @@
-/* Nous Research — Field Notes waybar.
- * Deep navy surface, 1px cobalt rule, one signal-blue pill for the clock.
- */
-
-@define-color foreground  #FFFFFF;
-@define-color background  #060E1F;
-@define-color surface     #0C1A32;
-@define-color muted       #526987;
-@define-color border      #1E3560;
-@define-color accent      #2B5CE6;
-@define-color accent_soft #AAB8F5;
-@define-color urgent      #C75E6A;
-@define-color success     #4F9B8C;
-
-/* GTK CSS (Waybar) does not support !important — use explicit selectors only. */
-window#waybar > box {
-  background-color: @background;
-  border-bottom-color: alpha(@border, 0.85);
-}
-
-label {
-  color: @foreground;
-}
-
-#workspaces button {
-  color: @foreground;
-}
-
-#workspaces button.active {
-  color: @background;
-  background-color: @accent;
-}
-
-#workspaces button.empty.active {
-  color: @background;
-  background-color: @accent_soft;
-}
-
-#memory,
-#mpris,
-#custom-clock,
-#battery,
-#backlight,
-#network,
-#bluetooth,
-#pulseaudio,
-#power-profiles-daemon,
-#idle_inhibitor,
-#custom-idle-indicator,
-#custom-notification-silencing-indicator,
-#custom-updatespacman,
-#custom-screenrecording-indicator,
-#custom-update,
-#custom-voxtype,
-#cpu {
-  color: @foreground;
-}
-
-#custom-idle-indicator.active,
-#custom-notification-silencing-indicator.active,
-#custom-voxtype.recording,
-#custom-screenrecording-indicator.active {
-  color: @urgent;
-}
-
-#mpris {
-  color: @accent_soft;
-  animation: none;
-}
-
-#battery.warning {
-  color: #C28A39;
-}
-
-#battery.critical:not(.charging),
-#pulseaudio.critical,
-#memory.critical,
-#cpu.critical {
-  color: @urgent;
-}
-
-#pulseaudio.warning,
-#memory.warning,
-#cpu.warning {
-  color: #DFAC5B;
-}
-
-tooltip {
-  background: @background;
-  border-color: alpha(@border, 0.85);
-}
-
-tooltip label {
-  color: @muted;
-}
+/* Source colors used by Omarchy's stock Waybar stylesheet. */
+@define-color foreground #12275E;
+@define-color background #E8EFF9;
+@define-color surface #D5E1F4;
+@define-color surface-strong #BFCFE8;
+@define-color accent #0000F2;
+@define-color accent-soft #6C84E8;
+@define-color muted #5E77AC;
+@define-color line #AFC1DE;
+@define-color success #287F6D;
+@define-color warning #B8895D;
+@define-color urgent #B34A62;

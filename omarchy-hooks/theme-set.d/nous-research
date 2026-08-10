@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+[[ ${1:-} == "nous-research" ]] || exit 0
+
+config_root="${XDG_CONFIG_HOME:-$HOME/.config}"
+theme_dir="$config_root/omarchy/current/theme"
+
+mkdir -p "$config_root/fastfetch" "$config_root/omarchy/branding" "$config_root/waybar" "$config_root/fuzzel" "$config_root/gtk-3.0" "$config_root/gtk-4.0" "$config_root/kitty"
+
+cp "$theme_dir/fastfetch.jsonc" "$config_root/fastfetch/config.jsonc"
+cp "$theme_dir/fastfetch-logo.txt" "$config_root/omarchy/branding/nous-girl.txt"
+cp "$theme_dir/waybar/config.jsonc" "$config_root/waybar/config.jsonc"
+cp "$theme_dir/waybar/style.css" "$config_root/waybar/style.css"
+cp "$theme_dir/fuzzel.ini" "$config_root/fuzzel/fuzzel.ini"
+cp "$theme_dir/gtk.css" "$config_root/gtk-3.0/gtk.css"
+cp "$theme_dir/gtk.css" "$config_root/gtk-4.0/gtk.css"
+cp "$theme_dir/starship.toml" "$config_root/starship.toml"
+cp "$theme_dir/kitty-override.conf" "$config_root/kitty/nous-research-override.conf"
+
+kitty_config="$config_root/kitty/kitty.conf"
+kitty_include="include $config_root/kitty/nous-research-override.conf"
+if [[ -f "$kitty_config" ]] && ! grep -Fqx "$kitty_include" "$kitty_config"; then
+  printf '\n%s\n' "$kitty_include" >> "$kitty_config"
+fi
+
+command -v omarchy-restart-waybar >/dev/null && omarchy-restart-waybar || true
+command -v omarchy-restart-walker >/dev/null && omarchy-restart-walker || true
+command -v omarchy-restart-btop >/dev/null && omarchy-restart-btop || true
+

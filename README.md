@@ -1,48 +1,38 @@
-# Field Notes for Omarchy
+# Nous Research — Omarchy theme
 
-Field Notes is an independent Omarchy theme for quiet research sessions: midnight-blue surfaces, precise pale type, and electric-blue instrument accents. It takes its visual cues from archival scientific publishing, early terminal interfaces, and monochrome field photography—not from any company artwork, logo, or typeface.
+An original Omarchy theme built around the Nous Research visual language: cool blue paper, electric cobalt, engraved linework, and precise research-instrument UI.
 
-## Preview
+The desktop stays open and pale blue, while Kitty, btop, Fastfetch, and Neovim use a navy field-station panel so long sessions remain calm and readable.
 
-![Field Notes lake wallpaper: a blue dithered cabin, forest, and reflective sphere](backgrounds/field-notes-lake.png)
+## Install
 
-The included wallpaper is an original three-ink night study: a deliberately sparse wireframe mountain, lake, and sphere with hard-edged halftone marks. Its navy ground is the exact base used by terminals, bars, launchers, notifications, and Chromium, so it sits behind windows as one environment rather than a separate illustration.
-
-## Palette
-
-| Role | Color | Use |
-| --- | --- | --- |
-| Midnight | `#08152E` | Main surfaces, terminal background, and wallpaper base |
-| Pale ink | `#EAF0FF` | Primary text and high-contrast labels |
-| Signal blue | `#3D73E8` | Focus, selection, and active controls |
-| Periwinkle | `#AAB8F5` | Secondary emphasis and monitoring data |
-| Rule | `#38517D` | Borders and quiet separators |
-| Slate | `#8FA0BD` | Secondary labels and inactive UI |
-| Verdigris | `#4F9B8C` | Success and healthy states |
-| Amber | `#C28A39` | Warnings only |
-| Oxide | `#C75E6A` | Errors only |
-
-The midnight-and-ink base keeps every app on the same low-glare field; signal blue is reserved for decisions and focus. BTOP and the lock screen use the same values directly, making dense monitoring and private entry feel like purposeful instrumentation rather than a second theme.
-
-## Included targets
-
-The package supplies Omarchy color tokens plus Kitty, Ghostty, Alacritty, Waybar, Mako, Walker, SwayOSD, Hyprland, Hyprlock, Chromium, BTOP, VS Code, Neovim, and icon-theme settings. It also includes an original Field Notes Fastfetch profile and ASCII badge, plus a matching Starship prompt profile. The file names and flat package layout follow Omarchy’s theme installer conventions.
-
-## Installation
+From this workspace:
 
 ```bash
-omarchy theme install https://github.com/notkisk/nous-theme.git
+cp -r nous-research-theme ~/.config/omarchy/themes/nous-research
+omarchy theme set nous-research
 ```
 
-For a repository named `nous-theme`, Omarchy installs this package as `nous`; select that installed theme from Omarchy’s theme picker. The wallpaper is included under `backgrounds/` and can be selected through the normal Omarchy background controls.
+The included `install.sh` also installs the scoped global theme hook required for Fastfetch, Waybar's full layout, GTK, Starship, btop refresh, and Kitty's final caret override. This matters because Omarchy does not execute hooks stored inside a theme directory.
 
-### Terminal extras
+The wallpaper is selected automatically from `backgrounds/` by Omarchy. To cycle it later:
 
-Kitty receives a short electric-blue cursor trail for deliberate cursor jumps. To use the optional Fastfetch profile and Starship prompt in another Omarchy install, copy the included files to `~/.config/fastfetch/config.jsonc` and `~/.config/starship.toml`; the Fastfetch profile reads its ASCII badge from the active theme directory.
+```bash
+omarchy theme bg next
+```
+
+## Included components
+
+- `colors.toml` — source palette for Omarchy's dynamic templates.
+- `kitty.conf` — paper terminal, complete ANSI palette, selection/tabs/borders, and a smooth beam caret with Kitty's cursor trail.
+- `fastfetch.jsonc` + `fastfetch-logo.txt` — terminal-native Nous girl artwork; no bitmap or Kitty image protocol is used.
+- `lua/nous/` + `colors/nous.lua` — standalone Neovim colorscheme with Treesitter, LSP, completion, Telescope, WhichKey, statusline/tabline, floats, search, folds, Git signs, and inactive-pane groups.
+- `waybar/` — an optional full Waybar configuration and matching layout CSS using only real Waybar modules.
+- `walker.css` + `fuzzel.ini` — native Omarchy launcher styling plus a matching Fuzzel profile.
+- `mako.ini`, `gtk.css`, `hyprland.conf`, `hyprlock.conf`, `swayosd.css`, and supporting terminal/editor files.
 
 ## Design notes
 
-- Thin periwinkle separators on navy surfaces keep the desktop structured without feeling busy.
-- Compact monospace settings suit terminal, documentation, and lab-notebook work.
-- Halftone landscape imagery introduces a contemplative “research in nature” note without relying on branded visual assets.
-- There are no gradients, bloom effects, glass surfaces, or neon treatments.
+The palette is intentionally not a generic blue-black hacker palette. Pale blue-gray paper provides the ground, cobalt is reserved for focus and decisions, and restrained coral/teal/ochre colors make diagnostics and status states legible. The wallpaper uses a cool blue forest field station, glass spheres, and orbit marks with quiet negative space for windows.
+
+The Fastfetch portrait is plain Unicode/ASCII text colored by Fastfetch. It only appears when Fastfetch is run; it is not embedded into Kitty or the wallpaper.

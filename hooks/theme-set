@@ -1,37 +1,54 @@
-#!/bin/bash
-# Apply Field Notes extras when this theme is active.
-THEME_DIR="$HOME/.config/omarchy/current/theme"
+#!/usr/bin/env bash
+# Optional surfaces that are not copied by Omarchy's color-template pass.
+set -euo pipefail
 
-if [[ "$1" != "nous" ]]; then
-  exit 0
-fi
+THEME_NAME="${1:-}"
+[[ "$THEME_NAME" == "nous-research" || "$THEME_NAME" == "nous-research-theme" ]] || exit 0
 
-# Fastfetch profile
+CONFIG_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}"
+THEME_DIR="$CONFIG_ROOT/omarchy/current/theme"
+
+# Fastfetch is intentionally opt-in at runtime: the portrait only appears
+# when fastfetch is launched, never in ordinary Kitty sessions.
 if [[ -f "$THEME_DIR/fastfetch.jsonc" ]]; then
-  mkdir -p "$HOME/.config/fastfetch"
-  cp "$THEME_DIR/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+  mkdir -p "$CONFIG_ROOT/fastfetch"
+  cp "$THEME_DIR/fastfetch.jsonc" "$CONFIG_ROOT/fastfetch/config.jsonc"
 fi
-
-# Starship prompt
-if [[ -f "$THEME_DIR/starship.toml" ]]; then
-  cp "$THEME_DIR/starship.toml" "$HOME/.config/starship.toml"
-fi
-
-# Fastfetch branding logo
 if [[ -f "$THEME_DIR/fastfetch-logo.txt" ]]; then
-  mkdir -p "$HOME/.config/omarchy/branding"
-  cp "$THEME_DIR/fastfetch-logo.txt" "$HOME/.config/omarchy/branding/about.txt"
+  mkdir -p "$CONFIG_ROOT/omarchy/branding"
+  cp "$THEME_DIR/fastfetch-logo.txt" "$CONFIG_ROOT/omarchy/branding/nous-girl.txt"
 fi
 
-# GTK3 + GTK4 file browser / app theming
+# Full Waybar layout is kept optional in the theme directory so a user's
+# custom Waybar can be restored simply by removing these two files.
+if [[ -f "$THEME_DIR/waybar/config.jsonc" && -f "$THEME_DIR/waybar/style.css" ]]; then
+  mkdir -p "$CONFIG_ROOT/waybar"
+  cp "$THEME_DIR/waybar/config.jsonc" "$CONFIG_ROOT/waybar/config.jsonc"
+  cp "$THEME_DIR/waybar/style.css" "$CONFIG_ROOT/waybar/style.css"
+fi
+
+if [[ -f "$THEME_DIR/fuzzel.ini" ]]; then
+  mkdir -p "$CONFIG_ROOT/fuzzel"
+  cp "$THEME_DIR/fuzzel.ini" "$CONFIG_ROOT/fuzzel/fuzzel.ini"
+fi
+
 if [[ -f "$THEME_DIR/gtk.css" ]]; then
-  mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
-  cp "$THEME_DIR/gtk.css" "$HOME/.config/gtk-3.0/gtk.css"
-  cp "$THEME_DIR/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+  mkdir -p "$CONFIG_ROOT/gtk-3.0" "$CONFIG_ROOT/gtk-4.0"
+  cp "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-3.0/gtk.css"
+  cp "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-4.0/gtk.css"
 fi
 
-# Aether theme override (for Aether-managed desktop theming)
-if [[ -f "$THEME_DIR/aether.override.css" ]]; then
-  mkdir -p "$HOME/.config/aether"
-  cp "$THEME_DIR/aether.override.css" "$HOME/.config/aether/theme.override.css"
+if [[ -f "$THEME_DIR/starship.toml" ]]; then
+  cp "$THEME_DIR/starship.toml" "$CONFIG_ROOT/starship.toml"
 fi
+
+# Adwaita is available on every Omarchy install and keeps pointer contrast
+# consistent with the paper surfaces. Kitty's beam caret is configured in
+# kitty.conf above; this is the desktop pointer theme, not terminal art.
+if command -v gsettings >/dev/null 2>&1; then
+  gsettings set org.gnome.desktop.interface cursor-theme Adwaita >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface color-scheme prefer-light >/dev/null 2>&1 || true
+fi
+
+command -v omarchy-restart-waybar >/dev/null 2>&1 && omarchy-restart-waybar || true
+command -v omarchy-restart-walker >/dev/null 2>&1 && omarchy-restart-walker || true
