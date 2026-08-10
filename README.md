@@ -16,6 +16,20 @@ Then select the installed Nous Research theme if Omarchy does not activate it au
 
 The included `install.sh` also installs the scoped global theme hook required for Fastfetch, Waybar's full layout, GTK, Starship, btop refresh, and Kitty's final caret override. This matters because Omarchy does not execute hooks stored inside a theme directory.
 
+### Optional Waybar layout
+
+To overwrite the active Waybar configuration with this theme's layout:
+
+```bash
+waybar_theme_dir="$(mktemp -d)"
+trap 'rm -rf "$waybar_theme_dir"' EXIT
+git clone --depth 1 https://github.com/notkisk/nous-theme.git "$waybar_theme_dir/nous-theme"
+mkdir -p ~/.config/waybar
+cp "$waybar_theme_dir/nous-theme/waybar/config.jsonc" \
+  "$waybar_theme_dir/nous-theme/waybar/style.css" ~/.config/waybar/
+omarchy restart waybar
+```
+
 The wallpaper is selected automatically from `backgrounds/` by Omarchy. To cycle it later:
 
 ```bash
