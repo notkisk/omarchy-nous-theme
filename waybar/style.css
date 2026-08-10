@@ -49,12 +49,14 @@ window#waybar { background: transparent; }
 
 #clock {
   padding: 0 18px;
-  color: @accent;
+  min-width: 150px;
+  color: #0000F2;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.4px;
 }
 #clock label {
-  color: @accent;
+  color: #0000F2;
   opacity: 1;
 }
 
