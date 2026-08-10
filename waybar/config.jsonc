@@ -1,0 +1,92 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "spacing": 0,
+  "reload_style_on_change": true,
+  "modules-left": ["custom/omarchy", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["network", "pulseaudio", "cpu", "memory", "battery", "bluetooth", "tray"],
+
+  "custom/omarchy": {
+    "format": "◈  NOUS",
+    "on-click": "omarchy-menu",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "default": "·",
+      "active": "◆",
+      "persistent": "·",
+      "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+      "6": "6", "7": "7", "8": "8", "9": "9", "10": "0"
+    },
+    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] }
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 56,
+    "separate-outputs": true,
+    "rewrite": { "(.*)": " $1" }
+  },
+  "clock": {
+    "format": "{:%H:%M}  /  {:%a %d %b}",
+    "format-alt": "{:%Y-%m-%d  %H:%M:%S}",
+    "tooltip": false,
+    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+  "network": {
+    "format-wifi": "↗ {essid}",
+    "format-ethernet": "↗ wired",
+    "format-disconnected": "× offline",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "Connected",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5,
+    "on-click": "omarchy-launch-wifi"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "muted",
+    "format-icons": { "default": ["·", "◐", "●"], "headphone": "♬", "headset": "♬" },
+    "scroll-step": 5,
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "{desc} — {volume}%"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "cpu {usage}%",
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "xdg-terminal-exec"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "ram {percentage}%",
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% +",
+    "format-plugged": "{capacity}% ⚡",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "states": { "warning": 25, "critical": 10 },
+    "interval": 10,
+    "on-click": "omarchy-menu power",
+    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\""
+  },
+  "bluetooth": {
+    "format": "bt {status}",
+    "format-connected": "bt {num_connections}",
+    "format-disabled": "bt off",
+    "format-no-controller": "",
+    "tooltip-format": "{num_connections} connected",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+  "tray": { "icon-size": 15, "spacing": 10 }
+}

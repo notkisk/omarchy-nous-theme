@@ -3,144 +3,28 @@
   "logo": {
     "type": "file",
     "source": "~/.config/omarchy/current/theme/fastfetch-logo.txt",
-    "color": { "1": "#AAB8F5", "2": "#2B5CE6" },
-    "padding": { "top": 0, "right": 3, "left": 0 }
+    "color": { "1": "#9FB7FF", "2": "#0000F2" },
+    "padding": { "top": 0, "right": 4, "left": 0 }
   },
-  "display": {
-    "separator": "  ",
-    "color": "#FFFFFF"
-  },
+  "display": { "separator": "  ", "color": "#DCE8FF", "brightColor": false },
   "modules": [
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;43;92;230m  ╔══════════════════════════════════╗"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;43;92;230m  ║  \u001b[1;38;2;255;255;255mN O U S   R E S E A R C H\u001b[0;38;2;43;92;230m        ║"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;43;92;230m  ║  \u001b[38;2;170;184;245mQUIET INTELLIGENCE. OPEN FUTURE.\u001b[38;2;43;92;230m ║"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;43;92;230m  ╚══════════════════════════════════╝"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;43;92;230mhardware \u001b[38;2;30;53;96m──────────────────────────"
-    },
-    {
-      "type": "host",
-      "key": "  \uf6be  node",
-      "keyColor": "#2B5CE6"
-    },
-    {
-      "type": "cpu",
-      "key": "  \uf4bc  cpu",
-      "keyColor": "#2B5CE6",
-      "showPeCoreCount": true
-    },
-    {
-      "type": "gpu",
-      "key": "  \uf9b9  gpu",
-      "keyColor": "#2B5CE6",
-      "detectionMethod": "pci"
-    },
-    {
-      "type": "display",
-      "key": "  \uf878  display",
-      "keyColor": "#2B5CE6"
-    },
-    {
-      "type": "memory",
-      "key": "  \uf85a  memory",
-      "keyColor": "#2B5CE6"
-    },
-    {
-      "type": "disk",
-      "key": "  \uf7c9  disk",
-      "keyColor": "#2B5CE6",
-      "folders": "/"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;170;184;245msoftware \u001b[38;2;30;53;96m──────────────────────────"
-    },
-    {
-      "type": "command",
-      "key": "  \uf17c  omarchy",
-      "keyColor": "#AAB8F5",
-      "text": "omarchy-version"
-    },
-    {
-      "type": "kernel",
-      "key": "  \uf831  kernel",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "wm",
-      "key": "  \uf009  wm",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "terminal",
-      "key": "  \uf120  term",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "terminalfont",
-      "key": "  \uf031  font",
-      "keyColor": "#AAB8F5"
-    },
-    {
-      "type": "packages",
-      "key": "  \uf8d6  pkgs",
-      "keyColor": "#AAB8F5"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;79;155;140msession \u001b[38;2;30;53;96m───────────────────────────"
-    },
-    {
-      "type": "uptime",
-      "key": "  \uf017  uptime",
-      "keyColor": "#4F9B8C"
-    },
-    {
-      "type": "command",
-      "key": "  \uf073  install",
-      "keyColor": "#4F9B8C",
-      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago"
-    },
-    {
-      "type": "command",
-      "key": "  \uf021  updated",
-      "keyColor": "#4F9B8C",
-      "text": "omarchy-version-pkgs"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;30;53;96m  ── \u001b[38;2;82;105;135mpalette \u001b[38;2;30;53;96m───────────────────────────"
-    },
-    {
-      "type": "command",
-      "key": "  \uf53f  ink",
-      "keyColor": "#526987",
-      "text": "echo -e \"\\e[38;2;6;14;31m⬤ bg    \\e[38;2;43;92;230m⬤ blue  \\e[38;2;170;184;245m⬤ soft  \\e[38;2;82;105;135m⬤ muted\""
-    },
-    {
-      "type": "command",
-      "key": "  \uf53f  status",
-      "keyColor": "#526987",
-      "text": "echo -e \"\\e[38;2;79;155;140m⬤ ok    \\e[38;2;199;90;106m⬤ err   \\e[38;2;194;138;57m⬤ warn  \\e[38;2;255;255;255m⬤ fg\""
-    },
-    "break"
+    { "type": "custom", "format": "\u001b[38;2;159;183;255m  +-- NOUS RESEARCH / FIELD NOTE ----------------+" },
+    { "type": "host", "key": "  | host", "keyColor": "#9FB7FF" },
+    { "type": "cpu", "key": "  | cpu", "keyColor": "#9FB7FF", "showPeCoreCount": true },
+    { "type": "gpu", "key": "  | gpu", "keyColor": "#9FB7FF", "detectionMethod": "pci" },
+    { "type": "display", "key": "  | display", "keyColor": "#9FB7FF" },
+    { "type": "memory", "key": "  | memory", "keyColor": "#9FB7FF" },
+    { "type": "disk", "key": "  + disk", "keyColor": "#9FB7FF", "folders": "/" },
+    { "type": "custom", "format": "\u001b[38;2;159;183;255m  +---------------------------------------------+" },
+    { "type": "custom", "format": "\u001b[38;2;191;197;255m  +-- SOFTWARE / SESSION -----------------------+" },
+    { "type": "command", "key": "  | omarchy", "keyColor": "#BFC5FF", "text": "omarchy-version" },
+    { "type": "kernel", "key": "  | kernel", "keyColor": "#BFC5FF" },
+    { "type": "wm", "key": "  | wm", "keyColor": "#BFC5FF" },
+    { "type": "terminal", "key": "  | terminal", "keyColor": "#BFC5FF" },
+    { "type": "packages", "key": "  + packages", "keyColor": "#BFC5FF" },
+    { "type": "custom", "format": "\u001b[38;2;191;197;255m  +---------------------------------------------+" },
+    { "type": "uptime", "key": "  o uptime", "keyColor": "#8BD6E5" },
+    { "type": "command", "key": "  o theme", "keyColor": "#8BD6E5", "text": "omarchy-theme-current" },
+    { "type": "command", "key": "  o signal", "keyColor": "#8BD6E5", "text": "printf '\\033[38;2;0;0;242m● \\033[38;2;107;194;176m● \\033[38;2;159;183;255m● \\033[38;2;235;129;149m●\\033[0m'" }
   ]
 }
