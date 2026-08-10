@@ -1,29 +1,57 @@
-# Nous Research — a small field-note prompt for shells that use Starship.
+# Nous Research — prompt.
+# Void-black base, near-white text, electric cobalt accents.
 add_newline = true
-format = "$directory$git_branch$git_status$cmd_duration$character"
+
+format = """
+$username$directory$git_branch$git_status$fill$cmd_duration$time
+$character"""
+
+[fill]
+symbol = " "
+
+[username]
+show_always = true
+style_user = "bg:#010109 fg:#C2C2FC"
+style_root = "bg:#010109 fg:#E57984"
+format = "[](fg:#010109)[ $user ]($style)"
 
 [directory]
-style = "bold #9FB7FF"
-format = "[$path]($style) "
+style = "bg:#010288 fg:#F6F7FF"
+format = "[](fg:#010288 bg:#010109)[ $path ]($style)"
 truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = "…/"
 
 [git_branch]
-symbol = "⌁ "
-style = "#6D83D7"
-format = "[$symbol$branch]($style) "
+style = "bg:#010288 fg:#C2C2FC"
+symbol = " "
+format = "[](fg:#010288 bg:#010109)[ $symbol$branch ]($style)"
 
 [git_status]
-style = "#B34A62"
-format = "([$all_status$ahead_behind]($style)) "
+style = "bg:#010109 fg:#6F70FA"
+format = "[](fg:#010109 bg:#010288)[ $all_status$ahead_behind ]($style)[](fg:#010109)"
+conflicted = "!"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+modified = "~"
+staged = "+"
+renamed = "»"
+deleted = "✘"
 
 [cmd_duration]
-min_time = 2000
-style = "#5E77AC"
+style = "fg:#6F70FA"
 format = "[$duration]($style) "
+min_time = 2000
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#0305F6"
+format = "[✦ $time]($style)"
 
 [character]
-success_symbol = "[❯](bold #F4F7FF)"
-error_symbol = "[❯](bold #B34A62)"
-vimcmd_symbol = "[❮](bold #6D83D7)"
+success_symbol = "[❯](bold #0305F6)"
+error_symbol = "[❯](bold #C75E6A)"
+vimcmd_symbol = "[❮](bold #C2C2FC)"

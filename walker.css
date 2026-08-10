@@ -1,10 +1,13 @@
-/* Walker / GTK launcher surface. */
-@define-color selected-text #12275E;
-@define-color text #12275E;
-@define-color base #E8EFF9;
-@define-color border #0000F2;
-@define-color foreground #12275E;
-@define-color background #E8EFF9;
-@define-color selected #0000F2;
-@define-color muted #5E77AC;
-@define-color hover #D5E1F4;
+/* Nous Research — Walker launcher colors.
+ * Walker reads these specific variable names from style.css.
+ * Do not rename them — @base, @text, @selected-text, @border, @background, @selected.
+ */
+
+@define-color selected-text #F6F7FF;
+@define-color text          #F6F7FF;
+@define-color base          #010109;
+@define-color border        #0305F6;
+@define-color foreground    #F6F7FF;
+@define-color background    #010109;
+@define-color selected      #010288;
+@define-color muted         #6F70FA;

@@ -1,12 +1,103 @@
-/* Source colors used by Omarchy's stock Waybar stylesheet. */
-@define-color foreground #12275E;
-@define-color background #E8EFF9;
-@define-color surface #D5E1F4;
-@define-color surface-strong #BFCFE8;
-@define-color accent #0000F2;
-@define-color accent-soft #6C84E8;
-@define-color muted #5E77AC;
-@define-color line #AFC1DE;
-@define-color success #287F6D;
-@define-color warning #B8895D;
-@define-color urgent #B34A62;
+/* Nous Research — waybar.
+ * Void-black surface, 1px electric cobalt rule, cobalt pill for the clock.
+ */
+
+@define-color foreground  #F6F7FF;
+@define-color background  #010109;
+@define-color surface     #010288;
+@define-color muted       #6F70FA;
+@define-color border      #010288;
+@define-color accent      #0305F6;
+@define-color accent_soft #C2C2FC;
+@define-color urgent      #C75E6A;
+@define-color success     #4F9B8C;
+
+window#waybar > box {
+  background-color: @background;
+  border-bottom-color: alpha(@accent, 0.70);
+}
+
+label {
+  color: @foreground;
+}
+
+#workspaces button {
+  color: @accent_soft;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  background-color: @accent;
+}
+#workspaces button.active label {
+  color: @foreground;
+}
+
+#workspaces button.empty.active {
+  color: @foreground;
+  background-color: @surface;
+}
+
+#memory,
+#mpris,
+#custom-clock,
+#battery,
+#backlight,
+#network,
+#bluetooth,
+#pulseaudio,
+#power-profiles-daemon,
+#idle_inhibitor,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-updatespacman,
+#custom-screenrecording-indicator,
+#custom-update,
+#custom-voxtype,
+#cpu {
+  color: @foreground;
+}
+
+#clock label,
+#custom-clock label {
+  color: @foreground;
+  opacity: 1;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active,
+#custom-voxtype.recording,
+#custom-screenrecording-indicator.active {
+  color: @urgent;
+}
+
+#mpris {
+  color: @accent_soft;
+  animation: none;
+}
+
+#battery.warning {
+  color: #C28A39;
+}
+
+#battery.critical:not(.charging),
+#pulseaudio.critical,
+#memory.critical,
+#cpu.critical {
+  color: @urgent;
+}
+
+#pulseaudio.warning,
+#memory.warning,
+#cpu.warning {
+  color: #DFAC5B;
+}
+
+tooltip {
+  background: @background;
+  border-color: alpha(@accent, 0.70);
+}
+
+tooltip label {
+  color: @muted;
+}
