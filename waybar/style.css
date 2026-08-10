@@ -38,6 +38,7 @@ window#waybar { background: transparent; }
   color: @background;
   background: @accent;
 }
+#workspaces button.active label { color: @background; }
 #workspaces button.empty { opacity: 0.55; }
 
 #window {
@@ -51,6 +52,10 @@ window#waybar { background: transparent; }
   color: @accent;
   font-weight: 700;
   letter-spacing: 0.4px;
+}
+#clock label {
+  color: @accent;
+  opacity: 1;
 }
 
 #network, #pulseaudio, #cpu, #memory, #battery, #bluetooth, #tray {
