@@ -1,5 +1,7 @@
 # Nous Research — Omarchy theme
 
+<img width="2560" height="1440" alt="screenshot-2026-08-11_16-46-22" src="https://github.com/user-attachments/assets/08415f54-6c3b-4b67-b564-23c8ec8da307" />
+
 An original Omarchy theme built around the Nous Research visual language: cool blue paper, electric cobalt, engraved linework, and precise research-instrument UI.
 
 The desktop stays open and pale blue, while Kitty, btop, Fastfetch, and Neovim use a navy field-station panel so long sessions remain calm and readable.
