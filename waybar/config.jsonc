@@ -29,15 +29,14 @@
     "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] }
   },
   "hyprland/window": {
-    "format": "{title}",
+    "format": "{}",
     "max-length": 56,
-    "separate-outputs": true,
-    "rewrite": { "(.*)": " $1" }
+    "separate-outputs": true
   },
   "clock": {
     "interval": 1,
-    "format": "{:%H:%M}  /  {:%a %d %b}",
-    "format-alt": "{:%Y-%m-%d  %H:%M:%S}",
+    "format": "{:%H:%M  %a %d %b}",
+    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
@@ -63,8 +62,7 @@
   "cpu": {
     "interval": 5,
     "format": "cpu {usage}%",
-    "on-click": "omarchy-launch-or-focus-tui btop",
-    "on-click-right": "xdg-terminal-exec"
+    "on-click": "omarchy-launch-or-focus-tui btop"
   },
   "memory": {
     "interval": 5,
@@ -78,8 +76,7 @@
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     "states": { "warning": 25, "critical": 10 },
     "interval": 10,
-    "on-click": "omarchy-menu power",
-    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\""
+    "on-click": "omarchy-menu power"
   },
   "bluetooth": {
     "format": "bt {status}",

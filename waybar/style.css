@@ -1,4 +1,4 @@
-/* Nous Research — light white waybar, all values hardcoded */
+/* Nous Research — light white waybar, all hex hardcoded */
 
 * {
   border: none;
@@ -7,6 +7,7 @@
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 11px;
   color: #12327A;
+  background: transparent;
 }
 
 window#waybar {
@@ -16,13 +17,14 @@ window#waybar {
 #waybar > box {
   margin: 10px 16px 0;
   padding: 0 10px;
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(22, 75, 255, 0.25);
-  box-shadow: 0 6px 22px rgba(18, 50, 122, 0.10);
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(22, 75, 255, 0.28);
+  box-shadow: 0 6px 22px rgba(18, 50, 122, 0.12);
 }
 
 #custom-omarchy {
   min-width: 94px;
+  padding: 0 8px;
   color: #164BFF;
   font-weight: 700;
   letter-spacing: 1px;
@@ -33,11 +35,10 @@ window#waybar {
 }
 
 #workspaces button {
+  all: unset;
   padding: 0 8px;
   margin: 7px 2px;
   color: #6076A8;
-  background: transparent;
-  transition: color 140ms ease, background 140ms ease;
 }
 
 #workspaces button:hover {
@@ -47,10 +48,7 @@ window#waybar {
 #workspaces button.active {
   color: #FFFFFF;
   background-color: #164BFF;
-}
-
-#workspaces button.active label {
-  color: #FFFFFF;
+  padding: 0 8px;
 }
 
 #workspaces button.empty {
@@ -58,19 +56,20 @@ window#waybar {
 }
 
 #window {
-  padding-left: 10px;
+  padding: 0 10px;
   color: #6076A8;
   font-size: 10px;
 }
 
 #clock {
   padding: 0 18px;
-  min-width: 150px;
-  color: #164BFF;
-  opacity: 1;
+  margin: 0 4px;
+  color: #12327A;
   font-weight: 700;
+  font-size: 12px;
   letter-spacing: 0.4px;
   background-color: transparent;
+  opacity: 1;
 }
 
 #network,
@@ -93,15 +92,13 @@ window#waybar {
 #bluetooth { color: #245CFF; }
 #tray      { padding-right: 3px; }
 
-#battery.warning  { color: #9A6700; }
-#cpu.warning      { color: #9A6700; }
-#memory.warning   { color: #9A6700; }
+#battery.warning,
+#cpu.warning,
+#memory.warning { color: #9A6700; }
 
 #battery.critical:not(.charging),
 #cpu.critical,
-#memory.critical {
-  color: #B4233C;
-}
+#memory.critical { color: #B4233C; }
 
 #pulseaudio.muted    { color: #6076A8; }
 #network.disconnected { color: #6076A8; }
@@ -110,9 +107,5 @@ tooltip {
   padding: 8px 10px;
   background-color: #FFFFFF;
   border: 1px solid #164BFF;
-  color: #12327A;
-}
-
-tooltip label {
   color: #12327A;
 }

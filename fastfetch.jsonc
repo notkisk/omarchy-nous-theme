@@ -3,7 +3,7 @@
   "logo": {
     "type": "file",
     "source": "~/.config/omarchy/current/theme/fastfetch-logo.txt",
-    "color": { "1": "#FFFFFF", "2": "#E8EEFF" },
+    "color": { "1": "#B8C9F5", "2": "#A8BDED" },
     "padding": { "top": 0, "right": 4, "left": 0 }
   },
   "display": { "separator": "  ", "color": "#A8BDED", "brightColor": false },
