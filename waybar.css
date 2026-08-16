@@ -1,12 +1,12 @@
-/* Nous Research — source palette. Navy surface. */
-@define-color foreground #E8EEFF;
-@define-color background #1E3061;
-@define-color surface #243672;
-@define-color surface-strong #2C4080;
-@define-color accent #4D8FFF;
-@define-color accent-soft #6BA3FF;
-@define-color muted #6080C0;
-@define-color line #2E4A8A;
-@define-color success #2EC4A0;
-@define-color warning #E6B84A;
-@define-color urgent #F06070;
+/* Nous Research — source palette for Waybar. White paper surface. */
+@define-color foreground #12327A;
+@define-color background #FFFFFF;
+@define-color surface #F7F9FC;
+@define-color surface-strong #EEF3FA;
+@define-color accent #164BFF;
+@define-color accent-soft #245CFF;
+@define-color muted #6076A8;
+@define-color line #B8C9F5;
+@define-color success #157A5B;
+@define-color warning #9A6700;
+@define-color urgent #B4233C;

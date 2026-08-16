@@ -37,6 +37,12 @@ if command -v gsettings >/dev/null 2>&1; then
   gsettings set org.gnome.desktop.interface cursor-theme Adwaita      >/dev/null 2>&1 || true
 fi
 
+# Deploy btop theme to the path btop actually reads (color_theme = "current")
+if [[ -f "$theme_dir/btop.theme" ]]; then
+  mkdir -p "$config_root/btop/themes"
+  cp "$theme_dir/btop.theme" "$config_root/btop/themes/current.theme"
+fi
+
 command -v omarchy-restart-waybar >/dev/null && omarchy-restart-waybar || true
 command -v omarchy-restart-walker >/dev/null && omarchy-restart-walker || true
 command -v omarchy-restart-btop   >/dev/null && omarchy-restart-btop   || true
