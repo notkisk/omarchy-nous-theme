@@ -11,7 +11,7 @@ The desktop stays white and precise, with pale blue paper surfaces, deep-blue te
 Install directly with Omarchy:
 
 ```bash
-omarchy-theme-install https://github.com/notkisk/nous-theme.git
+omarchy-theme-install https://github.com/notkisk/omarchy-nous-theme.git
 ```
 
 Then select the installed Nous Research theme if Omarchy does not activate it automatically.
