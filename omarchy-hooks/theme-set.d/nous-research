@@ -40,3 +40,9 @@ fi
 command -v omarchy-restart-waybar >/dev/null && omarchy-restart-waybar || true
 command -v omarchy-restart-walker >/dev/null && omarchy-restart-walker || true
 command -v omarchy-restart-btop   >/dev/null && omarchy-restart-btop   || true
+
+# Deploy Neovim background reinforcement layer
+if [[ -f "$theme_dir/nvim/transparency.lua" ]]; then
+  mkdir -p "$config_root/nvim/plugin/after"
+  cp "$theme_dir/nvim/transparency.lua" "$config_root/nvim/plugin/after/transparency.lua"
+fi

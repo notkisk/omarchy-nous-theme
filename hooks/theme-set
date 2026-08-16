@@ -54,3 +54,11 @@ fi
 
 command -v omarchy-restart-waybar >/dev/null 2>&1 && omarchy-restart-waybar || true
 command -v omarchy-restart-walker >/dev/null 2>&1 && omarchy-restart-walker || true
+
+# Re-apply Neovim background reinforcement layer so transparency.lua
+# always matches the current theme surface colours.
+if [[ -f "$THEME_DIR/nvim/transparency.lua" ]]; then
+  mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugin/after"
+  cp "$THEME_DIR/nvim/transparency.lua" \
+     "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugin/after/transparency.lua"
+fi
