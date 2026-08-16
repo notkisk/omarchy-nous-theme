@@ -35,6 +35,7 @@
     "rewrite": { "(.*)": " $1" }
   },
   "clock": {
+    "interval": 1,
     "format": "{:%H:%M}  /  {:%a %d %b}",
     "format-alt": "{:%Y-%m-%d  %H:%M:%S}",
     "tooltip": false,

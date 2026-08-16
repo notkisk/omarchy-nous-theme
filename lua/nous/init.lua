@@ -1,21 +1,24 @@
 local M = {}
 
-local palette = {
-  ink = "#142B63",
-  ink_deep = "#0D1D47",
-  ink_soft = "#1F3D81",
-  paper = "#DCE8FF",
-  paper_bright = "#F4F7FF",
-  cobalt = "#0000F2",
-  cobalt_soft = "#9FB7FF",
-  lavender = "#BFC5FF",
-  lavender_dark = "#6D83D7",
-  muted = "#91A7D1",
-  line = "#46639A",
-  coral = "#EB8195",
-  teal = "#6BC2B0",
-  cyan = "#8BD6E5",
-  ochre = "#D9B88A",
+-- Nous Research — deep navy surface with electric cobalt accents.
+-- Background: #1E3061. All values optimised for readability on dark navy.
+local p = {
+  bg        = "#1E3061",  -- main editor/terminal surface
+  bg_raised  = "#243672",  -- floats, sidebars, inactive panes
+  bg_active  = "#2C4080",  -- cursorline, selected rows
+  bg_deep    = "#182650",  -- statusline, tabline fill
+  fg        = "#E8EEFF",  -- primary text
+  fg_soft    = "#A8BDED",  -- secondary text, parameters
+  fg_dim     = "#6080C0",  -- line numbers, muted ui
+  cobalt     = "#4D8FFF",  -- electric cobalt — primary accent
+  cobalt_soft= "#6BA3FF",  -- softer accent, function calls
+  line       = "#2E4A8A",  -- borders, dividers
+  teal       = "#2EC4A0",  -- strings, success
+  cyan       = "#4ECDE6",  -- types, constructors
+  ochre      = "#E6B84A",  -- numbers, warnings
+  coral      = "#F06070",  -- errors, exceptions
+  lavender   = "#9BB0E8",  -- keywords, builtins
+  white      = "#FFFFFF",
 }
 
 local function hi(group, opts)
@@ -40,234 +43,246 @@ function M.setup()
     "a:blinkwait700-blinkon400-blinkoff250-NousInsert",
   }
 
-  -- Editor foundation and navigation chrome.
-  hi("Normal", { fg = palette.paper, bg = palette.ink })
-  hi("NormalNC", { fg = palette.muted, bg = palette.ink_deep })
-  hi("NormalFloat", { fg = palette.paper, bg = palette.ink_soft })
-  hi("FloatBorder", { fg = palette.cobalt_soft, bg = palette.ink_soft })
-  hi("FloatTitle", { fg = palette.paper_bright, bg = palette.cobalt, bold = true })
-  hi("SignColumn", { fg = palette.muted, bg = palette.ink })
-  hi("EndOfBuffer", { fg = palette.ink, bg = palette.ink })
-  hi("ColorColumn", { bg = palette.ink_soft })
-  hi("Cursor", { fg = palette.ink, bg = palette.paper_bright })
-  hi("NousCursor", { fg = palette.ink, bg = palette.paper_bright })
-  hi("NousInsert", { fg = palette.ink, bg = palette.cobalt_soft })
-  hi("NousReplace", { fg = palette.ink, bg = palette.coral })
-  hi("NousOperator", { fg = palette.ink, bg = palette.lavender })
-  hi("lCursor", { fg = palette.ink, bg = palette.paper_bright })
-  hi("CursorLine", { bg = "#1C3673" })
-  hi("CursorColumn", { bg = "#1C3673" })
-  hi("CursorLineNr", { fg = palette.paper_bright, bg = palette.ink_soft, bold = true })
-  hi("LineNr", { fg = palette.line, bg = palette.ink })
-  hi("Folded", { fg = palette.lavender, bg = palette.ink_soft })
-  hi("FoldColumn", { fg = palette.cobalt_soft, bg = palette.ink })
-  hi("VertSplit", { fg = palette.line, bg = palette.ink })
-  hi("WinSeparator", { fg = palette.line, bg = palette.ink })
-  hi("Whitespace", { fg = "#28345F" })
-  hi("NonText", { fg = "#28345F" })
-  hi("SpecialKey", { fg = palette.lavender_dark })
-  hi("Directory", { fg = palette.cobalt_soft, bold = true })
+  -- ── Editor foundation ────────────────────────────────────────────────────
+  hi("Normal",        { fg = p.fg,       bg = p.bg })
+  hi("NormalNC",      { fg = p.fg_soft,  bg = p.bg_raised })
+  hi("NormalFloat",   { fg = p.fg,       bg = p.bg_raised })
+  hi("FloatBorder",   { fg = p.cobalt,   bg = p.bg_raised })
+  hi("FloatTitle",    { fg = p.white,    bg = p.cobalt,       bold = true })
+  hi("SignColumn",    { fg = p.fg_dim,   bg = p.bg })
+  hi("EndOfBuffer",   { fg = p.bg,       bg = p.bg })
+  hi("ColorColumn",   { bg = p.bg_raised })
+  hi("Cursor",        { fg = p.bg,       bg = p.fg })
+  hi("NousCursor",    { fg = p.bg,       bg = p.cobalt })
+  hi("NousInsert",    { fg = p.bg,       bg = p.cobalt_soft })
+  hi("NousReplace",   { fg = p.bg,       bg = p.coral })
+  hi("NousOperator",  { fg = p.bg,       bg = p.lavender })
+  hi("lCursor",       { fg = p.bg,       bg = p.cobalt })
+  hi("CursorLine",    { bg = p.bg_active })
+  hi("CursorColumn",  { bg = p.bg_active })
+  hi("CursorLineNr",  { fg = p.cobalt_soft, bg = p.bg_active, bold = true })
+  hi("LineNr",        { fg = p.fg_dim,   bg = p.bg })
+  hi("Folded",        { fg = p.lavender, bg = p.bg_raised })
+  hi("FoldColumn",    { fg = p.cobalt,   bg = p.bg })
+  hi("VertSplit",     { fg = p.line,     bg = p.bg })
+  hi("WinSeparator",  { fg = p.line,     bg = p.bg })
+  hi("Whitespace",    { fg = p.line })
+  hi("NonText",       { fg = p.line })
+  hi("SpecialKey",    { fg = p.fg_dim })
+  hi("Directory",     { fg = p.cobalt_soft, bold = true })
+  hi("Title",         { fg = p.cobalt,   bold = true })
+  hi("MatchParen",    { fg = p.white,    bg = p.cobalt,       bold = true })
 
-  -- Syntax and Treesitter: cobalt is structure, lavender is language, teal is data.
-  hi("Comment", { fg = "#9FB7D9", italic = true })
-  hi("Constant", { fg = palette.cobalt_soft })
-  hi("String", { fg = palette.teal })
-  hi("Character", { fg = palette.cyan })
-  hi("Number", { fg = palette.ochre })
-  hi("Boolean", { fg = palette.ochre, bold = true })
-  hi("Float", { fg = palette.ochre })
-  hi("Identifier", { fg = "#E8F0FF" })
-  hi("Function", { fg = palette.paper_bright, bold = true })
-  hi("Statement", { fg = palette.cobalt_soft })
-  hi("Conditional", { fg = palette.cobalt_soft })
-  hi("Repeat", { fg = palette.cobalt_soft })
-  hi("Label", { fg = palette.lavender })
-  hi("Operator", { fg = palette.paper_bright })
-  hi("Keyword", { fg = palette.lavender, italic = true })
-  hi("Exception", { fg = palette.coral })
-  hi("PreProc", { fg = palette.lavender })
-  hi("Include", { fg = palette.cobalt_soft })
-  hi("Define", { fg = palette.lavender })
-  hi("Macro", { fg = palette.lavender })
-  hi("Type", { fg = palette.cyan })
-  hi("StorageClass", { fg = palette.cobalt_soft })
-  hi("Structure", { fg = palette.cyan })
-  hi("Typedef", { fg = palette.cyan })
-  hi("Special", { fg = palette.cyan })
-  hi("Delimiter", { fg = "#C9D7F2" })
-  hi("Error", { fg = palette.coral, bold = true })
-  hi("Todo", { fg = palette.ink, bg = palette.ochre, bold = true })
+  -- ── Syntax ───────────────────────────────────────────────────────────────
+  hi("Comment",       { fg = p.fg_dim,   italic = true })
+  hi("Constant",      { fg = p.cobalt_soft })
+  hi("String",        { fg = p.teal })
+  hi("Character",     { fg = p.cyan })
+  hi("Number",        { fg = p.ochre })
+  hi("Boolean",       { fg = p.ochre,    bold = true })
+  hi("Float",         { fg = p.ochre })
+  hi("Identifier",    { fg = p.fg })
+  hi("Function",      { fg = p.cobalt_soft, bold = true })
+  hi("Statement",     { fg = p.lavender })
+  hi("Conditional",   { fg = p.lavender })
+  hi("Repeat",        { fg = p.lavender })
+  hi("Label",         { fg = p.lavender })
+  hi("Operator",      { fg = p.fg_soft })
+  hi("Keyword",       { fg = p.lavender, italic = true })
+  hi("Exception",     { fg = p.coral })
+  hi("PreProc",       { fg = p.lavender })
+  hi("Include",       { fg = p.cobalt_soft })
+  hi("Define",        { fg = p.lavender })
+  hi("Macro",         { fg = p.lavender })
+  hi("Type",          { fg = p.cyan })
+  hi("StorageClass",  { fg = p.cobalt_soft })
+  hi("Structure",     { fg = p.cyan })
+  hi("Typedef",       { fg = p.cyan })
+  hi("Special",       { fg = p.cyan })
+  hi("Delimiter",     { fg = p.fg_soft })
+  hi("Error",         { fg = p.coral,    bold = true })
+  hi("Todo",          { fg = p.bg,       bg = p.ochre,        bold = true })
+  hi("Underlined",    { fg = p.cobalt_soft, underline = true })
 
-  local treesitter = {
-    ["@comment"] = { fg = palette.muted, italic = true },
-    ["@string"] = { fg = palette.teal },
-    ["@string.escape"] = { fg = palette.cyan },
-    ["@string.special"] = { fg = palette.cyan },
-    ["@number"] = { fg = palette.ochre },
-    ["@boolean"] = { fg = palette.ochre, bold = true },
-    ["@constant"] = { fg = palette.cobalt_soft },
-    ["@constant.builtin"] = { fg = palette.lavender },
-    ["@variable"] = { fg = palette.paper },
-    ["@variable.builtin"] = { fg = palette.lavender },
-    ["@variable.parameter"] = { fg = "#C9D7F2", italic = true },
-    ["@property"] = { fg = palette.cyan },
-    ["@field"] = { fg = palette.cyan },
-    ["@function"] = { fg = palette.paper_bright, bold = true },
-    ["@function.call"] = { fg = palette.paper_bright },
-    ["@function.builtin"] = { fg = palette.cobalt_soft },
-    ["@method"] = { fg = palette.paper_bright },
-    ["@constructor"] = { fg = palette.cyan },
-    ["@keyword"] = { fg = palette.lavender, italic = true },
-    ["@keyword.return"] = { fg = palette.cobalt_soft, italic = true },
-    ["@type"] = { fg = palette.cyan },
-    ["@type.builtin"] = { fg = palette.lavender },
-    ["@namespace"] = { fg = palette.cyan },
-    ["@operator"] = { fg = palette.paper_bright },
-    ["@punctuation.bracket"] = { fg = "#C9D7F2" },
-    ["@punctuation.delimiter"] = { fg = "#AFC1DE" },
-    ["@tag"] = { fg = palette.cobalt_soft },
-    ["@tag.attribute"] = { fg = palette.cyan, italic = true },
-    ["@markup.heading"] = { fg = palette.paper_bright, bold = true },
-    ["@markup.link"] = { fg = palette.cobalt_soft, underline = true },
-    ["@diff.plus"] = { fg = palette.teal },
-    ["@diff.minus"] = { fg = palette.coral },
+  -- ── Treesitter ───────────────────────────────────────────────────────────
+  local ts = {
+    ["@comment"]                    = { fg = p.fg_dim,    italic = true },
+    ["@string"]                     = { fg = p.teal },
+    ["@string.escape"]              = { fg = p.cyan },
+    ["@string.special"]             = { fg = p.cyan },
+    ["@number"]                     = { fg = p.ochre },
+    ["@boolean"]                    = { fg = p.ochre,     bold = true },
+    ["@constant"]                   = { fg = p.cobalt_soft },
+    ["@constant.builtin"]           = { fg = p.lavender },
+    ["@variable"]                   = { fg = p.fg },
+    ["@variable.builtin"]           = { fg = p.lavender },
+    ["@variable.parameter"]         = { fg = p.fg_soft,   italic = true },
+    ["@property"]                   = { fg = p.cyan },
+    ["@field"]                      = { fg = p.cyan },
+    ["@function"]                   = { fg = p.cobalt_soft, bold = true },
+    ["@function.call"]              = { fg = p.cobalt_soft },
+    ["@function.builtin"]           = { fg = p.cobalt },
+    ["@method"]                     = { fg = p.cobalt_soft },
+    ["@constructor"]                = { fg = p.cyan },
+    ["@keyword"]                    = { fg = p.lavender,  italic = true },
+    ["@keyword.return"]             = { fg = p.cobalt_soft, italic = true },
+    ["@type"]                       = { fg = p.cyan },
+    ["@type.builtin"]               = { fg = p.lavender },
+    ["@namespace"]                  = { fg = p.cyan },
+    ["@operator"]                   = { fg = p.fg_soft },
+    ["@punctuation.bracket"]        = { fg = p.fg_soft },
+    ["@punctuation.delimiter"]      = { fg = p.fg_dim },
+    ["@tag"]                        = { fg = p.cobalt_soft },
+    ["@tag.attribute"]              = { fg = p.cyan,      italic = true },
+    ["@markup.heading"]             = { fg = p.cobalt_soft, bold = true },
+    ["@markup.link"]                = { fg = p.cobalt_soft, underline = true },
+    ["@diff.plus"]                  = { fg = p.teal },
+    ["@diff.minus"]                 = { fg = p.coral },
   }
-  for group, opts in pairs(treesitter) do hi(group, opts) end
+  for group, opts in pairs(ts) do hi(group, opts) end
 
-  -- Selection, search, completion, and floating tools.
-  hi("Visual", { bg = "#304FCA", fg = "#F4F7FF" })
-  hi("VisualNOS", { bg = "#304FCA", fg = "#F4F7FF" })
-  hi("Search", { fg = palette.ink, bg = palette.ochre, bold = true })
-  hi("IncSearch", { fg = palette.ink, bg = palette.paper_bright, bold = true })
-  hi("CurSearch", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("MatchParen", { fg = palette.paper_bright, bg = palette.lavender_dark, bold = true })
-  hi("Pmenu", { fg = palette.paper, bg = palette.ink_soft })
-  hi("PmenuSel", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("PmenuSbar", { bg = palette.line })
-  hi("PmenuThumb", { bg = palette.cobalt_soft })
-  hi("PmenuKind", { fg = palette.lavender })
-  hi("PmenuExtra", { fg = palette.muted })
-  hi("WildMenu", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("Question", { fg = palette.teal })
-  hi("MoreMsg", { fg = palette.cobalt_soft })
-  hi("WarningMsg", { fg = palette.ochre })
-  hi("ErrorMsg", { fg = palette.coral })
-  hi("ModeMsg", { fg = palette.cobalt_soft, bold = true })
+  -- ── Selection, search, completion ────────────────────────────────────────
+  hi("Visual",        { fg = p.white,    bg = p.cobalt })
+  hi("VisualNOS",     { fg = p.white,    bg = p.cobalt })
+  hi("Search",        { fg = p.bg,       bg = p.ochre,        bold = true })
+  hi("IncSearch",     { fg = p.bg,       bg = p.cobalt,       bold = true })
+  hi("CurSearch",     { fg = p.bg,       bg = p.cobalt_soft,  bold = true })
+  hi("Pmenu",         { fg = p.fg,       bg = p.bg_raised })
+  hi("PmenuSel",      { fg = p.white,    bg = p.cobalt,       bold = true })
+  hi("PmenuSbar",     { bg = p.line })
+  hi("PmenuThumb",    { bg = p.cobalt })
+  hi("PmenuKind",     { fg = p.lavender })
+  hi("PmenuExtra",    { fg = p.fg_dim })
+  hi("WildMenu",      { fg = p.white,    bg = p.cobalt,       bold = true })
+  hi("Question",      { fg = p.teal })
+  hi("MoreMsg",       { fg = p.cobalt_soft })
+  hi("WarningMsg",    { fg = p.ochre })
+  hi("ErrorMsg",      { fg = p.coral })
+  hi("ModeMsg",       { fg = p.cobalt_soft, bold = true })
 
-  -- Diagnostics, LSP, and references.
-  hi("DiagnosticError", { fg = palette.coral })
-  hi("DiagnosticWarn", { fg = palette.ochre })
-  hi("DiagnosticInfo", { fg = palette.cobalt_soft })
-  hi("DiagnosticHint", { fg = palette.cyan })
-  hi("DiagnosticUnderlineError", { undercurl = true, sp = palette.coral })
-  hi("DiagnosticUnderlineWarn", { undercurl = true, sp = palette.ochre })
-  hi("DiagnosticUnderlineInfo", { undercurl = true, sp = palette.cobalt_soft })
-  hi("DiagnosticUnderlineHint", { undercurl = true, sp = palette.cyan })
-  hi("LspReferenceText", { bg = "#253361" })
-  hi("LspReferenceRead", { bg = "#253361" })
-  hi("LspReferenceWrite", { bg = "#304FCA", bold = true })
-  hi("LspCodeLens", { fg = palette.muted, italic = true })
-  hi("LspInlayHint", { fg = palette.muted, bg = palette.ink_soft, italic = true })
+  -- ── Diagnostics and LSP ──────────────────────────────────────────────────
+  hi("DiagnosticError",             { fg = p.coral })
+  hi("DiagnosticWarn",              { fg = p.ochre })
+  hi("DiagnosticInfo",              { fg = p.cobalt_soft })
+  hi("DiagnosticHint",              { fg = p.cyan })
+  hi("DiagnosticUnderlineError",    { undercurl = true, sp = p.coral })
+  hi("DiagnosticUnderlineWarn",     { undercurl = true, sp = p.ochre })
+  hi("DiagnosticUnderlineInfo",     { undercurl = true, sp = p.cobalt_soft })
+  hi("DiagnosticUnderlineHint",     { undercurl = true, sp = p.cyan })
+  hi("DiagnosticVirtualTextError",  { fg = p.coral,      bg = "#271830", italic = true })
+  hi("DiagnosticVirtualTextWarn",   { fg = p.ochre,      bg = "#272016", italic = true })
+  hi("DiagnosticVirtualTextInfo",   { fg = p.cobalt_soft, bg = p.bg_raised, italic = true })
+  hi("DiagnosticVirtualTextHint",   { fg = p.cyan,       bg = p.bg_raised, italic = true })
+  hi("DiagnosticSignError",         { fg = p.coral })
+  hi("DiagnosticSignWarn",          { fg = p.ochre })
+  hi("DiagnosticSignInfo",          { fg = p.cobalt_soft })
+  hi("DiagnosticSignHint",          { fg = p.cyan })
+  hi("LspReferenceText",            { bg = p.bg_active })
+  hi("LspReferenceRead",            { bg = p.bg_active })
+  hi("LspReferenceWrite",           { bg = p.cobalt,     bold = true })
+  hi("LspCodeLens",                 { fg = p.fg_dim,     italic = true })
+  hi("LspInlayHint",                { fg = p.fg_dim,     bg = p.bg_raised, italic = true })
 
-  -- Statusline, tabline, Git, Telescope, and WhichKey.
-  hi("StatusLine", { fg = palette.paper, bg = palette.ink_soft })
-  hi("StatusLineNC", { fg = palette.muted, bg = palette.ink_deep })
-  hi("TabLine", { fg = palette.muted, bg = palette.ink_deep })
-  hi("TabLineFill", { fg = palette.line, bg = palette.ink_deep })
-  hi("TabLineSel", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("WinBar", { fg = palette.cobalt_soft, bg = palette.ink, bold = true })
-  hi("WinBarNC", { fg = palette.muted, bg = palette.ink_deep })
-  hi("GitSignsAdd", { fg = palette.teal })
-  hi("GitSignsChange", { fg = palette.cobalt_soft })
-  hi("GitSignsDelete", { fg = palette.coral })
-  hi("TelescopeNormal", { fg = palette.paper, bg = palette.ink })
-  hi("TelescopeBorder", { fg = palette.line, bg = palette.ink })
-  hi("TelescopePromptNormal", { fg = palette.paper_bright, bg = palette.ink_soft })
-  hi("TelescopePromptBorder", { fg = palette.cobalt_soft, bg = palette.ink_soft })
-  hi("TelescopePromptTitle", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("TelescopeResultsTitle", { fg = palette.ink, bg = palette.lavender })
-  hi("TelescopePreviewTitle", { fg = palette.ink, bg = palette.teal })
-  hi("TelescopeSelection", { fg = palette.paper_bright, bg = "#253361", bold = true })
-  hi("TelescopeSelectionCaret", { fg = palette.cobalt_soft })
-  hi("TelescopeMatching", { fg = palette.ochre, bold = true })
-  hi("WhichKey", { fg = palette.cobalt_soft, bold = true })
-  hi("WhichKeyGroup", { fg = palette.lavender })
-  hi("WhichKeyDesc", { fg = palette.paper })
-  hi("WhichKeySeparator", { fg = palette.muted })
-  hi("WhichKeyFloat", { bg = palette.ink_soft })
+  -- ── Statusline, tabline, winbar ──────────────────────────────────────────
+  hi("StatusLine",    { fg = p.fg,       bg = p.bg_deep })
+  hi("StatusLineNC",  { fg = p.fg_dim,   bg = p.bg_raised })
+  hi("TabLine",       { fg = p.fg_dim,   bg = p.bg_deep })
+  hi("TabLineFill",   { fg = p.line,     bg = p.bg_deep })
+  hi("TabLineSel",    { fg = p.white,    bg = p.cobalt,       bold = true })
+  hi("WinBar",        { fg = p.cobalt_soft, bg = p.bg,        bold = true })
+  hi("WinBarNC",      { fg = p.fg_dim,   bg = p.bg_raised })
 
-  -- General plugin surfaces that LazyVim users commonly encounter.
-  hi("BufferLineFill", { bg = palette.ink_deep })
-  hi("BufferLineBackground", { fg = palette.muted, bg = palette.ink_deep })
-  hi("BufferLineBufferSelected", { fg = palette.paper_bright, bg = palette.ink, bold = true })
-  hi("NeoTreeNormal", { fg = palette.paper, bg = palette.ink })
-  hi("NeoTreeNormalNC", { fg = palette.muted, bg = palette.ink_deep })
-  hi("NeoTreeDirectoryIcon", { fg = palette.cobalt_soft })
-  hi("NeoTreeGitAdded", { fg = palette.teal })
-  hi("NeoTreeGitModified", { fg = palette.ochre })
-  hi("NeoTreeGitDeleted", { fg = palette.coral })
-  hi("NotifyINFOBorder", { fg = palette.cobalt_soft })
-  hi("NotifyWARNBorder", { fg = palette.ochre })
-  hi("NotifyERRORBorder", { fg = palette.coral })
-  hi("NoiceCmdlinePopupBorder", { fg = palette.cobalt_soft })
+  -- ── Git ──────────────────────────────────────────────────────────────────
+  hi("GitSignsAdd",    { fg = p.teal })
+  hi("GitSignsChange", { fg = p.cobalt_soft })
+  hi("GitSignsDelete", { fg = p.coral })
 
-  -- Snacks picker/explorer: the Files panel in current LazyVim uses these
-  -- groups rather than Neo-tree's namespace.
-  hi("SnacksPicker", { fg = "#E8F0FF", bg = palette.ink })
-  hi("SnacksPickerBorder", { fg = palette.cobalt_soft, bg = palette.ink })
-  hi("SnacksPickerTitle", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("SnacksPickerPrompt", { fg = palette.cyan, bg = palette.ink })
-  hi("SnacksPickerInput", { fg = "#F4F7FF", bg = palette.ink_soft })
-  hi("SnacksPickerInputBorder", { fg = palette.cobalt_soft, bg = palette.ink_soft })
-  hi("SnacksPickerInputTitle", { fg = palette.ink, bg = palette.cobalt_soft, bold = true })
-  hi("SnacksPickerList", { fg = "#E8F0FF", bg = palette.ink })
-  hi("SnacksPickerListBorder", { fg = palette.line, bg = palette.ink })
-  hi("SnacksPickerListTitle", { fg = palette.ink, bg = palette.lavender, bold = true })
-  hi("SnacksPickerPreview", { fg = "#E8F0FF", bg = palette.ink })
-  hi("SnacksPickerPreviewBorder", { fg = palette.line, bg = palette.ink })
-  hi("SnacksPickerPreviewTitle", { fg = palette.ink, bg = palette.teal, bold = true })
-  hi("SnacksPickerSelected", { fg = "#FFFFFF", bg = "#304FCA", bold = true })
-  hi("SnacksPickerCursorLine", { fg = "#FFFFFF", bg = "#304FCA", bold = true })
-  hi("SnacksPickerListCursorLine", { bg = "#1F3D81" })
-  hi("SnacksPickerMatch", { fg = palette.ochre, bold = true })
-  hi("SnacksPickerDir", { fg = palette.cobalt_soft })
-  hi("SnacksPickerPathHidden", { fg = "#9FB7D9" })
-  hi("SnacksPickerGitStatusUntracked", { fg = palette.muted })
-  hi("SnacksPickerGitStatusAdded", { fg = palette.teal })
-  hi("SnacksPickerGitStatusModified", { fg = palette.ochre })
+  -- ── Telescope ────────────────────────────────────────────────────────────
+  hi("TelescopeNormal",        { fg = p.fg,          bg = p.bg })
+  hi("TelescopeBorder",        { fg = p.line,        bg = p.bg })
+  hi("TelescopePromptNormal",  { fg = p.fg,          bg = p.bg_raised })
+  hi("TelescopePromptBorder",  { fg = p.cobalt,      bg = p.bg_raised })
+  hi("TelescopePromptTitle",   { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("TelescopeResultsTitle",  { fg = p.white,       bg = p.bg_deep,     bold = true })
+  hi("TelescopePreviewTitle",  { fg = p.white,       bg = p.teal,        bold = true })
+  hi("TelescopeSelection",     { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("TelescopeSelectionCaret",{ fg = p.cobalt })
+  hi("TelescopeMatching",      { fg = p.ochre,       bold = true })
 
-  -- Mini.files, Oil, and NvimTree use separate integration namespaces.
-  hi("MiniFilesNormal", { fg = "#E8F0FF", bg = palette.ink_soft })
-  hi("MiniFilesBorder", { fg = palette.cobalt_soft, bg = palette.ink_soft })
-  hi("MiniFilesCursorLine", { fg = "#FFFFFF", bg = "#304FCA", bold = true })
-  hi("MiniFilesDirectory", { fg = palette.cobalt_soft, bg = palette.ink_soft, bold = true })
-  hi("MiniFilesFile", { fg = "#E8F0FF", bg = palette.ink_soft })
-  hi("MiniFilesTitle", { fg = palette.paper_bright, bg = palette.cobalt, bold = true })
-  hi("MiniFilesTitleFocused", { fg = palette.paper_bright, bg = palette.cobalt_soft, bold = true })
-  hi("OilNormal", { fg = "#E8F0FF", bg = palette.ink })
-  hi("OilDir", { fg = palette.cobalt_soft, bold = true })
-  hi("OilFile", { fg = "#E8F0FF" })
-  hi("OilTypeDir", { fg = palette.cyan })
-  hi("OilTypeFile", { fg = palette.muted })
-  hi("NvimTreeNormal", { fg = "#E8F0FF", bg = palette.ink })
-  hi("NvimTreeFolderName", { fg = palette.cobalt_soft, bold = true })
-  hi("NvimTreeFolderIcon", { fg = palette.cyan })
-  hi("NvimTreeCursorLine", { fg = "#FFFFFF", bg = "#304FCA", bold = true })
+  -- ── WhichKey ─────────────────────────────────────────────────────────────
+  hi("WhichKey",          { fg = p.cobalt_soft, bold = true })
+  hi("WhichKeyGroup",     { fg = p.lavender })
+  hi("WhichKeyDesc",      { fg = p.fg })
+  hi("WhichKeySeparator", { fg = p.fg_dim })
+  hi("WhichKeyFloat",     { bg = p.bg_raised })
 
-  -- Completion and diagnostics stay bright enough on the navy field.
-  hi("CmpItemAbbr", { fg = "#E8F0FF" })
-  hi("CmpItemAbbrMatch", { fg = palette.ochre, bold = true })
-  hi("CmpItemAbbrMatchFuzzy", { fg = palette.ochre, bold = true })
-  hi("CmpItemKind", { fg = palette.cyan })
-  hi("CmpItemMenu", { fg = palette.muted })
-  hi("DiagnosticVirtualTextError", { fg = "#FF9AAA", bg = "#4A203B" })
-  hi("DiagnosticVirtualTextWarn", { fg = "#F1D39B", bg = "#493B25" })
-  hi("DiagnosticVirtualTextInfo", { fg = palette.cobalt_soft, bg = "#203D78" })
-  hi("DiagnosticVirtualTextHint", { fg = palette.cyan, bg = "#1B485A" })
-  hi("DiagnosticSignError", { fg = palette.coral })
-  hi("DiagnosticSignWarn", { fg = palette.ochre })
-  hi("DiagnosticSignInfo", { fg = palette.cobalt_soft })
-  hi("DiagnosticSignHint", { fg = palette.cyan })
+  -- ── BufferLine ───────────────────────────────────────────────────────────
+  hi("BufferLineFill",           { bg = p.bg_deep })
+  hi("BufferLineBackground",     { fg = p.fg_dim,   bg = p.bg_deep })
+  hi("BufferLineBufferSelected", { fg = p.fg,       bg = p.bg,          bold = true })
+
+  -- ── Neo-tree ─────────────────────────────────────────────────────────────
+  hi("NeoTreeNormal",        { fg = p.fg,       bg = p.bg_raised })
+  hi("NeoTreeNormalNC",      { fg = p.fg_soft,  bg = p.bg_raised })
+  hi("NeoTreeDirectoryIcon", { fg = p.cobalt_soft })
+  hi("NeoTreeGitAdded",      { fg = p.teal })
+  hi("NeoTreeGitModified",   { fg = p.ochre })
+  hi("NeoTreeGitDeleted",    { fg = p.coral })
+
+  -- ── Snacks picker / file explorer ────────────────────────────────────────
+  hi("SnacksPicker",                   { fg = p.fg,          bg = p.bg })
+  hi("SnacksPickerBorder",             { fg = p.cobalt,      bg = p.bg })
+  hi("SnacksPickerTitle",              { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("SnacksPickerPrompt",             { fg = p.cobalt,      bg = p.bg })
+  hi("SnacksPickerInput",              { fg = p.fg,          bg = p.bg_raised })
+  hi("SnacksPickerInputBorder",        { fg = p.cobalt,      bg = p.bg_raised })
+  hi("SnacksPickerInputTitle",         { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("SnacksPickerList",               { fg = p.fg,          bg = p.bg })
+  hi("SnacksPickerListBorder",         { fg = p.line,        bg = p.bg })
+  hi("SnacksPickerListTitle",          { fg = p.white,       bg = p.bg_deep,     bold = true })
+  hi("SnacksPickerPreview",            { fg = p.fg,          bg = p.bg })
+  hi("SnacksPickerPreviewBorder",      { fg = p.line,        bg = p.bg })
+  hi("SnacksPickerPreviewTitle",       { fg = p.white,       bg = p.teal,        bold = true })
+  hi("SnacksPickerSelected",           { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("SnacksPickerCursorLine",         { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("SnacksPickerListCursorLine",     { bg = p.bg_active })
+  hi("SnacksPickerMatch",              { fg = p.ochre,       bold = true })
+  hi("SnacksPickerDir",                { fg = p.cobalt_soft })
+  hi("SnacksPickerPathHidden",         { fg = p.fg_dim })
+  hi("SnacksPickerGitStatusUntracked", { fg = p.fg_dim })
+  hi("SnacksPickerGitStatusAdded",     { fg = p.teal })
+  hi("SnacksPickerGitStatusModified",  { fg = p.ochre })
+
+  -- ── Mini.files / Oil / NvimTree ──────────────────────────────────────────
+  hi("MiniFilesNormal",       { fg = p.fg,          bg = p.bg_raised })
+  hi("MiniFilesBorder",       { fg = p.cobalt,      bg = p.bg_raised })
+  hi("MiniFilesCursorLine",   { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("MiniFilesDirectory",    { fg = p.cobalt_soft, bg = p.bg_raised,   bold = true })
+  hi("MiniFilesFile",         { fg = p.fg,          bg = p.bg_raised })
+  hi("MiniFilesTitle",        { fg = p.white,       bg = p.cobalt,      bold = true })
+  hi("MiniFilesTitleFocused", { fg = p.white,       bg = p.cobalt_soft, bold = true })
+  hi("OilNormal",             { fg = p.fg,          bg = p.bg })
+  hi("OilDir",                { fg = p.cobalt_soft, bold = true })
+  hi("OilFile",               { fg = p.fg })
+  hi("OilTypeDir",            { fg = p.cyan })
+  hi("OilTypeFile",           { fg = p.fg_dim })
+  hi("NvimTreeNormal",        { fg = p.fg,          bg = p.bg_raised })
+  hi("NvimTreeFolderName",    { fg = p.cobalt_soft, bold = true })
+  hi("NvimTreeFolderIcon",    { fg = p.cyan })
+  hi("NvimTreeCursorLine",    { fg = p.white,       bg = p.cobalt,      bold = true })
+
+  -- ── nvim-cmp ─────────────────────────────────────────────────────────────
+  hi("CmpItemAbbr",           { fg = p.fg })
+  hi("CmpItemAbbrMatch",      { fg = p.ochre,       bold = true })
+  hi("CmpItemAbbrMatchFuzzy", { fg = p.ochre,       bold = true })
+  hi("CmpItemKind",           { fg = p.cyan })
+  hi("CmpItemMenu",           { fg = p.fg_dim })
+
+  -- ── Notify ───────────────────────────────────────────────────────────────
+  hi("NotifyINFOBorder",         { fg = p.cobalt_soft })
+  hi("NotifyWARNBorder",         { fg = p.ochre })
+  hi("NotifyERRORBorder",        { fg = p.coral })
+  hi("NoiceCmdlinePopupBorder",  { fg = p.cobalt })
 end
 
 return M

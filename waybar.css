@@ -1,12 +1,12 @@
-/* Source colors used by Omarchy's stock Waybar stylesheet. */
-@define-color foreground #12275E;
-@define-color background #E8EFF9;
-@define-color surface #D5E1F4;
-@define-color surface-strong #BFCFE8;
-@define-color accent #0000F2;
-@define-color accent-soft #6C84E8;
-@define-color muted #5E77AC;
-@define-color line #AFC1DE;
-@define-color success #287F6D;
-@define-color warning #B8895D;
-@define-color urgent #B34A62;
+/* Nous Research — source palette for Waybar. Navy surface, electric cobalt accents. */
+@define-color foreground #E8EEFF;
+@define-color background #1E3061;
+@define-color surface #243672;
+@define-color surface-strong #2C4080;
+@define-color accent #4D8FFF;
+@define-color accent-soft #6BA3FF;
+@define-color muted #6080C0;
+@define-color line #2E4A8A;
+@define-color success #2EC4A0;
+@define-color warning #E6B84A;
+@define-color urgent #F06070;

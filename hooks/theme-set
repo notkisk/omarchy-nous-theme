@@ -42,12 +42,14 @@ if [[ -f "$THEME_DIR/starship.toml" ]]; then
   cp "$THEME_DIR/starship.toml" "$CONFIG_ROOT/starship.toml"
 fi
 
-# Adwaita is available on every Omarchy install and keeps pointer contrast
-# consistent with the paper surfaces. Kitty's beam caret is configured in
-# kitty.conf above; this is the desktop pointer theme, not terminal art.
+# Set GTK/desktop settings for the Nous dark navy aesthetic.
+# - Adwaita-dark + prefer-dark makes GTK/libadwaita apps render with the
+#   dark navy surfaces defined in gtk.css.
+# - cursor-theme Adwaita keeps pointer contrast on dark surfaces.
 if command -v gsettings >/dev/null 2>&1; then
-  gsettings set org.gnome.desktop.interface cursor-theme Adwaita >/dev/null 2>&1 || true
-  gsettings set org.gnome.desktop.interface color-scheme prefer-light >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark  >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface color-scheme prefer-dark >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface cursor-theme Adwaita     >/dev/null 2>&1 || true
 fi
 
 command -v omarchy-restart-waybar >/dev/null 2>&1 && omarchy-restart-waybar || true

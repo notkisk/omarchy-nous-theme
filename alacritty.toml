@@ -1,32 +1,32 @@
 # Nous Research — Alacritty fallback
 [colors.primary]
-background = "#12275E"
-foreground = "#DCE8FF"
+background = "#FFFFFF"
+foreground = "#12327A"
 
 [colors.cursor]
-text = "#12275E"
-cursor = "#F4F7FF"
+text = "#FFFFFF"
+cursor = "#164BFF"
 
 [colors.selection]
-text = "#F4F7FF"
-background = "#0000F2"
+text = "#FFFFFF"
+background = "#164BFF"
 
 [colors.normal]
-black = "#12275E"
-red = "#C35871"
-green = "#5DB3A2"
-yellow = "#B8895D"
-blue = "#6C84E8"
-magenta = "#6D83D7"
-cyan = "#62B4C6"
-white = "#DCE8FF"
+black = "#12327A"
+red = "#B4233C"
+green = "#157A5B"
+yellow = "#9A6700"
+blue = "#164BFF"
+magenta = "#1237B8"
+cyan = "#167D9A"
+white = "#F7F9FC"
 
 [colors.bright]
-black = "#46639A"
-red = "#EB8195"
-green = "#86D3BE"
-yellow = "#D9B88A"
-blue = "#9FB7FF"
-magenta = "#BFC5FF"
-cyan = "#8BD6E5"
-white = "#F4F7FF"
+black = "#6076A8"
+red = "#C83D57"
+green = "#2C9A78"
+yellow = "#B07A16"
+blue = "#245CFF"
+magenta = "#6F8DDE"
+cyan = "#239CB5"
+white = "#FFFFFF"

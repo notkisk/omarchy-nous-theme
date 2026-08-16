@@ -1,10 +1,10 @@
-/* Walker / GTK launcher surface. */
-@define-color selected-text #12275E;
-@define-color text #12275E;
-@define-color base #E8EFF9;
-@define-color border #0000F2;
-@define-color foreground #12275E;
-@define-color background #E8EFF9;
-@define-color selected #0000F2;
-@define-color muted #5E77AC;
-@define-color hover #D5E1F4;
+/* Walker / GTK launcher surface — navy Nous theme. */
+@define-color selected-text #FFFFFF;
+@define-color text #E8EEFF;
+@define-color base #1E3061;
+@define-color border #4D8FFF;
+@define-color foreground #E8EEFF;
+@define-color background #1E3061;
+@define-color selected #4D8FFF;
+@define-color muted #6080C0;
+@define-color hover #243672;
