@@ -55,3 +55,18 @@ omarchy restart waybar
 The palette is intentionally not a generic blue-black hacker palette. White and pale blue paper provide the ground, cobalt is reserved for focus and decisions, and restrained coral/teal/ochre colors make diagnostics and status states legible. Existing wallpaper and illustration assets are left untouched.
 
 The default Fastfetch portrait is compact Unicode linework, so it works in any terminal. Kitty users can preview the supplied PNG beside the same system modules with `fastfetch --kitty ~/.config/omarchy/current/theme/assets/nous-research-girl.png`; the fallback remains defined in `fastfetch-logo.txt`.
+
+## Dark themed version of this
+
+[Dark themed version](https://github.com/notkisk/Omarchy-nous-research-purple)
+
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/2b1825be-4831-409b-b6b2-2d71c74ffa84" />
+
+Install directly with Omarchy:
+
+```
+omarchy-theme-install https://github.com/notkisk/Omarchy-nous-research-purple
+```
+
+
+
