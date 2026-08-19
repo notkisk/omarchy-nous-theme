@@ -1,146 +1,84 @@
-/* Nous Research — dark navy GTK / Libadwaita surfaces. */
-@define-color background #1E3061;
-@define-color foreground #E8EEFF;
-@define-color surface #243672;
-@define-color surface_strong #2C4080;
-@define-color cobalt #4D8FFF;
-@define-color cobalt_soft #6BA3FF;
-@define-color lavender #9BB0E8;
-@define-color muted #6080C0;
-@define-color coral #F06070;
-@define-color teal #2EC4A0;
-@define-color ochre #E6B84A;
+/* Nous Research — light GTK / Libadwaita surfaces. */
+@define-color background #FFFFFF;
+@define-color foreground #12327A;
+@define-color surface #F7F9FC;
+@define-color surface_strong #EEF3FA;
+@define-color cobalt #164BFF;
+@define-color cobalt_soft #245CFF;
+@define-color lavender #6F8DDE;
+@define-color muted #6076A8;
+@define-color coral #B4233C;
+@define-color teal #157A5B;
+@define-color ochre #9A6700;
+@define-color sidebar_blue #DCE7FA;
 
 /* libadwaita named color variables */
 @define-color accent_bg_color @cobalt;
 @define-color accent_fg_color #FFFFFF;
-@define-color accent_color @cobalt_soft;
+@define-color accent_color @cobalt;
 @define-color window_bg_color @background;
 @define-color window_fg_color @foreground;
 @define-color view_bg_color @background;
 @define-color view_fg_color @foreground;
-@define-color headerbar_bg_color @surface;
+@define-color headerbar_bg_color @background;
 @define-color headerbar_fg_color @foreground;
 @define-color headerbar_border_color @surface_strong;
-@define-color headerbar_backdrop_color @background;
-@define-color headerbar_shade_color alpha(#000000, 0.18);
-@define-color sidebar_bg_color @surface;
+@define-color sidebar_bg_color @sidebar_blue;
 @define-color sidebar_fg_color @foreground;
-@define-color sidebar_backdrop_color @background;
-@define-color card_bg_color @surface;
+@define-color card_bg_color #F7F9FC;
 @define-color card_fg_color @foreground;
-@define-color card_shade_color alpha(#000000, 0.18);
-@define-color popover_bg_color @surface;
+@define-color popover_bg_color #F7F9FC;
 @define-color popover_fg_color @foreground;
-@define-color dialog_bg_color @surface;
+@define-color dialog_bg_color #F7F9FC;
 @define-color dialog_fg_color @foreground;
 @define-color destructive_bg_color @coral;
 @define-color destructive_fg_color #FFFFFF;
 @define-color success_bg_color @teal;
 @define-color success_fg_color #FFFFFF;
 @define-color warning_bg_color @ochre;
-@define-color warning_fg_color #1E3061;
+@define-color warning_fg_color #FFFFFF;
 @define-color error_bg_color @coral;
 @define-color error_fg_color #FFFFFF;
-@define-color shade_color alpha(#000000, 0.22);
-@define-color scrollbar_outline_color alpha(@foreground, 0.12);
-@define-color borders alpha(@cobalt, 0.25);
-
-/* GTK3 legacy color variables */
-@define-color theme_fg_color @foreground;
-@define-color theme_text_color @foreground;
-@define-color theme_bg_color @background;
-@define-color theme_base_color @surface;
-@define-color theme_selected_bg_color @cobalt;
-@define-color theme_selected_fg_color #FFFFFF;
-@define-color insensitive_bg_color alpha(@foreground, 0.06);
-@define-color insensitive_fg_color @muted;
-@define-color placeholder_text_color alpha(@foreground, 0.45);
-@define-color link_color @cobalt_soft;
 
 * { border-radius: 0; }
 
-window, .background {
-  background-color: @background;
-  color: @foreground;
-}
-headerbar {
-  background-color: @surface;
-  color: @foreground;
-  border-bottom: 1px solid @surface_strong;
-  box-shadow: none;
-}
-.titlebar, headerbar .title { color: @foreground; font-weight: 700; }
+window, .background { background-color: @background; color: @foreground; }
+headerbar { border-bottom: 1px solid @surface_strong; box-shadow: none; }
 
 /* Entries and text fields */
-entry, textview, spinbutton {
-  background-color: @surface;
+entry, textview, spinbutton, combobox > box {
+  background-color: #FFFFFF;
   color: @foreground;
   border: 1px solid @surface_strong;
   caret-color: @cobalt;
 }
-entry:focus, textview:focus {
-  border-color: @cobalt;
-  box-shadow: 0 0 0 1px @cobalt;
-}
-entry > text > placeholder { color: @muted; }
+entry:focus, textview:focus, button:focus { border-color: @cobalt; box-shadow: 0 0 0 1px @cobalt; }
 
 /* Buttons */
-button {
-  background-color: @surface;
-  color: @foreground;
-  border: 1px solid @surface_strong;
-}
-button:hover, row:hover, menuitem:hover {
-  background-color: alpha(@cobalt, 0.18);
-}
-button.suggested-action {
-  background-color: @cobalt;
-  color: #FFFFFF;
-  border-color: @cobalt;
-}
+button { background-color: @surface; color: @foreground; border: 1px solid @surface_strong; }
+button:hover, row:hover, menuitem:hover { background-color: alpha(@cobalt, 0.12); }
+button.suggested-action, row:selected, .view:selected { background-color: @cobalt; color: #FFFFFF; }
 button.suggested-action:hover { background-color: @cobalt_soft; }
-button.destructive-action { background-color: @coral; color: #FFFFFF; }
-button:focus { border-color: @cobalt; box-shadow: 0 0 0 1px @cobalt; }
-
-/* Selection */
-row:selected, .view:selected, selection {
-  background-color: @cobalt;
-  color: #FFFFFF;
-}
 
 /* Popovers and menus */
-popover contents, menu, .menu {
-  background-color: @surface;
-  color: @foreground;
-  border: 1px solid alpha(@cobalt, 0.35);
-}
+popover contents, menu, .menu { background-color: #F7F9FC; color: @foreground; border: 1px solid @cobalt; }
 separator { background-color: @surface_strong; }
 
 /* Tooltips */
-tooltip {
-  background-color: @surface_strong;
-  color: @foreground;
-  border: 1px solid @cobalt;
-}
+tooltip { background-color: @foreground; color: @background; border: 1px solid @cobalt; }
 
 /* Scrollbars */
-scrollbar slider {
-  background-color: alpha(@cobalt, 0.30);
-  border-radius: 0;
-}
-scrollbar slider:hover, scrollbar slider:active {
-  background-color: @cobalt;
-}
+scrollbar slider { background-color: alpha(@cobalt, 0.35); }
+scrollbar slider:hover, scrollbar slider:active { background-color: @cobalt; }
 
-/* Sidebar / file manager panels */
+/* Sidebar / file manager panels — light blue paper */
 .sidebar, .nautilus-window .sidebar, placessidebar {
-  background-color: @surface;
+  background-color: @sidebar_blue;
   color: @foreground;
   border-right: 1px solid @surface_strong;
 }
 .sidebar row:hover, placessidebar row:hover {
-  background-color: alpha(@cobalt, 0.18);
+  background-color: alpha(@cobalt, 0.12);
 }
 .sidebar row:selected, placessidebar row:selected {
   background-color: @cobalt;

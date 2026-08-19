@@ -1,7 +1,7 @@
 -- Nous Research — LazyVim theme and optional Kitty artwork layer.
 return {
   {
-    dir = "~/.config/omarchy/current/theme",
+    dir = "~/.local/state/omarchy/current/theme",
     name = "nous-research-theme",
     priority = 1000,
     lazy = false,

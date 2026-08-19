@@ -1,0 +1,148 @@
+# Nous Research — Omarchy Quattro surfaces.
+# White paper bar and panels, deep navy text, electric cobalt for focus.
+# Bar matches the Waybar light layout (white surface, #12327A text, #164BFF active).
+
+[bar]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+active = "#164BFF"
+scale-with-font = true
+size-horizontal = 26
+size-vertical = 28
+
+[hyprland]
+active-border = "#164BFF"
+active-border-foreground = "#FFFFFF"
+
+[controls]
+normal-color = "#6076A8"
+normal-fill-alpha = 0.12
+normal-border-width = 1
+normal-border-alpha = 0.50
+
+hover-cursor-color = "#164BFF"
+hover-cursor-fill-alpha = 0.12
+hover-cursor-border-width = 1
+hover-cursor-border-alpha = 0.70
+
+focus-color = "#164BFF"
+focus-fill-alpha = 0.10
+focus-border-width = 1
+focus-border-alpha = 0.90
+
+selected-color = "#164BFF"
+selected-fill-alpha = 0.16
+selected-border-width = 1
+selected-border-alpha = 0.70
+
+pressed-color = "#12327A"
+pressed-fill-alpha = 0.16
+selection-color = "#164BFF"
+selection-fill-alpha = 0.45
+
+[spacing]
+scale = 1.0
+scale-with-font = true
+xs = 2
+md = 4
+control-padding-y = 5
+panel-padding = 10
+
+[font]
+base-size = 12
+heading = 16
+icon-large = 18
+
+[popups]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+border = "#164BFF"
+border-alpha = 1.0
+border-width = 2
+
+[tooltip]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+border = "#164BFF"
+border-alpha = 0.90
+border-width = 1
+
+[notifications]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+border = "#164BFF"
+border-alpha = 1.0
+border-width = 2
+countdown = "#164BFF"
+
+[launcher]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+border = "#164BFF"
+border-alpha = 1.0
+border-width = 2
+scrim = "#12327A"
+scrim-alpha = 0.25
+selected-background = "#164BFF"
+selected-background-alpha = 0.16
+selected-text = "#164BFF"
+selected-border = "#164BFF"
+selected-border-alpha = 0.45
+selected-border-width = 1
+
+[menu]
+background = "#FFFFFF"
+background-alpha = 1.0
+text = "#12327A"
+border = "#164BFF"
+border-alpha = 1.0
+border-width = 2
+scrim = "#12327A"
+scrim-alpha = 0.25
+selected-background = "#164BFF"
+selected-background-alpha = 0.16
+selected-text = "#164BFF"
+selected-border = "#164BFF"
+selected-border-alpha = 0.45
+selected-border-width = 1
+
+[polkit]
+background = "#1E3061"
+background-alpha = 0.85
+text = "#E8EEFF"
+text-error = "#F06070"
+border = "#164BFF"
+border-error = "#F06070"
+border-alpha = 1.0
+border-width = 2
+scrim = "#1E3061"
+scrim-alpha = 0.35
+accent = "#164BFF"
+
+[lock]
+background = "#1E3061"
+background-alpha = 0.85
+text = "#E8EEFF"
+placeholder = "#A8BDED"
+text-error = "#F06070"
+border = "#164BFF"
+border-active = "#4D8FFF"
+border-error = "#F06070"
+border-alpha = 1.0
+border-width = 2
+selection = "#164BFF"
+selection-alpha = 0.38
+
+[image-picker]
+scrim = "#12327A"
+scrim-alpha = 0.30
+text = "#FFFFFF"
+selected-border = "#164BFF"
+selected-border-alpha = 1.0
+unselected-border = "#6076A8"
+unselected-border-alpha = 1.0
