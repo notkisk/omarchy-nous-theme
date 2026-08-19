@@ -40,9 +40,3 @@ omarchy theme bg next
 The palette is intentionally not a generic blue-black hacker palette. White and pale blue paper provide the ground, cobalt is reserved for focus and decisions, and restrained coral/teal/ochre colors make diagnostics and status states legible. Existing wallpaper and illustration assets are left untouched.
 
 The default Fastfetch portrait is compact Unicode linework, so it works in any terminal. Kitty users can preview the supplied PNG beside the same system modules with `fastfetch --kitty ~/.config/omarchy/current/theme/assets/nous-research-girl.png`; the fallback remains defined in `fastfetch-logo.txt`.
-
-## Neovim artwork
-
-The PNG belongs at `assets/nous-research-girl.png` inside the theme directory. Omarchy copies it to `~/.config/omarchy/current/theme/assets/`, and the LazyVim spec in `neovim.lua` installs/configures `3rd/image.nvim` with its Kitty backend and ImageMagick CLI processor. The artwork is shown only in programming buffers, in the active editor window, at the upper-right, and is cleared automatically when buffers, splits, tabs, focus, or Neovim change.
-
-To replace it later, overwrite that PNG while preserving the path. To disable it, set `vim.g.nous_research_image = false` before LazyVim loads plugins, or launch Neovim with `NOUS_RESEARCH_NVIM_ART=0`.
