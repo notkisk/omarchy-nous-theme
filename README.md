@@ -24,6 +24,21 @@ The wallpaper is selected automatically from `backgrounds/` by Omarchy. To cycle
 omarchy theme bg next
 ```
 
+### Optional Waybar layout(only works for Omarchy version prior to Omarchy quatro)
+
+To overwrite the active Waybar configuration with this theme's layout:
+
+```bash
+waybar_theme_dir="$(mktemp -d)"
+trap 'rm -rf "$waybar_theme_dir"' EXIT
+git clone --depth 1 https://github.com/notkisk/nous-theme.git "$waybar_theme_dir/nous-theme"
+mkdir -p ~/.config/waybar
+cp "$waybar_theme_dir/nous-theme/waybar/config.jsonc" \
+  "$waybar_theme_dir/nous-theme/waybar/style.css" ~/.config/waybar/
+omarchy restart waybar
+```
+
+
 ## Included components
 
 - `colors.toml` — source palette for Omarchy's dynamic templates.
