@@ -20,17 +20,38 @@
 @define-color window_fg_color @foreground;
 @define-color view_bg_color @background;
 @define-color view_fg_color @foreground;
+@define-color view_hover_color alpha(@cobalt, 0.06);
+@define-color view_active_color alpha(@cobalt, 0.12);
 @define-color headerbar_bg_color @background;
 @define-color headerbar_fg_color @foreground;
+@define-color headerbar_backdrop_color @background;
 @define-color headerbar_border_color @surface_strong;
+@define-color headerbar_shade_color @surface_strong;
+@define-color headerbar_darker_shade_color @surface_strong;
 @define-color sidebar_bg_color @sidebar_blue;
 @define-color sidebar_fg_color @foreground;
-@define-color card_bg_color #F7F9FC;
+@define-color sidebar_backdrop_color @sidebar_blue;
+@define-color sidebar_border_color @surface_strong;
+@define-color sidebar_shade_color @surface_strong;
+@define-color secondary_sidebar_bg_color @sidebar_blue;
+@define-color secondary_sidebar_fg_color @foreground;
+@define-color secondary_sidebar_backdrop_color @sidebar_blue;
+@define-color secondary_sidebar_border_color @surface_strong;
+@define-color secondary_sidebar_shade_color @surface_strong;
+@define-color card_bg_color @surface;
 @define-color card_fg_color @foreground;
-@define-color popover_bg_color #F7F9FC;
+@define-color card_shade_color @surface_strong;
+@define-color popover_bg_color @surface;
 @define-color popover_fg_color @foreground;
-@define-color dialog_bg_color #F7F9FC;
+@define-color popover_shade_color @surface_strong;
+@define-color dialog_bg_color @surface;
 @define-color dialog_fg_color @foreground;
+@define-color thumbnail_bg_color @surface;
+@define-color thumbnail_fg_color @foreground;
+@define-color shade_color @surface_strong;
+@define-color scrollbar_outline_color @surface_strong;
+@define-color borders @surface_strong;
+@define-color dim_label_color @muted;
 @define-color destructive_bg_color @coral;
 @define-color destructive_fg_color #FFFFFF;
 @define-color success_bg_color @teal;
@@ -40,28 +61,107 @@
 @define-color error_bg_color @coral;
 @define-color error_fg_color #FFFFFF;
 
+/* GTK3 / Adwaita legacy color variables */
+@define-color theme_fg_color @foreground;
+@define-color theme_text_color @foreground;
+@define-color theme_bg_color @background;
+@define-color theme_base_color @background;
+@define-color theme_selected_bg_color @cobalt;
+@define-color theme_selected_fg_color #FFFFFF;
+@define-color insensitive_bg_color @surface;
+@define-color insensitive_fg_color @muted;
+@define-color insensitive_base_color @background;
+@define-color theme_unfocused_fg_color @foreground;
+@define-color theme_unfocused_text_color @foreground;
+@define-color theme_unfocused_bg_color @background;
+@define-color theme_unfocused_base_color @background;
+@define-color theme_unfocused_selected_bg_color @cobalt;
+@define-color theme_unfocused_selected_fg_color #FFFFFF;
+@define-color unfocused_borders @surface_strong;
+@define-color unfocused_insensitive_color @muted;
+@define-color warning_color @ochre;
+@define-color error_color @coral;
+@define-color success_color @teal;
+@define-color destructive_color @coral;
+@define-color placeholder_text_color alpha(@foreground, 0.5);
+@define-color link_color @cobalt;
+@define-color link_visited_color @lavender;
+@define-color content_view_bg @background;
+@define-color text_view_bg @background;
+
 * { border-radius: 0; }
 
 window, .background { background-color: @background; color: @foreground; }
-headerbar { border-bottom: 1px solid @surface_strong; box-shadow: none; }
+window:backdrop, .background:backdrop { background-color: @background; color: @foreground; }
+
+/* Headerbars / titlebars stay light even when unfocused */
+headerbar, .titlebar {
+  background-color: @background;
+  background-image: none;
+  color: @foreground;
+  border-bottom: 1px solid @surface_strong;
+  box-shadow: none;
+}
+headerbar:backdrop, .titlebar:backdrop {
+  background-color: @background;
+  background-image: none;
+  color: @foreground;
+  border-bottom-color: @surface_strong;
+}
+headerbar .title { color: @foreground; }
 
 /* Entries and text fields */
 entry, textview, spinbutton, combobox > box {
   background-color: #FFFFFF;
+  background-image: none;
   color: @foreground;
   border: 1px solid @surface_strong;
   caret-color: @cobalt;
 }
+entry:backdrop, textview:backdrop {
+  background-color: #FFFFFF;
+  color: @foreground;
+}
+entry:disabled, textview:disabled {
+  background-color: @surface;
+  color: @muted;
+}
 entry:focus, textview:focus, button:focus { border-color: @cobalt; box-shadow: 0 0 0 1px @cobalt; }
+selection { background-color: @cobalt; color: #FFFFFF; }
 
-/* Buttons */
-button { background-color: @surface; color: @foreground; border: 1px solid @surface_strong; }
-button:hover, row:hover, menuitem:hover { background-color: alpha(@cobalt, 0.12); }
-button.suggested-action, row:selected, .view:selected { background-color: @cobalt; color: #FFFFFF; }
-button.suggested-action:hover { background-color: @cobalt_soft; }
+/* Buttons — background-image must be cleared or Adwaita's gradient wins */
+button {
+  background-color: @surface;
+  background-image: none;
+  color: @foreground;
+  border: 1px solid @surface_strong;
+}
+button:hover, row:hover, menuitem:hover {
+  background-color: alpha(@cobalt, 0.12);
+  background-image: none;
+}
+button:active, button:checked {
+  background-color: @cobalt_soft;
+  background-image: none;
+  color: #FFFFFF;
+}
+button:backdrop { background-color: @surface; background-image: none; color: @foreground; }
+button:disabled { background-color: @surface; background-image: none; color: @muted; }
+button.flat { background-color: transparent; background-image: none; border-color: transparent; }
+button.flat:hover { background-color: alpha(@cobalt, 0.12); }
+button.suggested-action, row:selected, .view:selected {
+  background-color: @cobalt;
+  background-image: none;
+  color: #FFFFFF;
+}
+button.suggested-action:hover { background-color: @cobalt_soft; background-image: none; }
+button.suggested-action:backdrop { background-color: @cobalt; background-image: none; color: #FFFFFF; }
+button.destructive-action { background-color: @coral; background-image: none; color: #FFFFFF; }
+button.destructive-action:hover { background-color: @coral; background-image: none; color: #FFFFFF; }
 
 /* Popovers and menus */
-popover contents, menu, .menu { background-color: #F7F9FC; color: @foreground; border: 1px solid @cobalt; }
+popover contents, menu, .menu { background-color: @surface; color: @foreground; border: 1px solid @cobalt; }
+popover contents:backdrop, menu:backdrop { background-color: @surface; color: @foreground; }
 separator { background-color: @surface_strong; }
 
 /* Tooltips */
@@ -71,12 +171,21 @@ tooltip { background-color: @foreground; color: @background; border: 1px solid @
 scrollbar slider { background-color: alpha(@cobalt, 0.35); }
 scrollbar slider:hover, scrollbar slider:active { background-color: @cobalt; }
 
+/* Generic view / content surfaces (GTK3 apps, file chooser path bar) */
+.view { background-color: @background; color: @foreground; }
+.view:backdrop { background-color: @background; color: @foreground; }
+
 /* Sidebar / file manager panels — light blue paper */
 .sidebar, .nautilus-window .sidebar, placessidebar {
   background-color: @sidebar_blue;
   color: @foreground;
   border-right: 1px solid @surface_strong;
 }
+.sidebar:backdrop, placessidebar:backdrop {
+  background-color: @sidebar_blue;
+  color: @foreground;
+}
+.sidebar row, placessidebar row { color: @foreground; }
 .sidebar row:hover, placessidebar row:hover {
   background-color: alpha(@cobalt, 0.12);
 }
@@ -92,7 +201,30 @@ iconview, treeview {
   background-color: @background;
   color: @foreground;
 }
+iconview:backdrop, treeview:backdrop { background-color: @background; color: @foreground; }
 iconview:selected, treeview:selected {
   background-color: @cobalt;
   color: #FFFFFF;
 }
+
+/* File chooser dialogs (GTK3 portal + GTK4) */
+filechooser, filechooser .background {
+  background-color: @background;
+  color: @foreground;
+}
+filechooser #pathbarbox { background-color: @background; border-bottom: 1px solid @surface_strong; }
+filechooser #pathbarbox button {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  color: @foreground;
+}
+filechooser #pathbarbox button:hover { background-color: alpha(@cobalt, 0.12); }
+filechooser #pathbarbox button:checked { background-color: alpha(@cobalt, 0.15); }
+filechooser .dialog-action-box { background-color: @background; border-top: 1px solid @surface_strong; }
+filechooser .dialog-action-box:backdrop { background-color: @background; }
+
+/* Message dialogs */
+messagedialog { background-color: @dialog_bg_color; }
+messagedialog label { color: @dialog_fg_color; }
+messagedialog .secondary-text { color: @muted; }

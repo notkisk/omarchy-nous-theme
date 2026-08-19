@@ -32,11 +32,12 @@ if [[ -f "$theme_dir/kitty-override.conf" ]]; then
 fi
 
 # Apply desktop settings.
-# Adwaita-dark + prefer-dark makes GTK/libadwaita apps (Nautilus, etc.) render
-# with the dark navy Nous surfaces defined in gtk.css.
+# Adwaita (light) + prefer-light keeps GTK/libadwaita apps (Nautilus, etc.)
+# on the light surfaces defined in gtk.css, so un-themed widgets (file
+# chooser dialogs, message dialogs, unfocused headerbars) never fall dark.
 if command -v gsettings >/dev/null 2>&1; then
-  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark   >/dev/null 2>&1 || true
-  gsettings set org.gnome.desktop.interface color-scheme prefer-dark  >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita        >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface color-scheme prefer-light >/dev/null 2>&1 || true
   gsettings set org.gnome.desktop.interface cursor-theme Adwaita      >/dev/null 2>&1 || true
 fi
 

@@ -42,14 +42,15 @@ if [[ -f "$THEME_DIR/starship.toml" ]]; then
   cp "$THEME_DIR/starship.toml" "$CONFIG_ROOT/starship.toml"
 fi
 
-# Set GTK/desktop settings for the Nous dark navy aesthetic.
-# - Adwaita-dark + prefer-dark makes GTK/libadwaita apps render with the
-#   dark navy surfaces defined in gtk.css.
-# - cursor-theme Adwaita keeps pointer contrast on dark surfaces.
+# Set GTK/desktop settings for the Nous light aesthetic.
+# - Adwaita (light) + prefer-light keeps GTK/libadwaita apps on the light
+#   surfaces defined in gtk.css, so un-themed widgets (file chooser
+#   dialogs, message dialogs, unfocused headerbars) never fall back dark.
+# - cursor-theme Adwaita keeps pointer contrast on light surfaces.
 if command -v gsettings >/dev/null 2>&1; then
-  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark  >/dev/null 2>&1 || true
-  gsettings set org.gnome.desktop.interface color-scheme prefer-dark >/dev/null 2>&1 || true
-  gsettings set org.gnome.desktop.interface cursor-theme Adwaita     >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita        >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface color-scheme prefer-light >/dev/null 2>&1 || true
+  gsettings set org.gnome.desktop.interface cursor-theme Adwaita      >/dev/null 2>&1 || true
 fi
 
 command -v omarchy-restart-waybar >/dev/null 2>&1 && omarchy-restart-waybar || true
