@@ -24,7 +24,7 @@ The wallpaper is selected automatically from `backgrounds/` by Omarchy. To cycle
 omarchy theme bg next
 ```
 
-### Optional Waybar layout(only works for Omarchy version prior to Omarchy quatro)
+### Optional Waybar layout(only works for Omarchy versions prior to Omarchy quatro)
 
 To overwrite the active Waybar configuration with this theme's layout:
 
