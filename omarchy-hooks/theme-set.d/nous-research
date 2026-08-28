@@ -51,8 +51,31 @@ command -v omarchy-restart-waybar >/dev/null && omarchy-restart-waybar || true
 command -v omarchy-restart-walker >/dev/null && omarchy-restart-walker || true
 command -v omarchy-restart-btop   >/dev/null && omarchy-restart-btop   || true
 
-# Deploy Neovim background reinforcement layer
+# Deploy Neovim background reinforcement layer with --force semantics
+# The theme's neovim.lua is already live via the ~/.config/nvim/lua/plugins/theme.lua
+# symlink to ~/.local/state/omarchy/current/theme/neovim.lua, but that symlink's
+# mtime does not change on an atomic `mv` swap, so Lazy's 2s file watcher can be
+# late. Force the symlink, force-copy transparency, bump mtimes, and poke
+# running nvim servers to doautocmd User LazyReload immediately.
+nvim_config="$config_root/nvim"
+theme_link="$nvim_config/lua/plugins/theme.lua"
+expected_target="../../../../.local/state/omarchy/current/theme/neovim.lua"
+
+mkdir -p "$nvim_config/lua/plugins"
+if [[ ! -L "$theme_link" ]] || [[ "$(readlink "$theme_link")" != "$expected_target" ]]; then
+  ln -sfn "$expected_target" "$theme_link"
+fi
+
 if [[ -f "$theme_dir/nvim/transparency.lua" ]]; then
-  mkdir -p "$config_root/nvim/plugin/after"
-  cp "$theme_dir/nvim/transparency.lua" "$config_root/nvim/plugin/after/transparency.lua"
+  mkdir -p "$nvim_config/plugin/after"
+  cp -f "$theme_dir/nvim/transparency.lua" "$nvim_config/plugin/after/transparency.lua"
+  touch "$nvim_config/plugin/after/transparency.lua" 2>/dev/null || true
+fi
+touch "$theme_link" 2>/dev/null || true
+touch "$theme_dir/neovim.lua" 2>/dev/null || true
+
+if command -v nvim >/dev/null 2>&1; then
+  for sock in $(find "${XDG_RUNTIME_DIR:-/tmp}" -type s -name "nvim.*.0" 2>/dev/null | head -n 20); do
+    nvim --server "$sock" --remote-send '<Cmd>doautocmd User LazyReload<CR>' >/dev/null 2>&1 || true
+  done
 fi

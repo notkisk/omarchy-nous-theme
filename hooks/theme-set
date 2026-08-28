@@ -3,7 +3,7 @@
 set -euo pipefail
 
 THEME_NAME="${1:-}"
-[[ "$THEME_NAME" == "nous-research" || "$THEME_NAME" == "nous-research-theme" ]] || exit 0
+[[ "$THEME_NAME" == "nous" || "$THEME_NAME" == "nous-research" || "$THEME_NAME" == "nous-research-theme" ]] || exit 0
 
 CONFIG_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}"
 THEME_DIR="$CONFIG_ROOT/omarchy/current/theme"
@@ -57,9 +57,26 @@ command -v omarchy-restart-waybar >/dev/null 2>&1 && omarchy-restart-waybar || t
 command -v omarchy-restart-walker >/dev/null 2>&1 && omarchy-restart-walker || true
 
 # Re-apply Neovim background reinforcement layer so transparency.lua
-# always matches the current theme surface colours.
+# always matches the current theme surface colours — with --force semantics.
+nvim_config="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+theme_link="$nvim_config/lua/plugins/theme.lua"
+expected_target="../../../../.local/state/omarchy/current/theme/neovim.lua"
+
+mkdir -p "$nvim_config/lua/plugins"
+if [[ ! -L "$theme_link" ]] || [[ "$(readlink "$theme_link")" != "$expected_target" ]]; then
+  ln -sfn "$expected_target" "$theme_link"
+fi
+
 if [[ -f "$THEME_DIR/nvim/transparency.lua" ]]; then
-  mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugin/after"
-  cp "$THEME_DIR/nvim/transparency.lua" \
-     "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugin/after/transparency.lua"
+  mkdir -p "$nvim_config/plugin/after"
+  cp -f "$THEME_DIR/nvim/transparency.lua" "$nvim_config/plugin/after/transparency.lua"
+  touch "$nvim_config/plugin/after/transparency.lua" 2>/dev/null || true
+fi
+touch "$theme_link" 2>/dev/null || true
+touch "$THEME_DIR/neovim.lua" 2>/dev/null || true
+
+if command -v nvim >/dev/null 2>&1; then
+  for sock in $(find "${XDG_RUNTIME_DIR:-/tmp}" -type s -name "nvim.*.0" 2>/dev/null | head -n 20); do
+    nvim --server "$sock" --remote-send '<Cmd>doautocmd User LazyReload<CR>' >/dev/null 2>&1 || true
+  done
 fi
