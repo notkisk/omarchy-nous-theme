@@ -2,7 +2,7 @@
 set -euo pipefail
 
 case "${1:-}" in
-  nous|nous-research) ;;
+  nous|nous-research|nous-research-theme) ;;
   *) exit 0 ;;
 esac
 
@@ -13,17 +13,17 @@ mkdir -p "$config_root/fastfetch" "$config_root/omarchy/branding" \
          "$config_root/waybar" "$config_root/fuzzel" \
          "$config_root/gtk-3.0" "$config_root/gtk-4.0" "$config_root/kitty"
 
-cp "$theme_dir/fastfetch.jsonc" "$config_root/fastfetch/config.jsonc"
-cp "$theme_dir/fastfetch-logo.txt" "$config_root/omarchy/branding/nous-girl.txt"
-cp "$theme_dir/waybar/config.jsonc" "$config_root/waybar/config.jsonc"
-cp "$theme_dir/waybar/style.css" "$config_root/waybar/style.css"
-cp "$theme_dir/fuzzel.ini" "$config_root/fuzzel/fuzzel.ini"
-cp "$theme_dir/gtk.css" "$config_root/gtk-3.0/gtk.css"
-cp "$theme_dir/gtk.css" "$config_root/gtk-4.0/gtk.css"
-cp "$theme_dir/starship.toml" "$config_root/starship.toml"
+cp -f "$theme_dir/fastfetch.jsonc" "$config_root/fastfetch/config.jsonc" 2>/dev/null || true
+cp -f "$theme_dir/fastfetch-logo.txt" "$config_root/omarchy/branding/nous-girl.txt" 2>/dev/null || true
+cp -f "$theme_dir/waybar/config.jsonc" "$config_root/waybar/config.jsonc" 2>/dev/null || true
+cp -f "$theme_dir/waybar/style.css" "$config_root/waybar/style.css" 2>/dev/null || true
+cp -f "$theme_dir/fuzzel.ini" "$config_root/fuzzel/fuzzel.ini" 2>/dev/null || true
+cp -f "$theme_dir/gtk.css" "$config_root/gtk-3.0/gtk.css" 2>/dev/null || true
+cp -f "$theme_dir/gtk.css" "$config_root/gtk-4.0/gtk.css" 2>/dev/null || true
+cp -f "$theme_dir/starship.toml" "$config_root/starship.toml" 2>/dev/null || true
 
 if [[ -f "$theme_dir/kitty-override.conf" ]]; then
-  cp "$theme_dir/kitty-override.conf" "$config_root/kitty/nous-research-override.conf"
+  cp -f "$theme_dir/kitty-override.conf" "$config_root/kitty/nous-research-override.conf" 2>/dev/null || true
   kitty_config="$config_root/kitty/kitty.conf"
   kitty_include="include $config_root/kitty/nous-research-override.conf"
   if [[ -f "$kitty_config" ]] && ! grep -Fqx "$kitty_include" "$kitty_config"; then
@@ -44,7 +44,9 @@ fi
 # Deploy btop theme to the path btop actually reads (color_theme = "current")
 if [[ -f "$theme_dir/btop.theme" ]]; then
   mkdir -p "$config_root/btop/themes"
-  cp "$theme_dir/btop.theme" "$config_root/btop/themes/current.theme"
+  # `cp` errors with “same file” when state and dest are hardlinked via
+  # Omarchy’s theme staging; never let that abort the hook before nvim.
+  cp -f "$theme_dir/btop.theme" "$config_root/btop/themes/current.theme" 2>/dev/null || cat "$theme_dir/btop.theme" > "$config_root/btop/themes/current.theme" 2>/dev/null || true
 fi
 
 command -v omarchy-restart-waybar >/dev/null && omarchy-restart-waybar || true
@@ -57,18 +59,30 @@ command -v omarchy-restart-btop   >/dev/null && omarchy-restart-btop   || true
 # mtime does not change on an atomic `mv` swap, so Lazy's 2s file watcher can be
 # late. Force the symlink, force-copy transparency, bump mtimes, and poke
 # running nvim servers to doautocmd User LazyReload immediately.
+# This block runs on every `omarchy theme set nous` / `nous-research` for
+# all users — it is the guarantee that LazyVim picks up the #1E3061 navy
+# background instead of staying dark (#06040b).
 nvim_config="$config_root/nvim"
 theme_link="$nvim_config/lua/plugins/theme.lua"
 expected_target="../../../../.local/state/omarchy/current/theme/neovim.lua"
 
 mkdir -p "$nvim_config/lua/plugins"
-if [[ ! -L "$theme_link" ]] || [[ "$(readlink "$theme_link")" != "$expected_target" ]]; then
-  ln -sfn "$expected_target" "$theme_link"
-fi
+ln -sfn "$expected_target" "$theme_link"
 
+# Always overwrite plugin/after/transparency.lua with the active theme's
+# navy palette. The state file is authoritative; fall back to the installed
+# theme dir if state is transiently missing.
+transparency_src=""
 if [[ -f "$theme_dir/nvim/transparency.lua" ]]; then
+  transparency_src="$theme_dir/nvim/transparency.lua"
+elif [[ -f "$config_root/omarchy/themes/nous/nvim/transparency.lua" ]]; then
+  transparency_src="$config_root/omarchy/themes/nous/nvim/transparency.lua"
+elif [[ -f "$config_root/omarchy/themes/nous-research/nvim/transparency.lua" ]]; then
+  transparency_src="$config_root/omarchy/themes/nous-research/nvim/transparency.lua"
+fi
+if [[ -n "$transparency_src" ]]; then
   mkdir -p "$nvim_config/plugin/after"
-  cp -f "$theme_dir/nvim/transparency.lua" "$nvim_config/plugin/after/transparency.lua"
+  cp -f "$transparency_src" "$nvim_config/plugin/after/transparency.lua"
   touch "$nvim_config/plugin/after/transparency.lua" 2>/dev/null || true
 fi
 touch "$theme_link" 2>/dev/null || true

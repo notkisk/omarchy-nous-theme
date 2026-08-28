@@ -6,40 +6,47 @@ THEME_NAME="${1:-}"
 [[ "$THEME_NAME" == "nous" || "$THEME_NAME" == "nous-research" || "$THEME_NAME" == "nous-research-theme" ]] || exit 0
 
 CONFIG_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}"
-THEME_DIR="$CONFIG_ROOT/omarchy/current/theme"
+# Omarchy 3.x stores the active theme in $HOME/.local/state; older
+# installs used $CONFIG_ROOT/omarchy/current. Support both so the hook
+# never silently skips the nvim transparency layer.
+if [[ -d "$HOME/.local/state/omarchy/current/theme" ]]; then
+  THEME_DIR="$HOME/.local/state/omarchy/current/theme"
+else
+  THEME_DIR="$CONFIG_ROOT/omarchy/current/theme"
+fi
 
 # Fastfetch is intentionally opt-in at runtime: the portrait only appears
 # when fastfetch is launched, never in ordinary Kitty sessions.
 if [[ -f "$THEME_DIR/fastfetch.jsonc" ]]; then
   mkdir -p "$CONFIG_ROOT/fastfetch"
-  cp "$THEME_DIR/fastfetch.jsonc" "$CONFIG_ROOT/fastfetch/config.jsonc"
+  cp -f "$THEME_DIR/fastfetch.jsonc" "$CONFIG_ROOT/fastfetch/config.jsonc" 2>/dev/null || true
 fi
 if [[ -f "$THEME_DIR/fastfetch-logo.txt" ]]; then
   mkdir -p "$CONFIG_ROOT/omarchy/branding"
-  cp "$THEME_DIR/fastfetch-logo.txt" "$CONFIG_ROOT/omarchy/branding/nous-girl.txt"
+  cp -f "$THEME_DIR/fastfetch-logo.txt" "$CONFIG_ROOT/omarchy/branding/nous-girl.txt" 2>/dev/null || true
 fi
 
 # Full Waybar layout is kept optional in the theme directory so a user's
 # custom Waybar can be restored simply by removing these two files.
 if [[ -f "$THEME_DIR/waybar/config.jsonc" && -f "$THEME_DIR/waybar/style.css" ]]; then
   mkdir -p "$CONFIG_ROOT/waybar"
-  cp "$THEME_DIR/waybar/config.jsonc" "$CONFIG_ROOT/waybar/config.jsonc"
-  cp "$THEME_DIR/waybar/style.css" "$CONFIG_ROOT/waybar/style.css"
+  cp -f "$THEME_DIR/waybar/config.jsonc" "$CONFIG_ROOT/waybar/config.jsonc" 2>/dev/null || true
+  cp -f "$THEME_DIR/waybar/style.css" "$CONFIG_ROOT/waybar/style.css" 2>/dev/null || true
 fi
 
 if [[ -f "$THEME_DIR/fuzzel.ini" ]]; then
   mkdir -p "$CONFIG_ROOT/fuzzel"
-  cp "$THEME_DIR/fuzzel.ini" "$CONFIG_ROOT/fuzzel/fuzzel.ini"
+  cp -f "$THEME_DIR/fuzzel.ini" "$CONFIG_ROOT/fuzzel/fuzzel.ini" 2>/dev/null || true
 fi
 
 if [[ -f "$THEME_DIR/gtk.css" ]]; then
   mkdir -p "$CONFIG_ROOT/gtk-3.0" "$CONFIG_ROOT/gtk-4.0"
-  cp "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-3.0/gtk.css"
-  cp "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-4.0/gtk.css"
+  cp -f "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-3.0/gtk.css" 2>/dev/null || true
+  cp -f "$THEME_DIR/gtk.css" "$CONFIG_ROOT/gtk-4.0/gtk.css" 2>/dev/null || true
 fi
 
 if [[ -f "$THEME_DIR/starship.toml" ]]; then
-  cp "$THEME_DIR/starship.toml" "$CONFIG_ROOT/starship.toml"
+  cp -f "$THEME_DIR/starship.toml" "$CONFIG_ROOT/starship.toml" 2>/dev/null || true
 fi
 
 # Set GTK/desktop settings for the Nous light aesthetic.
@@ -58,18 +65,26 @@ command -v omarchy-restart-walker >/dev/null 2>&1 && omarchy-restart-walker || t
 
 # Re-apply Neovim background reinforcement layer so transparency.lua
 # always matches the current theme surface colours — with --force semantics.
+# Runs for every user on `omarchy theme set nous` and guarantees LazyVim
+# gets the #1E3061 navy background, not a stale dark #06040b.
 nvim_config="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 theme_link="$nvim_config/lua/plugins/theme.lua"
 expected_target="../../../../.local/state/omarchy/current/theme/neovim.lua"
 
 mkdir -p "$nvim_config/lua/plugins"
-if [[ ! -L "$theme_link" ]] || [[ "$(readlink "$theme_link")" != "$expected_target" ]]; then
-  ln -sfn "$expected_target" "$theme_link"
-fi
+ln -sfn "$expected_target" "$theme_link"
 
+transparency_src=""
 if [[ -f "$THEME_DIR/nvim/transparency.lua" ]]; then
+  transparency_src="$THEME_DIR/nvim/transparency.lua"
+elif [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/themes/nous/nvim/transparency.lua" ]]; then
+  transparency_src="${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/themes/nous/nvim/transparency.lua"
+elif [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/themes/nous-research/nvim/transparency.lua" ]]; then
+  transparency_src="${XDG_CONFIG_HOME:-$HOME/.config}/omarchy/themes/nous-research/nvim/transparency.lua"
+fi
+if [[ -n "$transparency_src" ]]; then
   mkdir -p "$nvim_config/plugin/after"
-  cp -f "$THEME_DIR/nvim/transparency.lua" "$nvim_config/plugin/after/transparency.lua"
+  cp -f "$transparency_src" "$nvim_config/plugin/after/transparency.lua"
   touch "$nvim_config/plugin/after/transparency.lua" 2>/dev/null || true
 fi
 touch "$theme_link" 2>/dev/null || true
